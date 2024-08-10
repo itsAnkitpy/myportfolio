@@ -19,7 +19,7 @@ const About = () => {
                     including HTML and CSS!
                 </p>
                 <p>
-                    Fast-forward to today, and I have had the oppurtunity of working on various freelancing projects and if 
+                    Fast-forward to today, and I have had the oppurtunity of working on some freelancing projects and if 
                     I am not there I take interest in creating and working on some personal small projects which again has 
                     <span className='text-textGreen'> solidified my approach of creating and building things</span>.
                 </p>
@@ -33,23 +33,19 @@ const About = () => {
                     </li>
 
                     <li className='flex items-center gap-2'>
-                        <span className='text-textGreen'><AiFillThunderbolt/></span>Next.js
+                        <span className='text-textGreen'><AiFillThunderbolt/></span>Python (Django)
                     </li>
 
                     <li className='flex items-center gap-2'>
-                        <span className='text-textGreen'><AiFillThunderbolt/></span>React
+                        <span className='text-textGreen'><AiFillThunderbolt/></span>PHP (Laravel)
                     </li>
 
                     <li className='flex items-center gap-2'>
-                        <span className='text-textGreen'><AiFillThunderbolt/></span>Node.js
+                        <span className='text-textGreen'><AiFillThunderbolt/></span>HTML
                     </li>
 
                     <li className='flex items-center gap-2'>
-                        <span className='text-textGreen'><AiFillThunderbolt/></span>TypeScript
-                    </li>
-
-                    <li className='flex items-center gap-2'>
-                        <span className='text-textGreen'><AiFillThunderbolt/></span>Express.js
+                        <span className='text-textGreen'><AiFillThunderbolt/></span>CSS
                     </li>
 
                     <li className='flex items-center gap-2'>
