@@ -14,50 +14,44 @@ const Archive = () => {
             <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mt-10 lgl:px-10'>
                 <ArchiveCard
                     title="Instello"
-                    des="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad corporis laboriosam doloremque delectus accusamus
-            sed voluptate, ab iusto nesciunt architecto"
+                    des="A social media platform where you can share your photos and connect with friends and family. Just like Instagram, you can share your life with others through pictures and short captions. "
                     listItem={["Python", "Django", "Javascript"]}
                     link="https://github.com/itsAnkitpy/Instello"
                 />
 
                 <ArchiveCard
                     title="Boighor"
-                    des="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad corporis laboriosam doloremque delectus accusamus
-            sed voluptate, ab iusto nesciunt architecto"
+                    des="A place for all book worms to jump in and just order their favourite books of their favourite authors."
                     listItem={["Python", "Django", "Javascript"]}
-                    link="https://github.com/itsAnkitpy/Instello"
+                    link="https://github.com/itsAnkitpy/Boighor"
                 />
 
                 <ArchiveCard
                     title="Streamit"
-                    des="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad corporis laboriosam doloremque delectus accusamus
-            sed voluptate, ab iusto nesciunt architecto"
+                    des="Streamit is a simple OTT platform project with functionalities of creating multiple accounts and watching your favourite shows and movies.  "
                     listItem={["Python", "Django", "Javascript"]}
-                    link="https://github.com/itsAnkitpy/Instello"
+                    link="https://github.com/itsAnkitpy/Streamit"
                 />
 
                 <ArchiveCard
-                    title="Instello"
-                    des="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad corporis laboriosam doloremque delectus accusamus
-            sed voluptate, ab iusto nesciunt architecto"
+                    title="Clique"
+                    des="Clique is an online platform for coders to learn and discuss different areas of programming in an interactive interface through online chatting. "
                     listItem={["Python", "Django", "Javascript"]}
-                    link="https://github.com/itsAnkitpy/Instello"
+                    link="https://github.com/itsAnkitpy/Clique"
                 />
 
                 <ArchiveCard
-                    title="Boighor"
-                    des="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad corporis laboriosam doloremque delectus accusamus
-            sed voluptate, ab iusto nesciunt architecto"
-                    listItem={["Python", "Django", "Javascript"]}
-                    link="https://github.com/itsAnkitpy/Instello"
+                    title="Laravel Blog"
+                    des="It is a laravel blog with all CRUD features where one can share their ideas with others."
+                    listItem={["PHP", "Laravel", "Javascript", "Bootstrap", "HTML/CSS"]}
+                    link="https://github.com/itsAnkitpy/laravel_blog"
                 />
 
                 <ArchiveCard
-                    title="Streamit"
-                    des="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad corporis laboriosam doloremque delectus accusamus
-            sed voluptate, ab iusto nesciunt architecto"
-                    listItem={["Python", "Django", "Javascript"]}
-                    link="https://github.com/itsAnkitpy/Instello"
+                    title="Infraup"
+                    des="This is a landing page of InfraUp which is a Civil and Structural Engineering consultancy in Chandigarh. "
+                    listItem={["HTML", "CSS", "Javascript"]}
+                    link="https://github.com/itsAnkitpy/infraup"
                 />
 
                 {showMore && (
@@ -68,11 +62,10 @@ const Archive = () => {
                             transition={{ delay: 0.1 }}
                         >
                             <ArchiveCard
-                                title="Streamit"
-                                des="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad corporis laboriosam doloremque delectus accusamus
-                        sed voluptate, ab iusto nesciunt architecto"
+                                title="Django CRM"
+                                des="This is a basic Django CRM with all the CRUD functionalities related to product based service. "
                                 listItem={["Python", "Django", "Javascript"]}
-                                link="https://github.com/itsAnkitpy/Instello"
+                                link="https://github.com/itsAnkitpy/django_crm"
                             />
                         </motion.div>
 
@@ -82,11 +75,10 @@ const Archive = () => {
                             transition={{ delay: 0.2 }}
                         >
                             <ArchiveCard
-                                title="Streamit"
-                                des="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad corporis laboriosam doloremque delectus accusamus
-                        sed voluptate, ab iusto nesciunt architecto"
+                                title="Space Invaders"
+                                des="Space Invaders was the first fixed shooter and set the template for the shoot 'em up genre. The goal is to defeat wave after wave of descending aliens with a horizontally moving laser to earn as many points as possible. "
                                 listItem={["Python", "Django", "Javascript"]}
-                                link="https://github.com/itsAnkitpy/Instello"
+                                link="https://github.com/itsAnkitpy/Space-Invaders"
                             />
                         </motion.div>
 
@@ -96,15 +88,14 @@ const Archive = () => {
                             transition={{ delay: 0.3 }}
                         >
                             <ArchiveCard
-                                title="Streamit"
-                                des="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad corporis laboriosam doloremque delectus accusamus
-                        sed voluptate, ab iusto nesciunt architecto"
+                                title="Type Racer"
+                                des="Welcome to Type Racer, the exciting single player typing game that puts your typing skills to the test! In this game, you'll be challenged to type out a variety of phrases and sentences as quickly and accurately as possible. "
                                 listItem={["Python", "Django", "Javascript"]}
-                                link="https://github.com/itsAnkitpy/Instello"
+                                link="https://github.com/itsAnkitpy/Type-racer"
                             />
                         </motion.div>
 
-                        <motion.div
+                        {/* <motion.div
                             initial={{ opacity: 0 }}
                             whileInView={{ opacity: 1 }}
                             transition={{ delay: 0.4 }}
@@ -116,9 +107,9 @@ const Archive = () => {
                                 listItem={["Python", "Django", "Javascript"]}
                                 link="https://github.com/itsAnkitpy/Instello"
                             />
-                        </motion.div>
+                        </motion.div> */}
 
-                        <motion.div
+                        {/* <motion.div
                             initial={{ opacity: 0 }}
                             whileInView={{ opacity: 1 }}
                             transition={{ delay: 0.5 }}
@@ -130,9 +121,9 @@ const Archive = () => {
                                 listItem={["Python", "Django", "Javascript"]}
                                 link="https://github.com/itsAnkitpy/Instello"
                             />
-                        </motion.div>
+                        </motion.div> */}
 
-                        <motion.div
+                        {/* <motion.div
                             initial={{ opacity: 0 }}
                             whileInView={{ opacity: 1 }}
                             transition={{ delay: 0.6 }}
@@ -144,7 +135,7 @@ const Archive = () => {
                                 listItem={["Python", "Django", "Javascript"]}
                                 link="https://github.com/itsAnkitpy/Instello"
                             />
-                        </motion.div>
+                        </motion.div> */}
                     </>
                 )
                 }

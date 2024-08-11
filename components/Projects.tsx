@@ -14,7 +14,7 @@ const Projects = () => {
                 <div className="w-full flex flex-col items-center justify-center gap-28 mt-10">
                     <div className="flex flex-col xl:flex-row gap-6">
                         <a className="w-full xl:w-1/2 h-auto relative group"
-                            href="https://github.com/itsAnkitpy" target="_blank">
+                            href="https://vms.tech.rangrik.com/home" target="_blank">
                             <div>
                                 <Image className="w-full h-full object-contain"
                                     src={cineImg}
@@ -43,12 +43,12 @@ const Projects = () => {
 
                             <div className="text-2xl flex gap-4">
                                 <a className="hover:text-textGreen duration-300"
-                                    href="https://github.com/itsAnkitpy" target="_blank">
+                                    href="https://vms.tech.rangrik.com/home" target="_blank">
                                     <TbBrandGithub />
                                 </a>
 
                                 <a className="hover:text-textGreen duration-300"
-                                    href="https://github.com/itsAnkitpy" target="_blank">
+                                    href="https://vms.tech.rangrik.com/home" target="_blank">
                                     <AiOutlineYoutube />
                                 </a>
                             </div>
@@ -62,7 +62,7 @@ const Projects = () => {
                 <div className="w-full flex flex-col items-center justify-center gap-28 mt-10">
                     <div className="flex flex-col xl:flex-row-reverse gap-6">
                         <a className="w-full xl:w-1/2 h-auto relative group"
-                            href="https://github.com/itsAnkitpy" target="_blank">
+                            href="https://github.com/itsAnkitpy/git_commit" target="_blank">
                             <div>
                                 <Image className="w-full h-full object-contain"
                                     src={gitcommitImg}
@@ -91,12 +91,12 @@ const Projects = () => {
 
                             <div className="text-2xl flex gap-4">
                                 <a className="hover:text-textGreen duration-300"
-                                    href="https://github.com/itsAnkitpy" target="_blank">
+                                    href="https://github.com/itsAnkitpy/git_commit" target="_blank">
                                     <TbBrandGithub />
                                 </a>
 
                                 <a className="hover:text-textGreen duration-300"
-                                    href="https://github.com/itsAnkitpy" target="_blank">
+                                    href="https://github.com/itsAnkitpy/git_commit" target="_blank">
                                     <AiOutlineYoutube />
                                 </a>
                             </div>
@@ -110,7 +110,7 @@ const Projects = () => {
                 <div className="w-full flex flex-col items-center justify-center gap-28 mt-10">
                     <div className="flex flex-col xl:flex-row gap-6">
                         <a className="w-full xl:w-1/2 h-auto relative group"
-                            href="https://github.com/itsAnkitpy" target="_blank">
+                            href="https://github.com/itsAnkitpy/Bisum" target="_blank">
                             <div>
                                 <Image className="w-full h-full object-contain"
                                     src={ecommImg}
@@ -130,20 +130,20 @@ const Projects = () => {
 
                             <ul className="text-xs md:text-sm font-titleFont tracking-wide flex gap-2 md:gap-5 justify-between
                         text-textDark">
-                                <li>Laravel</li>
-                                <li>Php</li>
+                                <li>Django</li>
+                                <li>Python</li>
                                 <li>Javascript</li>
                                 <li>Bootstrap</li>
                             </ul>
 
                             <div className="text-2xl flex gap-4">
                                 <a className="hover:text-textGreen duration-300"
-                                    href="https://github.com/itsAnkitpy" target="_blank">
+                                    href="https://github.com/itsAnkitpy/Bisum" target="_blank">
                                     <TbBrandGithub />
                                 </a>
 
                                 <a className="hover:text-textGreen duration-300"
-                                    href="https://github.com/itsAnkitpy" target="_blank">
+                                    href="https://github.com/itsAnkitpy/Bisum" target="_blank">
                                     <AiOutlineYoutube />
                                 </a>
                             </div>
