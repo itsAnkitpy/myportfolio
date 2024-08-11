@@ -32,8 +32,8 @@ const Banner = () => {
                 transition={{ duration: 0.5, delay: 0.8 }}
                 className="text-base md:max-w-[650px] text-textDark font-medium">
 
-                I am a web developer with 1 year of experience. I have a strong foundation in front-end and backend
-                development and am skilled in creating user-friendly and effective web applications as per the requirements
+                I am a web developer with experience in front-end and backend
+                development and I am skilled in creating user-friendly and effective web applications as per the requirements
                 of the client.{" "}
                 <br />
                 {/* Adding digital resume here */}
