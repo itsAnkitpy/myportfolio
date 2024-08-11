@@ -22,7 +22,7 @@ const ReactBD = () => {
 
             <li className='text-base flex gap-2 text-textDark'>
                 <span className='text-textGreen mt-1'><TiArrowForward/></span>
-                Utilized <span className='text-textGreen'>Django and Python </span> to build robust backend system, ensuring seamless integration and functionality.
+                Utilized Django and Python to build robust backend system, ensuring seamless integration and functionality.
 
             </li>
 

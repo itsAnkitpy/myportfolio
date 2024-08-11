@@ -1,43 +1,58 @@
 import React, { useState } from 'react'
 import SectionTitle from './SectionTitle';
 import Himtech from './works/Himtech';
-import Google from './works/Google';
-import Microsoft from './works/Microsoft';
-import Meta from './works/Meta';
+// import Google from './works/Google';
+// import Microsoft from './works/Microsoft';
+// import Meta from './works/Meta';
+import Freelancer from './works/Freelancer';
 
 const Experience = () => {
     const [workHimtech, setWorkHimtech] = useState(true);
-    const [workGoogle, setWorkGoogle] = useState(false);
-    const [workMicrosoft, setWorkMicrosoft] = useState(false);
-    const [workMeta, setWorkMeta] = useState(false);
+    // const [workGoogle, setWorkGoogle] = useState(false);
+    // const [workMicrosoft, setWorkMicrosoft] = useState(false);
+    // const [workMeta, setWorkMeta] = useState(false);
+    const [workFreelancer, setWorkFreelancer] = useState(false);
 
     const handleHimtech = () => {
         setWorkHimtech(true);
-        setWorkGoogle(false);
-        setWorkMicrosoft(false);
-        setWorkMeta(false);
+        // setWorkGoogle(false);
+        // setWorkMicrosoft(false);
+        // setWorkMeta(false);
+        setWorkFreelancer(false);
     };
 
-    const handleGoogle = () => {
+    // const handleGoogle = () => {
+    //     setWorkHimtech(false);
+    //     setWorkGoogle(true);
+    //     setWorkMicrosoft(false);
+    //     setWorkMeta(false);
+    //     setWorkFreelancer(false);
+    // };
+
+    // const handleMicrosoft = () => {
+    //     setWorkHimtech(false);
+    //     // setWorkGoogle(false);
+    //     // setWorkMicrosoft(true);
+    //     // setWorkMeta(false);
+    //      setWorkFreelancer(false);
+    // };
+
+    // const handleMeta = () => {
+    //     setWorkHimtech(false);
+    //     // setWorkGoogle(false);
+    //     // setWorkMicrosoft(false);
+    //     // setWorkMeta(true);
+    //      setWorkFreelancer(false);
+    // };
+
+    const handleFreelancer = () => {
         setWorkHimtech(false);
-        setWorkGoogle(true);
-        setWorkMicrosoft(false);
-        setWorkMeta(false);
+        // setWorkGoogle(false);
+        // setWorkMicrosoft(false);
+        // setWorkMeta(false);
+        setWorkFreelancer(true);
     };
 
-    const handleMicrosoft = () => {
-        setWorkHimtech(false);
-        setWorkGoogle(false);
-        setWorkMicrosoft(true);
-        setWorkMeta(false);
-    };
-
-    const handleMeta = () => {
-        setWorkHimtech(false);
-        setWorkGoogle(false);
-        setWorkMicrosoft(false);
-        setWorkMeta(true);
-    };
     
   return (
     <section 
@@ -60,7 +75,7 @@ const Experience = () => {
                     Himtech
                 </li>
 
-                <li 
+                {/* <li 
                 onClick={handleGoogle}
                 className={`${
                     workGoogle
@@ -69,9 +84,9 @@ const Experience = () => {
                 } border-l-2 bg-transparent hover:bg-[#112240] py-3 text-sm
                 cursor-pointer duration-300 px-8 font-medium`}>
                     Google
-                </li>
+                </li> */}
 
-                <li 
+                {/* <li 
                 onClick={handleMicrosoft}
                 className={`${
                     workMicrosoft
@@ -80,9 +95,9 @@ const Experience = () => {
                 } border-l-2 bg-transparent hover:bg-[#112240] py-3 text-sm
                 cursor-pointer duration-300 px-8 font-medium`}>
                     Microsoft
-                </li>
+                </li> */}
 
-                <li 
+                {/* <li 
                 onClick={handleMeta}
                 className={`${
                     workMeta
@@ -91,13 +106,25 @@ const Experience = () => {
                 } border-l-2 bg-transparent hover:bg-[#112240] py-3 text-sm
                 cursor-pointer duration-300 px-8 font-medium`}>
                     Meta
+                </li> */}
+
+                <li 
+                onClick={handleFreelancer}
+                className={`${
+                    workFreelancer
+                    ? "border-l-textGreen text-textGreen"
+                    : "border-l-hoverColor text-textDark"
+                } border-l-2 bg-transparent hover:bg-[#112240] py-3 text-sm
+                cursor-pointer duration-300 px-8 font-medium`}>
+                    Freelancer
                 </li>
             </ul>
 
             {workHimtech && <Himtech />}
-            {workGoogle && <Google />}
+            {/* {workGoogle && <Google />}
             {workMicrosoft && <Microsoft />}
-            {workMeta && <Meta />}
+            {workMeta && <Meta />} */}
+            {workFreelancer && <Freelancer />}
         </div>
     </section>
   )
