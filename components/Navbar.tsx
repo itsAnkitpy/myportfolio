@@ -126,7 +126,7 @@ const Navbar = () => {
             </Link>
           </ul>
 
-          <a href="/assets/ankit.pdf" target='_blank'>
+          <a href="/assets/ankit-sharma.pdf" target='_blank'>
             <motion.button
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -271,7 +271,7 @@ const Navbar = () => {
                     </Link>
                   </ul>
 
-                  <a href="/assets/ankit.pdf" target='_blank'>
+                  <a href="/assets/ankit-sharma.pdf" target='_blank'>
                     <motion.button
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
