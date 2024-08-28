@@ -41,14 +41,14 @@ const About = () => {
                     </li>
 
                     <li className='flex items-center gap-2'>
+                        <span className='text-textGreen'><AiFillThunderbolt/></span>Databases - SQL, PostgreSQL, MongoDB
+                    </li>
+
+                    <li className='flex items-center gap-2'>
                         <span className='text-textGreen'><AiFillThunderbolt/></span>Version Control — Git
                     </li>
 
                     {/* <li className='flex items-center gap-2'>
-                        <span className='text-textGreen'><AiFillThunderbolt/></span>CSS
-                    </li>
-
-                    <li className='flex items-center gap-2'>
                         <span className='text-textGreen'><AiFillThunderbolt/></span>MongoDB
                     </li>
 
