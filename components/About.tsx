@@ -29,22 +29,22 @@ const About = () => {
                 </p>
                 <ul className='max-w-[450px] text-sm font-titleFont grid grid-cols-2 gap-2 mt-6'>
                     <li className='flex items-center gap-2'>
-                        <span className='text-textGreen'><AiFillThunderbolt/></span>JavaScript (ES6+)
+                        <span className='text-textGreen'><AiFillThunderbolt/></span>Programming Languages — Python, PHP, Javascript
                     </li>
 
                     <li className='flex items-center gap-2'>
-                        <span className='text-textGreen'><AiFillThunderbolt/></span>Python (Django)
+                        <span className='text-textGreen'><AiFillThunderbolt/></span>Web Frameworks — Django(Python), Laravel(PHP)
                     </li>
 
                     <li className='flex items-center gap-2'>
-                        <span className='text-textGreen'><AiFillThunderbolt/></span>PHP (Laravel)
+                        <span className='text-textGreen'><AiFillThunderbolt/></span>Frontend — HTML, CSS, Bootstrap
                     </li>
 
                     <li className='flex items-center gap-2'>
-                        <span className='text-textGreen'><AiFillThunderbolt/></span>HTML
+                        <span className='text-textGreen'><AiFillThunderbolt/></span>Version Control — Git
                     </li>
 
-                    <li className='flex items-center gap-2'>
+                    {/* <li className='flex items-center gap-2'>
                         <span className='text-textGreen'><AiFillThunderbolt/></span>CSS
                     </li>
 
@@ -54,7 +54,7 @@ const About = () => {
 
                     <li className='flex items-center gap-2'>
                         <span className='text-textGreen'><AiFillThunderbolt/></span>Tailwind CSS
-                    </li>
+                    </li> */}
 
                 </ul>
             </div>

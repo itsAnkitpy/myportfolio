@@ -17,14 +17,15 @@ const Freelancer = () => {
           <ul className='mt-6 flex flex-col gap-3'>
               <li className='text-base flex gap-2 text-textDark'>
                   <span className='text-textGreen mt-1'><TiArrowForward/></span>
-                  Cinesamugam - Developed a comprehensive Project Management System to streamline organizational processes and enhance productivity.
-                  It enabled admins to create and manage various departments, along with assigning department heads responsible for their respective teams
-                  allowing department heads to add team members, delegate tasks, and set due dates, ensuring efficient task distribution and accountability.
+                  Cinesamugam - Developed a comprehensive Project Management System using PHP and Laravel, resulting in a 20%
+                   productivity increase. A real-time collaborative dashboard streamlined task distribution for 60+ employees,
+                     reducing project delays by 30%. The integrated time-tracking feature improved scheduling efficiency by 
+                     25% across 20+ projects through data-driven decision-making.
               </li>
   
               <li className='text-base flex gap-2 text-textDark'>
                   <span className='text-textGreen mt-1'><TiArrowForward/></span>
-                  InfraUp - Designed and developed a responsive landing page for a construction firm, tailored to the client's specific needs and brand identity.Ensured a seamless user experience across all devices by implementing responsive design principles, optimizing the layout and content for both desktop and mobile users.
+                  InfraUp - Designed and developed a responsive landing page for a construction firm, tailored to the client's specific needs and brand identity.Ensured a seamless user experience across all devices by implementing responsive design principles, optimizing the layout and content for both desktop and mobile users.Designed and developed a responsive landing page for a construction firm, tailored to the client's specific needs and brand identity increasing client engagement by 15%.
               </li>
   
               <li className='text-base flex gap-2 text-textDark'>
