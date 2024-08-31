@@ -41,7 +41,7 @@ const About = () => {
                     </li>
 
                     <li className='flex items-center gap-2'>
-                        <span className='text-textGreen'><AiFillThunderbolt/></span>Databases - SQL, PostgreSQL, MongoDB
+                        <span className='text-textGreen'><AiFillThunderbolt/></span>Databases - MySQL, PostgreSQL, MongoDB
                     </li>
 
                     <li className='flex items-center gap-2'>
