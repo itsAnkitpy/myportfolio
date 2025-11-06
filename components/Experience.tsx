@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import SectionTitle from './SectionTitle';
+import Holisol from './works/Holisol';
 import Himtech from './works/Himtech';
 // import Google from './works/Google';
 // import Microsoft from './works/Microsoft';
@@ -7,18 +8,39 @@ import Himtech from './works/Himtech';
 import Freelancer from './works/Freelancer';
 
 const Experience = () => {
-    const [workHimtech, setWorkHimtech] = useState(true);
+    const [workHolisol, setWorkHolisol] = useState(true);
+    const [workFreelancer, setWorkFreelancer] = useState(false);
+    const [workHimtech, setWorkHimtech] = useState(false);
     // const [workGoogle, setWorkGoogle] = useState(false);
     // const [workMicrosoft, setWorkMicrosoft] = useState(false);
     // const [workMeta, setWorkMeta] = useState(false);
-    const [workFreelancer, setWorkFreelancer] = useState(false);
+    
+
+    const handleHolisol = () => {
+        setWorkHolisol(true);
+        setWorkFreelancer(false);
+        setWorkHimtech(false);
+        // setWorkGoogle(false);
+        // setWorkMicrosoft(false);
+        // setWorkMeta(false);
+    };
+
+    const handleFreelancer = () => {
+        setWorkHolisol(false);
+        setWorkFreelancer(true);
+        setWorkHimtech(false);
+        // setWorkGoogle(false);
+        // setWorkMicrosoft(false);
+        // setWorkMeta(false);
+    };
 
     const handleHimtech = () => {
+        setWorkHolisol(false);
+        setWorkFreelancer(false);
         setWorkHimtech(true);
         // setWorkGoogle(false);
         // setWorkMicrosoft(false);
         // setWorkMeta(false);
-        setWorkFreelancer(false);
     };
 
     // const handleGoogle = () => {
@@ -45,13 +67,6 @@ const Experience = () => {
     //      setWorkFreelancer(false);
     // };
 
-    const handleFreelancer = () => {
-        setWorkHimtech(false);
-        // setWorkGoogle(false);
-        // setWorkMicrosoft(false);
-        // setWorkMeta(false);
-        setWorkFreelancer(true);
-    };
 
     
   return (
@@ -63,6 +78,28 @@ const Experience = () => {
 
         <div className='w-full mt-10 flex flex-col md:flex-row gap-16'>
             <ul className='md:w-32 flex flex-col'>
+
+                <li 
+                onClick={handleHolisol}
+                className={`${
+                    workHolisol
+                    ? "border-l-textGreen text-textGreen"
+                    : "border-l-hoverColor text-textDark"
+                } border-l-2 bg-transparent hover:bg-[#112240] py-3 text-sm
+                cursor-pointer duration-300 px-8 font-medium`}>
+                    Holisol
+                </li>
+
+                <li 
+                onClick={handleFreelancer}
+                className={`${
+                    workFreelancer
+                    ? "border-l-textGreen text-textGreen"
+                    : "border-l-hoverColor text-textDark"
+                } border-l-2 bg-transparent hover:bg-[#112240] py-3 text-sm
+                cursor-pointer duration-300 px-8 font-medium`}>
+                    Freelancer
+                </li>
 
                 <li 
                 onClick={handleHimtech}
@@ -107,24 +144,14 @@ const Experience = () => {
                 cursor-pointer duration-300 px-8 font-medium`}>
                     Meta
                 </li> */}
-
-                <li 
-                onClick={handleFreelancer}
-                className={`${
-                    workFreelancer
-                    ? "border-l-textGreen text-textGreen"
-                    : "border-l-hoverColor text-textDark"
-                } border-l-2 bg-transparent hover:bg-[#112240] py-3 text-sm
-                cursor-pointer duration-300 px-8 font-medium`}>
-                    Freelancer
-                </li>
             </ul>
 
+            {workHolisol && <Holisol />}
+            {workFreelancer && <Freelancer />}
             {workHimtech && <Himtech />}
             {/* {workGoogle && <Google />}
             {workMicrosoft && <Microsoft />}
             {workMeta && <Meta />} */}
-            {workFreelancer && <Freelancer />}
         </div>
     </section>
   )

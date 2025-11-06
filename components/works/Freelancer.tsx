@@ -12,7 +12,7 @@ const Freelancer = () => {
               Web Developer <span className='text-textGreen tracking-wide'>@Freelancer</span>
           </h3>
           <p className='text-sm mt-1 font-medium text-textDark'>
-              Feb 2021 - Present
+              Feb 2021 - Aug 2024
           </p>
           <ul className='mt-6 flex flex-col gap-3'>
               <li className='text-base flex gap-2 text-textDark'>
@@ -25,7 +25,7 @@ const Freelancer = () => {
   
               <li className='text-base flex gap-2 text-textDark'>
                   <span className='text-textGreen mt-1'><TiArrowForward/></span>
-                  InfraUp - Designed and developed a responsive landing page for a construction firm, tailored to the client's specific needs and brand identity.Ensured a seamless user experience across all devices by implementing responsive design principles, optimizing the layout and content for both desktop and mobile users.Designed and developed a responsive landing page for a construction firm, tailored to the client's specific needs and brand identity increasing client engagement by 15%.
+                  InfraUp - Designed and developed a responsive landing page for a construction firm, tailored to the client&apos;s specific needs and brand identity.Ensured a seamless user experience across all devices by implementing responsive design principles, optimizing the layout and content for both desktop and mobile users.Designed and developed a responsive landing page for a construction firm, tailored to the client&apos;s specific needs and brand identity increasing client engagement by 15%.
               </li>
   
               <li className='text-base flex gap-2 text-textDark'>
