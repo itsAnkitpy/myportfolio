@@ -3,7 +3,7 @@ import { useTypewriter } from '@/hooks/useTypewriter';
 
 const Banner = () => {
     // Typewriter effect for the name
-    const { displayText, showCursor } = useTypewriter({
+    const { displayText, cursor } = useTypewriter({
         text: 'Ankit Sharma.',
         speed: 100, // Typing speed in milliseconds
         delay: 800, // Start after the greeting animation
@@ -32,14 +32,16 @@ const Banner = () => {
             >
                 <span className='inline-block'>
                     {displayText}
-                    <span className='text-textGreen cursor-blink'>{showCursor}</span>
+                    {cursor && (
+                        <span className='text-textGreen cursor-blink'>{cursor}</span>
+                    )}
                 </span>
                 <motion.span 
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.5, delay: 2.5 }}
                     className='text-textDark mt-2 lgl:mt-4'>
-                    I build things for the web.
+                    Full-Stack Developer Building Scalable Web Solutions
                 </motion.span>
             </motion.h1>
 

@@ -6,6 +6,8 @@ interface UseTypewriterOptions {
   delay?: number; // Initial delay before starting
   showCursor?: boolean; // Show blinking cursor
   cursorChar?: string; // Cursor character
+  hideCursorOnComplete?: boolean; // Hide cursor after typing completes
+  cursorHideDelay?: number; // Delay before hiding the cursor when typing completes
   onComplete?: () => void; // Callback when typing completes
 }
 
@@ -16,11 +18,12 @@ interface UseTypewriterOptions {
  * @returns Object containing the displayed text and cursor state
  * 
  * @example
- * const { displayText, showCursor } = useTypewriter({
+ * const { displayText, cursor } = useTypewriter({
  *   text: "Ankit Sharma",
  *   speed: 100,
  *   delay: 500,
- *   showCursor: true
+ *   showCursor: true,
+ *   hideCursorOnComplete: true
  * });
  */
 export const useTypewriter = ({
@@ -29,12 +32,15 @@ export const useTypewriter = ({
   delay = 0,
   showCursor = true,
   cursorChar = '|',
+  hideCursorOnComplete = true,
+  cursorHideDelay = 400,
   onComplete,
 }: UseTypewriterOptions) => {
   const [displayText, setDisplayText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isComplete, setIsComplete] = useState(false);
   const [hasStarted, setHasStarted] = useState(false);
+  const [isCursorVisible, setIsCursorVisible] = useState(showCursor);
 
   // Handle initial delay
   useEffect(() => {
@@ -47,6 +53,11 @@ export const useTypewriter = ({
       setHasStarted(true);
     }
   }, [delay, hasStarted]);
+
+  // Sync cursor visibility with external showCursor toggle
+  useEffect(() => {
+    setIsCursorVisible(showCursor);
+  }, [showCursor]);
 
   // Handle typing effect
   useEffect(() => {
@@ -67,11 +78,23 @@ export const useTypewriter = ({
     }
   }, [currentIndex, text, speed, hasStarted, isComplete, onComplete]);
 
+  // Hide cursor after typing complete if configured
+  useEffect(() => {
+    if (!hideCursorOnComplete) return;
+    if (!isComplete) return;
+
+    const hideTimer = setTimeout(() => {
+      setIsCursorVisible(false);
+    }, cursorHideDelay);
+
+    return () => clearTimeout(hideTimer);
+  }, [hideCursorOnComplete, cursorHideDelay, isComplete]);
+
   return {
     displayText,
     isTyping: currentIndex < text.length,
     isComplete,
-    showCursor: showCursor ? cursorChar : '',
+    cursor: isCursorVisible ? cursorChar : '',
   };
 };
 
