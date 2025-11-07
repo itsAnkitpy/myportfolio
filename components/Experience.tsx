@@ -1,160 +1,86 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import SectionTitle from './SectionTitle';
 import Holisol from './works/Holisol';
 import Himtech from './works/Himtech';
-// import Google from './works/Google';
-// import Microsoft from './works/Microsoft';
-// import Meta from './works/Meta';
 import Freelancer from './works/Freelancer';
+import { HiOfficeBuilding } from 'react-icons/hi';
+import { MdWork } from 'react-icons/md';
 
 const Experience = () => {
-    const [workHolisol, setWorkHolisol] = useState(true);
-    const [workFreelancer, setWorkFreelancer] = useState(false);
-    const [workHimtech, setWorkHimtech] = useState(false);
-    // const [workGoogle, setWorkGoogle] = useState(false);
-    // const [workMicrosoft, setWorkMicrosoft] = useState(false);
-    // const [workMeta, setWorkMeta] = useState(false);
-    
+  const [activeTab, setActiveTab] = useState('holisol');
 
-    const handleHolisol = () => {
-        setWorkHolisol(true);
-        setWorkFreelancer(false);
-        setWorkHimtech(false);
-        // setWorkGoogle(false);
-        // setWorkMicrosoft(false);
-        // setWorkMeta(false);
-    };
+  const experiences = [
+    {
+      id: 'holisol',
+      company: 'Holisol',
+      icon: <HiOfficeBuilding />,
+      component: <Holisol />
+    },
+    {
+      id: 'freelancer',
+      company: 'Freelancer',
+      icon: <MdWork />,
+      component: <Freelancer />
+    },
+    {
+      id: 'himtech',
+      company: 'Himtech',
+      icon: <HiOfficeBuilding />,
+      component: <Himtech />
+    }
+  ];
 
-    const handleFreelancer = () => {
-        setWorkHolisol(false);
-        setWorkFreelancer(true);
-        setWorkHimtech(false);
-        // setWorkGoogle(false);
-        // setWorkMicrosoft(false);
-        // setWorkMeta(false);
-    };
-
-    const handleHimtech = () => {
-        setWorkHolisol(false);
-        setWorkFreelancer(false);
-        setWorkHimtech(true);
-        // setWorkGoogle(false);
-        // setWorkMicrosoft(false);
-        // setWorkMeta(false);
-    };
-
-    // const handleGoogle = () => {
-    //     setWorkHimtech(false);
-    //     setWorkGoogle(true);
-    //     setWorkMicrosoft(false);
-    //     setWorkMeta(false);
-    //     setWorkFreelancer(false);
-    // };
-
-    // const handleMicrosoft = () => {
-    //     setWorkHimtech(false);
-    //     // setWorkGoogle(false);
-    //     // setWorkMicrosoft(true);
-    //     // setWorkMeta(false);
-    //      setWorkFreelancer(false);
-    // };
-
-    // const handleMeta = () => {
-    //     setWorkHimtech(false);
-    //     // setWorkGoogle(false);
-    //     // setWorkMicrosoft(false);
-    //     // setWorkMeta(true);
-    //      setWorkFreelancer(false);
-    // };
-
-
-    
   return (
-    <section 
-        id='experience'
-        className='max-w-containerxs mx-auto py-10 lgl:py-24 px-4'
+    <section
+      id='experience'
+      className='max-w-containerxs mx-auto py-10 lgl:py-24 px-4'
     >
-        <SectionTitle title="Where I have Worked"  titleNo="02"/>
+      <SectionTitle title='Where I have Worked' titleNo='02' />
 
-        <div className='w-full mt-10 flex flex-col md:flex-row gap-16'>
-            <ul className='md:w-32 flex flex-col'>
-
-                <li 
-                onClick={handleHolisol}
+      <div className='w-full mt-10 flex flex-col md:flex-row gap-8 md:gap-16'>
+        {/* Tab Navigation */}
+        <div className='md:w-40 flex md:flex-col gap-2 overflow-x-auto md:overflow-x-visible pb-2 md:pb-0'>
+          {experiences.map(({ id, company, icon }) => (
+            <button
+              key={id}
+              onClick={() => setActiveTab(id)}
+              className={`${
+                activeTab === id
+                  ? 'bg-[#112240] border-l-textGreen text-textGreen shadow-md shadow-textGreen/10'
+                  : 'border-l-[#233554] text-textDark hover:bg-[#112240] hover:text-textLight'
+              } 
+              flex items-center gap-3 border-l-2 md:border-l-4 py-3 px-6 md:px-4 text-sm font-medium
+              cursor-pointer transition-all duration-300 rounded-r-md whitespace-nowrap
+              group relative overflow-hidden`}
+            >
+              <span
                 className={`${
-                    workHolisol
-                    ? "border-l-textGreen text-textGreen"
-                    : "border-l-hoverColor text-textDark"
-                } border-l-2 bg-transparent hover:bg-[#112240] py-3 text-sm
-                cursor-pointer duration-300 px-8 font-medium`}>
-                    Holisol
-                </li>
-
-                <li 
-                onClick={handleFreelancer}
-                className={`${
-                    workFreelancer
-                    ? "border-l-textGreen text-textGreen"
-                    : "border-l-hoverColor text-textDark"
-                } border-l-2 bg-transparent hover:bg-[#112240] py-3 text-sm
-                cursor-pointer duration-300 px-8 font-medium`}>
-                    Freelancer
-                </li>
-
-                <li 
-                onClick={handleHimtech}
-                className={`${
-                    workHimtech
-                    ? "border-l-textGreen text-textGreen"
-                    : "border-l-hoverColor text-textDark"
-                } border-l-2 bg-transparent hover:bg-[#112240] py-3 text-sm
-                cursor-pointer duration-300 px-8 font-medium`}>
-                    Himtech
-                </li>
-
-                {/* <li 
-                onClick={handleGoogle}
-                className={`${
-                    workGoogle
-                    ? "border-l-textGreen text-textGreen"
-                    : "border-l-hoverColor text-textDark"
-                } border-l-2 bg-transparent hover:bg-[#112240] py-3 text-sm
-                cursor-pointer duration-300 px-8 font-medium`}>
-                    Google
-                </li> */}
-
-                {/* <li 
-                onClick={handleMicrosoft}
-                className={`${
-                    workMicrosoft
-                    ? "border-l-textGreen text-textGreen"
-                    : "border-l-hoverColor text-textDark"
-                } border-l-2 bg-transparent hover:bg-[#112240] py-3 text-sm
-                cursor-pointer duration-300 px-8 font-medium`}>
-                    Microsoft
-                </li> */}
-
-                {/* <li 
-                onClick={handleMeta}
-                className={`${
-                    workMeta
-                    ? "border-l-textGreen text-textGreen"
-                    : "border-l-hoverColor text-textDark"
-                } border-l-2 bg-transparent hover:bg-[#112240] py-3 text-sm
-                cursor-pointer duration-300 px-8 font-medium`}>
-                    Meta
-                </li> */}
-            </ul>
-
-            {workHolisol && <Holisol />}
-            {workFreelancer && <Freelancer />}
-            {workHimtech && <Himtech />}
-            {/* {workGoogle && <Google />}
-            {workMicrosoft && <Microsoft />}
-            {workMeta && <Meta />} */}
+                  activeTab === id ? 'text-textGreen' : 'text-textDark group-hover:text-textGreen'
+                } text-lg transition-colors duration-300`}
+              >
+                {icon}
+              </span>
+              <span className='font-titleFont tracking-wide'>{company}</span>
+              
+              {/* Active indicator dot */}
+              {activeTab === id && (
+                <span className='absolute right-2 w-2 h-2 bg-textGreen rounded-full animate-pulse' />
+              )}
+            </button>
+          ))}
         </div>
-    </section>
-  )
-}
 
-export default Experience
+        {/* Content Area */}
+        <div className='flex-1 min-h-[400px]'>
+          {experiences.map(({ id, component }) => (
+            <div key={id} className={activeTab === id ? 'block' : 'hidden'}>
+              {component}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Experience;
