@@ -101,166 +101,6 @@ export const projects: Project[] = [
   },
   {
     id: 2,
-    slug: "project-management-system",
-    title: "Project/Employee Management System",
-    shortDescription: "A comprehensive management system for tracking project growth, tasks, and team members with employee management features.",
-    image: "/assets/images/projects/project-management-system/hero.png",
-    images: {
-      hero: "/assets/images/projects/project-management-system/hero.png",
-      // gallery: [
-      //   "/assets/images/projects/project-management-system/dashboard.png",
-      //   "/assets/images/projects/project-management-system/tasks-view.png",
-      //   "/assets/images/projects/project-management-system/analytics.png"
-      // ],
-      // videoThumbnail: "/assets/images/projects/project-management-system/video-thumbnail.png"
-    },
-    // video: {
-    //   loomUrl: "https://www.loom.com/share/your-video-id-here", // TODO: Add your actual Loom URL
-    //   duration: "3:20" // TODO: Update with actual video duration
-    // },
-    tags: ["Laravel", "PHP", "Javascript", "Bootstrap"],
-    liveDemoUrl: "https://vms.tech.rangrik.com/home",
-    sourceCodeUrl: "https://vms.tech.rangrik.com/home",
-    category: "full-stack",
-    role: "solo",
-    year: 2023,
-    status: "live",
-    longDescription: `A comprehensive Project/Employee Management System built to streamline project tracking and employee management processes. This system provides real-time insights into project progress, task management, and team collaboration while offering robust employee management features including leave management and shift scheduling.`,
-    problemStatement: `Organizations often struggle with managing multiple projects simultaneously while keeping track of employee performance, leave requests, and shift schedules. The lack of a centralized system leads to inefficiencies, missed deadlines, and poor resource allocation. Manual tracking methods are time-consuming and error-prone, making it difficult to scale operations effectively.`,
-    solution: `I developed a comprehensive web-based management system that centralizes project and employee management in one platform. The solution includes real-time project tracking, task assignment and monitoring, team collaboration tools, automated leave management, and intelligent shift scheduling. The system provides dashboard analytics for managers to make data-driven decisions and improves overall operational efficiency.`,
-    techStack: [
-      {
-        name: "Laravel",
-        rationale: "Chosen for its robust MVC architecture, built-in authentication, and excellent ORM (Eloquent) for database management. Laravel's ecosystem provides powerful tools for rapid development while maintaining code quality."
-      },
-      {
-        name: "PHP",
-        rationale: "Selected as the backend language for its mature ecosystem, excellent Laravel framework support, and strong community. PHP offers great performance for web applications and extensive library support."
-      },
-      {
-        name: "Javascript",
-        rationale: "Used for dynamic frontend interactions, real-time updates, and enhanced user experience. JavaScript enables responsive UI components and seamless user interactions without page reloads."
-      },
-      {
-        name: "Bootstrap",
-        rationale: "Implemented for responsive design and consistent UI components. Bootstrap's grid system and pre-built components accelerated development while ensuring mobile responsiveness."
-      }
-    ],
-    challenges: [
-      {
-        challenge: "Real-time Updates",
-        solution: "Implemented WebSocket connections for real-time project updates and notifications, ensuring team members receive instant updates on task changes and project progress."
-      },
-      {
-        challenge: "Complex Role Management",
-        solution: "Designed a flexible role-based access control system that allows different permission levels for managers, team leads, and employees, ensuring data security and appropriate access levels."
-      },
-      {
-        challenge: "Scalability",
-        solution: "Optimized database queries and implemented caching strategies to handle multiple concurrent users and large datasets efficiently."
-      }
-    ]
-  },
-  {
-    id: 3,
-    slug: "git-commit-dating-app",
-    title: "Git Commit - Dating App for Programmers",
-    shortDescription: "An experimental dating application designed specifically for programmers with swiping functionality and messaging features.",
-    image: "/assets/images/gitcommitImg.png",
-    tags: ["Django", "Python", "Javascript", "Bootstrap"],
-    liveDemoUrl: null,
-    sourceCodeUrl: "https://github.com/itsAnkitpy/git_commit",
-    category: "full-stack",
-    role: "solo",
-    year: 2022,
-    status: "open-source",
-    longDescription: `Git Commit is a fun and experimental dating application specifically designed for programmers and developers. The app combines the familiar mechanics of modern dating apps with programming-themed features, creating a unique platform where developers can connect based on shared interests in technology, programming languages, and coding practices.`,
-    problemStatement: `Traditional dating apps often fail to connect people with shared professional interests and technical backgrounds. Programmers and developers often struggle to find like-minded individuals who understand their passion for coding, late-night debugging sessions, and the unique culture of the tech industry. There was a need for a platform that could bring together developers in a fun, engaging way.`,
-    solution: `I created Git Commit, a dating app tailored specifically for the programming community. The app features the classic left/right swiping mechanism for user discovery, enhanced with programming-themed profiles where users can showcase their favorite languages, projects, and coding philosophies. Once users match, they can communicate through an integrated messaging system designed with developer-friendly features and programming humor.`,
-    techStack: [
-      {
-        name: "Django",
-        rationale: "Selected for its rapid development capabilities, built-in admin interface, and robust user authentication system. Django's ORM and security features made it ideal for handling user data and messaging functionality."
-      },
-      {
-        name: "Python",
-        rationale: "Chosen for its clean syntax, extensive libraries, and excellent Django framework support. Python's readability and development speed were crucial for this experimental project."
-      },
-      {
-        name: "Javascript",
-        rationale: "Implemented for interactive swiping mechanics, real-time messaging updates, and dynamic UI components. JavaScript enabled smooth animations and responsive user interactions."
-      },
-      {
-        name: "Bootstrap",
-        rationale: "Used for responsive design and consistent UI components. Bootstrap's mobile-first approach ensured the app works seamlessly across different devices and screen sizes."
-      }
-    ],
-    challenges: [
-      {
-        challenge: "Swiping Mechanics",
-        solution: "Developed smooth touch-based swiping functionality using JavaScript event handlers and CSS transitions, ensuring responsive performance across mobile and desktop devices."
-      },
-      {
-        challenge: "Real-time Messaging",
-        solution: "Implemented WebSocket connections for instant messaging between matched users, providing a seamless communication experience similar to popular messaging apps."
-      },
-      {
-        challenge: "User Matching Algorithm",
-        solution: "Created an algorithm that considers programming language preferences, experience levels, and location to suggest compatible matches, enhancing the likelihood of meaningful connections."
-      }
-    ]
-  },
-  {
-    id: 4,
-    slug: "ecommerce-website",
-    title: "Ecommerce Website",
-    shortDescription: "A full-featured ecommerce platform with product catalog, shopping cart, and secure payment processing functionality.",
-    image: "/assets/images/ecommImg.png",
-    tags: ["Django", "Python", "Javascript", "Bootstrap"],
-    liveDemoUrl: null,
-    sourceCodeUrl: "https://github.com/itsAnkitpy/Bisum",
-    category: "full-stack",
-    role: "solo",
-    year: 2021,
-    status: "open-source",
-    longDescription: `A comprehensive ecommerce platform built with Django that provides a complete online shopping experience. The platform includes product catalog management, user authentication, shopping cart functionality, order processing, and secure payment integration. Designed with both customers and administrators in mind, it offers an intuitive interface for browsing and purchasing products.`,
-    problemStatement: `Small businesses and entrepreneurs need accessible, cost-effective ecommerce solutions to establish their online presence. Many existing platforms are either too complex or too expensive for startups. There was a need for a simple yet powerful ecommerce solution that could be easily customized and deployed.`,
-    solution: `I developed a full-stack ecommerce platform using Django that provides all essential ecommerce features including product management, user accounts, shopping cart, order processing, and payment integration. The solution is designed to be easily customizable and scalable, making it perfect for small to medium-sized businesses looking to establish their online presence.`,
-    techStack: [
-      {
-        name: "Django",
-        rationale: "Chosen for its robust framework features including user authentication, admin interface, and ORM. Django's built-in security features and rapid development capabilities made it ideal for ecommerce development."
-      },
-      {
-        name: "Python",
-        rationale: "Selected for its extensive library ecosystem, particularly for payment processing and data handling. Python's readability and maintainability were crucial for the complex business logic required in ecommerce."
-      },
-      {
-        name: "Javascript",
-        rationale: "Implemented for dynamic user interactions, cart updates, and enhanced shopping experience. JavaScript enabled real-time cart updates and smooth user interface interactions."
-      },
-      {
-        name: "Bootstrap",
-        rationale: "Used for responsive design and professional appearance. Bootstrap's grid system and components ensured the platform works seamlessly across all devices and screen sizes."
-      }
-    ],
-    challenges: [
-      {
-        challenge: "Payment Integration",
-        solution: "Integrated multiple payment gateways with proper error handling and security measures, ensuring secure and reliable transaction processing."
-      },
-      {
-        challenge: "Inventory Management",
-        solution: "Implemented real-time inventory tracking with automated stock level updates and low-stock notifications for administrators."
-      },
-      {
-        challenge: "User Experience",
-        solution: "Created an intuitive shopping experience with features like product filtering, search functionality, and streamlined checkout process."
-      }
-    ]
-  },
-  {
-    id: 5,
     slug: "hp-bar-council",
     title: "HP Bar Council Digital Enrollment System",
     shortDescription: "A comprehensive web platform that digitizes the entire lawyer enrollment process for Himachal Pradesh Bar Council, from student registration to official lawyer certification.",
@@ -325,7 +165,7 @@ export const projects: Project[] = [
     ]
   },
   {
-    id: 6,
+    id: 3,
     slug: "holistart",
     title: "Holistart Workforce Onboarding Platform",
     shortDescription: "An enterprise workforce platform that automates manpower requisitions, onboarding workflows, and asset provisioning with rule-based approvals.",
@@ -391,7 +231,7 @@ export const projects: Project[] = [
     ]
   },
   {
-    id: 7,
+    id: 4,
     slug: "leadcheck",
     title: "LeadCheck - Multi-Tenant Lead Management System",
     shortDescription: "A comprehensive multi-tenant lead management application with database-per-tenant architecture, enabling organizations to efficiently manage leads with complete data isolation and client-specific customization.",
@@ -454,7 +294,168 @@ export const projects: Project[] = [
         solution: "Balanced flexibility with maintainability through a hybrid approach: per-client form customization via client_configs while keeping forms as static, maintainable Blade templates."
       }
     ]
+  },
+  {
+    id: 5,
+    slug: "project-management-system",
+    title: "Project/Employee Management System",
+    shortDescription: "A comprehensive management system for tracking project growth, tasks, and team members with employee management features.",
+    image: "/assets/images/projects/project-management-system/hero.png",
+    images: {
+      hero: "/assets/images/projects/project-management-system/hero.png",
+      // gallery: [
+      //   "/assets/images/projects/project-management-system/dashboard.png",
+      //   "/assets/images/projects/project-management-system/tasks-view.png",
+      //   "/assets/images/projects/project-management-system/analytics.png"
+      // ],
+      // videoThumbnail: "/assets/images/projects/project-management-system/video-thumbnail.png"
+    },
+    // video: {
+    //   loomUrl: "https://www.loom.com/share/your-video-id-here", // TODO: Add your actual Loom URL
+    //   duration: "3:20" // TODO: Update with actual video duration
+    // },
+    tags: ["Laravel", "PHP", "Javascript", "Bootstrap"],
+    liveDemoUrl: "https://vms.tech.rangrik.com/home",
+    sourceCodeUrl: "https://vms.tech.rangrik.com/home",
+    category: "full-stack",
+    role: "solo",
+    year: 2023,
+    status: "live",
+    longDescription: `A comprehensive Project/Employee Management System built to streamline project tracking and employee management processes. This system provides real-time insights into project progress, task management, and team collaboration while offering robust employee management features including leave management and shift scheduling.`,
+    problemStatement: `Organizations often struggle with managing multiple projects simultaneously while keeping track of employee performance, leave requests, and shift schedules. The lack of a centralized system leads to inefficiencies, missed deadlines, and poor resource allocation. Manual tracking methods are time-consuming and error-prone, making it difficult to scale operations effectively.`,
+    solution: `I developed a comprehensive web-based management system that centralizes project and employee management in one platform. The solution includes real-time project tracking, task assignment and monitoring, team collaboration tools, automated leave management, and intelligent shift scheduling. The system provides dashboard analytics for managers to make data-driven decisions and improves overall operational efficiency.`,
+    techStack: [
+      {
+        name: "Laravel",
+        rationale: "Chosen for its robust MVC architecture, built-in authentication, and excellent ORM (Eloquent) for database management. Laravel's ecosystem provides powerful tools for rapid development while maintaining code quality."
+      },
+      {
+        name: "PHP",
+        rationale: "Selected as the backend language for its mature ecosystem, excellent Laravel framework support, and strong community. PHP offers great performance for web applications and extensive library support."
+      },
+      {
+        name: "Javascript",
+        rationale: "Used for dynamic frontend interactions, real-time updates, and enhanced user experience. JavaScript enables responsive UI components and seamless user interactions without page reloads."
+      },
+      {
+        name: "Bootstrap",
+        rationale: "Implemented for responsive design and consistent UI components. Bootstrap's grid system and pre-built components accelerated development while ensuring mobile responsiveness."
+      }
+    ],
+    challenges: [
+      {
+        challenge: "Real-time Updates",
+        solution: "Implemented WebSocket connections for real-time project updates and notifications, ensuring team members receive instant updates on task changes and project progress."
+      },
+      {
+        challenge: "Complex Role Management",
+        solution: "Designed a flexible role-based access control system that allows different permission levels for managers, team leads, and employees, ensuring data security and appropriate access levels."
+      },
+      {
+        challenge: "Scalability",
+        solution: "Optimized database queries and implemented caching strategies to handle multiple concurrent users and large datasets efficiently."
+      }
+    ]
+  },
+  {
+    id: 6,
+    slug: "git-commit-dating-app",
+    title: "Git Commit - Dating App for Programmers",
+    shortDescription: "An experimental dating application designed specifically for programmers with swiping functionality and messaging features.",
+    image: "/assets/images/gitcommitImg.png",
+    tags: ["Django", "Python", "Javascript", "Bootstrap"],
+    liveDemoUrl: null,
+    sourceCodeUrl: "https://github.com/itsAnkitpy/git_commit",
+    category: "full-stack",
+    role: "solo",
+    year: 2022,
+    status: "open-source",
+    longDescription: `Git Commit is a fun and experimental dating application specifically designed for programmers and developers. The app combines the familiar mechanics of modern dating apps with programming-themed features, creating a unique platform where developers can connect based on shared interests in technology, programming languages, and coding practices.`,
+    problemStatement: `Traditional dating apps often fail to connect people with shared professional interests and technical backgrounds. Programmers and developers often struggle to find like-minded individuals who understand their passion for coding, late-night debugging sessions, and the unique culture of the tech industry. There was a need for a platform that could bring together developers in a fun, engaging way.`,
+    solution: `I created Git Commit, a dating app tailored specifically for the programming community. The app features the classic left/right swiping mechanism for user discovery, enhanced with programming-themed profiles where users can showcase their favorite languages, projects, and coding philosophies. Once users match, they can communicate through an integrated messaging system designed with developer-friendly features and programming humor.`,
+    techStack: [
+      {
+        name: "Django",
+        rationale: "Selected for its rapid development capabilities, built-in admin interface, and robust user authentication system. Django's ORM and security features made it ideal for handling user data and messaging functionality."
+      },
+      {
+        name: "Python",
+        rationale: "Chosen for its clean syntax, extensive libraries, and excellent Django framework support. Python's readability and development speed were crucial for this experimental project."
+      },
+      {
+        name: "Javascript",
+        rationale: "Implemented for interactive swiping mechanics, real-time messaging updates, and dynamic UI components. JavaScript enabled smooth animations and responsive user interactions."
+      },
+      {
+        name: "Bootstrap",
+        rationale: "Used for responsive design and consistent UI components. Bootstrap's mobile-first approach ensured the app works seamlessly across different devices and screen sizes."
+      }
+    ],
+    challenges: [
+      {
+        challenge: "Swiping Mechanics",
+        solution: "Developed smooth touch-based swiping functionality using JavaScript event handlers and CSS transitions, ensuring responsive performance across mobile and desktop devices."
+      },
+      {
+        challenge: "Real-time Messaging",
+        solution: "Implemented WebSocket connections for instant messaging between matched users, providing a seamless communication experience similar to popular messaging apps."
+      },
+      {
+        challenge: "User Matching Algorithm",
+        solution: "Created an algorithm that considers programming language preferences, experience levels, and location to suggest compatible matches, enhancing the likelihood of meaningful connections."
+      }
+    ]
+  },
+  {
+    id: 7,
+    slug: "ecommerce-website",
+    title: "Ecommerce Website",
+    shortDescription: "A full-featured ecommerce platform with product catalog, shopping cart, and secure payment processing functionality.",
+    image: "/assets/images/ecommImg.png",
+    tags: ["Django", "Python", "Javascript", "Bootstrap"],
+    liveDemoUrl: null,
+    sourceCodeUrl: "https://github.com/itsAnkitpy/Bisum",
+    category: "full-stack",
+    role: "solo",
+    year: 2021,
+    status: "open-source",
+    longDescription: `A comprehensive ecommerce platform built with Django that provides a complete online shopping experience. The platform includes product catalog management, user authentication, shopping cart functionality, order processing, and secure payment integration. Designed with both customers and administrators in mind, it offers an intuitive interface for browsing and purchasing products.`,
+    problemStatement: `Small businesses and entrepreneurs need accessible, cost-effective ecommerce solutions to establish their online presence. Many existing platforms are either too complex or too expensive for startups. There was a need for a simple yet powerful ecommerce solution that could be easily customized and deployed.`,
+    solution: `I developed a full-stack ecommerce platform using Django that provides all essential ecommerce features including product management, user accounts, shopping cart, order processing, and payment integration. The solution is designed to be easily customizable and scalable, making it perfect for small to medium-sized businesses looking to establish their online presence.`,
+    techStack: [
+      {
+        name: "Django",
+        rationale: "Chosen for its robust framework features including user authentication, admin interface, and ORM. Django's built-in security features and rapid development capabilities made it ideal for ecommerce development."
+      },
+      {
+        name: "Python",
+        rationale: "Selected for its extensive library ecosystem, particularly for payment processing and data handling. Python's readability and maintainability were crucial for the complex business logic required in ecommerce."
+      },
+      {
+        name: "Javascript",
+        rationale: "Implemented for dynamic user interactions, cart updates, and enhanced shopping experience. JavaScript enabled real-time cart updates and smooth user interface interactions."
+      },
+      {
+        name: "Bootstrap",
+        rationale: "Used for responsive design and professional appearance. Bootstrap's grid system and components ensured the platform works seamlessly across all devices and screen sizes."
+      }
+    ],
+    challenges: [
+      {
+        challenge: "Payment Integration",
+        solution: "Integrated multiple payment gateways with proper error handling and security measures, ensuring secure and reliable transaction processing."
+      },
+      {
+        challenge: "Inventory Management",
+        solution: "Implemented real-time inventory tracking with automated stock level updates and low-stock notifications for administrators."
+      },
+      {
+        challenge: "User Experience",
+        solution: "Created an intuitive shopping experience with features like product filtering, search functionality, and streamlined checkout process."
+      }
+    ]
   }
+  
 ];
 
 // Archive projects (smaller projects for the archive section)
