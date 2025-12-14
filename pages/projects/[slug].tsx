@@ -4,15 +4,60 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { TbBrandGithub } from 'react-icons/tb';
 import { RxOpenInNewWindow } from 'react-icons/rx';
-import { FiArrowLeft, FiCode, FiServer, FiDatabase, FiCalendar, FiUser, FiFolder } from 'react-icons/fi';
-import { motion } from 'framer-motion';
+import { FiArrowLeft, FiCode, FiServer, FiDatabase, FiCalendar, FiUser, FiFolder, FiX, FiChevronLeft, FiChevronRight, FiMaximize2 } from 'react-icons/fi';
+import { motion, AnimatePresence } from 'framer-motion';
 import Head from 'next/head';
+import { useState, useEffect } from 'react';
 
 interface ProjectPageProps {
   project: Project;
 }
 
 const ProjectPage = ({ project }: ProjectPageProps) => {
+  // Lightbox state
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+  
+  // All images for lightbox (hero + gallery)
+  const allImages = [
+    project.images?.hero || project.image,
+    ...(project.images?.gallery || []),
+    ...(project.images?.mobile ? [project.images.mobile] : [])
+  ];
+
+  const openLightbox = (index: number) => {
+    setLightboxIndex(index);
+    setLightboxOpen(true);
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeLightbox = () => {
+    setLightboxOpen(false);
+    document.body.style.overflow = 'unset';
+  };
+
+  const nextImage = () => {
+    setLightboxIndex((prev) => (prev + 1) % allImages.length);
+  };
+
+  const prevImage = () => {
+    setLightboxIndex((prev) => (prev - 1 + allImages.length) % allImages.length);
+  };
+
+  // Keyboard navigation for lightbox
+  useEffect(() => {
+    if (!lightboxOpen) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') nextImage();
+      if (e.key === 'ArrowLeft') prevImage();
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [lightboxOpen, lightboxIndex]);
+
   // Helper function to get tech icon
   const getTechIcon = (tag: string) => {
     const tagLower = tag.toLowerCase();
@@ -197,13 +242,142 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
             transition={{ duration: 0.6, delay: 0.4 }}
             className='mb-16'
           >
-            <div className='relative w-full h-64 md:h-96 rounded-lg overflow-hidden border border-[#233554] shadow-lg shadow-[#0a192f]/50 group'>
+            <div 
+              className='relative w-full h-64 md:h-96 rounded-lg overflow-hidden border border-[#233554] shadow-lg shadow-[#0a192f]/50 group cursor-pointer'
+              onClick={() => openLightbox(0)}
+            >
               {/* Gradient Overlay */}
               <div className='absolute inset-0 bg-gradient-to-br from-textGreen/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10' />
+              
+              {/* Zoom Icon */}
+              <div className='absolute top-4 right-4 z-20 p-2 bg-[#0a192f]/80 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
+                <FiMaximize2 className='text-textGreen text-xl' />
+              </div>
 
-              <Image src={project.image} alt={project.title} fill className='object-cover group-hover:scale-105 transition-transform duration-500' />
+              <Image 
+                src={project.image} 
+                alt={project.title} 
+                fill 
+                className='object-cover group-hover:scale-105 transition-transform duration-500' 
+              />
             </div>
           </motion.div>
+
+          {/* Project Gallery Section */}
+          {project.images?.gallery && project.images.gallery.length > 0 && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className='mb-16'
+            >
+              <div className='flex items-center gap-3 mb-8'>
+                <span className='h-px w-12 bg-textGreen/50' />
+                <h2 className='text-2xl font-titleFont font-semibold text-textGreen'>Project Gallery</h2>
+              </div>
+
+              <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
+                {project.images.gallery.map((img, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: 0.6 + idx * 0.1 }}
+                    className='relative h-64 rounded-lg overflow-hidden border border-[#233554] shadow-lg shadow-[#0a192f]/50 group cursor-pointer'
+                    onClick={() => openLightbox(idx + 1)}
+                  >
+                    {/* Gradient Overlay */}
+                    <div className='absolute inset-0 bg-gradient-to-br from-textGreen/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10' />
+                    
+                    {/* Zoom Icon */}
+                    <div className='absolute top-4 right-4 z-20 p-2 bg-[#0a192f]/80 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
+                      <FiMaximize2 className='text-textGreen' />
+                    </div>
+
+                    <Image
+                      src={img}
+                      alt={`${project.title} screenshot ${idx + 1}`}
+                      fill
+                      className='object-cover group-hover:scale-105 transition-transform duration-500'
+                    />
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          )}
+
+          {/* Mobile View Section */}
+          {project.images?.mobile && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              className='mb-16'
+            >
+              <div className='flex items-center gap-3 mb-8'>
+                <span className='h-px w-12 bg-textGreen/50' />
+                <h2 className='text-2xl font-titleFont font-semibold text-textGreen'>Mobile Experience</h2>
+              </div>
+
+              <div className='flex justify-center'>
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5 }}
+                  className='relative w-full max-w-md h-[32rem] rounded-lg overflow-hidden border border-[#233554] shadow-lg shadow-[#0a192f]/50 group cursor-pointer'
+                  onClick={() => openLightbox(allImages.indexOf(project.images!.mobile!))}
+                >
+                  {/* Gradient Overlay */}
+                  <div className='absolute inset-0 bg-gradient-to-br from-textGreen/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10' />
+                  
+                  {/* Zoom Icon */}
+                  <div className='absolute top-4 right-4 z-20 p-2 bg-[#0a192f]/80 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
+                    <FiMaximize2 className='text-textGreen' />
+                  </div>
+
+                  <Image
+                    src={project.images.mobile}
+                    alt={`${project.title} mobile view`}
+                    fill
+                    className='object-contain group-hover:scale-105 transition-transform duration-500'
+                  />
+                </motion.div>
+              </div>
+            </motion.div>
+          )}
+
+          {/* Video Demo Section */}
+          {project.video && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.7 }}
+              className='mb-16'
+            >
+              <div className='flex items-center gap-3 mb-8'>
+                <span className='h-px w-12 bg-textGreen/50' />
+                <h2 className='text-2xl font-titleFont font-semibold text-textGreen'>Video Walkthrough</h2>
+              </div>
+
+              <div className='bg-[#112240] border border-[#233554] rounded-lg p-6'>
+                <div className='aspect-video w-full rounded-lg overflow-hidden bg-[#0a192f] border border-[#233554]'>
+                  <iframe
+                    src={project.video.loomUrl}
+                    frameBorder='0'
+                    allowFullScreen
+                    className='w-full h-full'
+                    title={`${project.title} demo video`}
+                  />
+                </div>
+                {project.video.duration && (
+                  <p className='text-textDark text-sm mt-4 flex items-center gap-2'>
+                    <FiCalendar className='text-textGreen' />
+                    Duration: {project.video.duration}
+                  </p>
+                )}
+              </div>
+            </motion.div>
+          )}
 
           {/* Content Grid */}
           <motion.div
@@ -380,6 +554,90 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
             </div>
           </motion.div>
         </div>
+
+        {/* Lightbox Modal */}
+        <AnimatePresence>
+          {lightboxOpen && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className='fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-sm'
+              onClick={closeLightbox}
+            >
+              {/* Close Button */}
+              <button
+                onClick={closeLightbox}
+                className='absolute top-4 right-4 z-50 p-3 bg-[#112240] border border-[#233554] rounded-lg text-textLight hover:text-textGreen hover:border-textGreen transition-all duration-300'
+                aria-label='Close lightbox'
+              >
+                <FiX className='text-2xl' />
+              </button>
+
+              {/* Image Counter */}
+              <div className='absolute top-4 left-4 z-50 px-4 py-2 bg-[#112240] border border-[#233554] rounded-lg text-textLight'>
+                <span className='text-sm font-medium'>
+                  {lightboxIndex + 1} / {allImages.length}
+                </span>
+              </div>
+
+              {/* Previous Button */}
+              {allImages.length > 1 && (
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    prevImage();
+                  }}
+                  className='absolute left-4 z-50 p-3 bg-[#112240] border border-[#233554] rounded-lg text-textLight hover:text-textGreen hover:border-textGreen transition-all duration-300'
+                  aria-label='Previous image'
+                >
+                  <FiChevronLeft className='text-2xl' />
+                </button>
+              )}
+
+              {/* Next Button */}
+              {allImages.length > 1 && (
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    nextImage();
+                  }}
+                  className='absolute right-4 z-50 p-3 bg-[#112240] border border-[#233554] rounded-lg text-textLight hover:text-textGreen hover:border-textGreen transition-all duration-300'
+                  aria-label='Next image'
+                >
+                  <FiChevronRight className='text-2xl' />
+                </button>
+              )}
+
+              {/* Image Container */}
+              <motion.div
+                key={lightboxIndex}
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.9, opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                className='relative max-w-7xl max-h-[90vh] w-full h-full mx-4'
+                onClick={(e) => e.stopPropagation()}
+              >
+                <div className='relative w-full h-full'>
+                  <Image
+                    src={allImages[lightboxIndex]}
+                    alt={`${project.title} - Image ${lightboxIndex + 1}`}
+                    fill
+                    className='object-contain'
+                    quality={100}
+                    priority
+                  />
+                </div>
+              </motion.div>
+
+              {/* Keyboard hint */}
+              <div className='absolute bottom-4 left-1/2 -translate-x-1/2 z-50 px-4 py-2 bg-[#112240]/80 border border-[#233554] rounded-lg text-textDark text-xs'>
+                Use arrow keys to navigate • ESC to close
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </main>
     </>
   );

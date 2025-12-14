@@ -3,7 +3,17 @@ export interface Project {
   slug: string;
   title: string;
   shortDescription: string;
-  image: string; // Path to the main image
+  image: string; // Main hero/thumbnail image for homepage
+  images?: {
+    hero: string;           // Main project image
+    gallery?: string[];     // Additional screenshots (2-4 images)
+    mobile?: string;        // Mobile view (optional)
+    videoThumbnail?: string; // Video preview image (optional)
+  };
+  video?: {
+    loomUrl: string;        // Loom video link
+    duration?: string;      // e.g., "2:30"
+  };
   tags: string[];
   liveDemoUrl?: string | null;
   sourceCodeUrl?: string | null;
@@ -24,7 +34,21 @@ export const projects: Project[] = [
     slug: "project-management-system",
     title: "Project/Employee Management System",
     shortDescription: "A comprehensive management system for tracking project growth, tasks, and team members with employee management features.",
-    image: "/assets/images/cineImg.png",
+    image: "/assets/images/projects/project-management-system/hero.png",
+    images: {
+      hero: "/assets/images/projects/project-management-system/hero.png",
+      gallery: [
+        "/assets/images/projects/project-management-system/dashboard.png",
+        "/assets/images/projects/project-management-system/tasks-view.png",
+        "/assets/images/projects/project-management-system/analytics.png"
+      ],
+      mobile: "/assets/images/projects/project-management-system/mobile-view.png",
+      videoThumbnail: "/assets/images/projects/project-management-system/video-thumbnail.png"
+    },
+    video: {
+      loomUrl: "https://www.loom.com/share/your-video-id-here", // TODO: Add your actual Loom URL
+      duration: "3:20" // TODO: Update with actual video duration
+    },
     tags: ["Laravel", "PHP", "Javascript", "Bootstrap"],
     liveDemoUrl: "https://vms.tech.rangrik.com/home",
     sourceCodeUrl: "https://vms.tech.rangrik.com/home",
@@ -168,99 +192,128 @@ export const projects: Project[] = [
   },
   {
     id: 4,
-    slug: "task-management-app",
-    title: "Task Management Application",
-    shortDescription: "A collaborative task management platform with real-time updates, team collaboration features, and project tracking capabilities.",
-    image: "/assets/images/cineImg.png",
-    tags: ["React", "Node.js", "MongoDB", "Socket.io"],
+    slug: "hp-bar-council",
+    title: "HP Bar Council Digital Enrollment System",
+    shortDescription: "A comprehensive web platform that digitizes the entire lawyer enrollment process for Himachal Pradesh Bar Council, from student registration to official lawyer certification.",
+    image: "/assets/images/projects/hp-bar-council/hero.png",
+    images: {
+      hero: "/assets/images/projects/hp-bar-council/hero.png",
+      gallery: [
+        "/assets/images/projects/hp-bar-council/application-portal.png",
+        "/assets/images/projects/hp-bar-council/approval-workflow.png",
+        "/assets/images/projects/hp-bar-council/admin-dashboard.png"
+      ]
+    },
+    tags: ["Laravel", "PHP", "MySQL", "AWS S3", "Billdesk"],
     liveDemoUrl: null,
-    sourceCodeUrl: "https://github.com/itsAnkitpy/task-manager",
+    sourceCodeUrl: null,
     category: "full-stack",
     role: "solo",
-    year: 2023,
-    status: "open-source",
-    longDescription: `A comprehensive task management application built with the MERN stack that enables teams to collaborate effectively on projects. The platform provides real-time updates, task assignment, progress tracking, and team communication features. Designed for modern teams, it offers both individual task management and collaborative project oversight.`,
-    problemStatement: `Teams often struggle with coordinating tasks, tracking project progress, and maintaining clear communication about project status. Traditional project management tools are often too complex or lack real-time collaboration features. There was a need for a simple yet powerful task management solution that could facilitate team collaboration.`,
-    solution: `I developed a real-time task management platform using the MERN stack with Socket.io for instant updates. The solution includes task creation and assignment, project organization, team collaboration features, progress tracking, and real-time notifications. The platform is designed to be intuitive while providing powerful project management capabilities.`,
+    year: 2024,
+    status: "live",
+    longDescription: `A modern, end-to-end digital enrollment system that transforms the traditionally manual, paper-based lawyer registration process into a streamlined digital workflow. The platform manages everything from student registration and document submission to multi-stage approvals, HIM number assignment, and seamless role transitions, significantly improving transparency, speed, and reliability for the HP Bar Council.`,
+    problemStatement: `The existing manual, paper-based enrollment process at HP Bar Council resulted in lengthy processing times, lack of transparency for applicants, risk of document loss, heavy administrative burden, inconsistent communication, and manual fee reconciliation. Applicants had no way to track their applications, and the manual workflow was labor-intensive and error-prone.`,
+    solution: `I developed a comprehensive digital platform with a user-friendly application portal, automated multi-stage approval workflow with role-based routing, automatic HIM number generation system, dynamic role management transitioning users from Student to Provisional Lawyer to Official Lawyer, integrated Billdesk payment gateway, automated email notifications at every stage, centralized S3-based document management with previewer, and a powerful admin dashboard for application tracking and management.`,
     techStack: [
       {
-        name: "React",
-        rationale: "Chosen for its component-based architecture and excellent state management capabilities. React's virtual DOM and hooks made it perfect for building a responsive and interactive user interface."
+        name: "Laravel",
+        rationale: "Provided a robust MVC framework with built-in authentication, authorization, and queueing capabilities essential for managing complex multi-stage workflows and automated notifications."
       },
       {
-        name: "Node.js",
-        rationale: "Selected for its excellent real-time capabilities and JavaScript ecosystem. Node.js enabled seamless integration with Socket.io for real-time features and provided excellent performance for API development."
+        name: "PHP",
+        rationale: "Offered mature ecosystem support with excellent Laravel integration, enabling rapid development of the complex approval workflow and document management features."
       },
       {
-        name: "MongoDB",
-        rationale: "Implemented for its flexible document structure and excellent scalability. MongoDB's schema flexibility was perfect for storing varied task and project data structures."
+        name: "MySQL",
+        rationale: "Supplied reliable relational data storage for managing application states, user roles, approval histories, and payment records with strong transactional integrity."
       },
       {
-        name: "Socket.io",
-        rationale: "Used for real-time communication and instant updates. Socket.io enabled live collaboration features and instant notifications across all connected team members."
+        name: "AWS S3",
+        rationale: "Provided secure, scalable cloud storage for sensitive legal documents with built-in redundancy and integrated file previewing capabilities."
+      },
+      {
+        name: "Billdesk",
+        rationale: "Enabled secure online payment processing with webhook support for real-time payment status updates and automated reconciliation."
       }
     ],
     challenges: [
       {
-        challenge: "Real-time Synchronization",
-        solution: "Implemented Socket.io for instant updates across all connected clients, ensuring team members always see the latest project status and task updates."
+        challenge: "Complex Multi-Stage Workflow",
+        solution: "Broke the project into three distinct phases (Legal Document Handling, Approval Workflow, HIM Assignment) for iterative development. Implemented a robust role-based routing system that automatically progresses applications through Superintendent, Secretary, and Committee member reviews."
       },
       {
-        challenge: "Data Consistency",
-        solution: "Developed robust data validation and conflict resolution mechanisms to maintain data integrity across multiple concurrent users."
+        challenge: "Document Security and Integrity",
+        solution: "Implemented secure direct-to-S3 file uploads with strict role-based access control and encryption. Built an integrated document previewer for administrators while maintaining confidentiality of sensitive personal and legal documents."
       },
       {
-        challenge: "User Interface Complexity",
-        solution: "Created an intuitive drag-and-drop interface with clear visual indicators for task status and progress, making project management accessible to all team members."
+        challenge: "Payment Gateway Integration",
+        solution: "Developed a robust system to handle Billdesk payment callbacks (webhooks) and edge cases including failed and pending transactions. Ensured payment statuses are accurately reflected in applications for seamless user experience and financial reconciliation."
       }
     ]
   },
   {
     id: 5,
-    slug: "weather-dashboard",
-    title: "Weather Dashboard",
-    shortDescription: "A responsive weather application with location-based forecasts, interactive maps, and detailed weather analytics.",
-    image: "/assets/images/cineImg.png",
-    tags: ["Vue.js", "Express.js", "OpenWeather API", "Chart.js"],
+    slug: "holistart",
+    title: "Holistart Workforce Onboarding Platform",
+    shortDescription: "An enterprise workforce platform that automates manpower requisitions, onboarding workflows, and asset provisioning with rule-based approvals.",
+    image: "/assets/images/projects/holistart/hero.png",
+    images: {
+      hero: "/assets/images/projects/holistart/hero.png",
+      gallery: [
+        "/assets/images/projects/holistart/workflow.png",
+        "/assets/images/projects/holistart/dashboard.png",
+        "/assets/images/projects/holistart/deboarding.png",
+        "/assets/images/projects/holistart/noc.png"
+      ]
+    },
+    video: {
+      loomUrl: "https://www.loom.com/embed/032dff02fe7040a18d0c2efb877bab78",
+      duration: "3:45"
+    },
+    tags: ["Laravel", "PHP", "MySQL", "Bootstrap", "jQuery"],
     liveDemoUrl: null,
-    sourceCodeUrl: "https://github.com/itsAnkitpy/weather-dashboard",
+    sourceCodeUrl: null,
     category: "full-stack",
-    role: "solo",
-    year: 2022,
-    status: "open-source",
-    longDescription: `A comprehensive weather dashboard application that provides detailed weather information, forecasts, and analytics. The application features location-based weather data, interactive weather maps, historical weather trends, and customizable weather alerts. Built with Vue.js for a responsive user experience and integrated with multiple weather APIs for accurate data.`,
-    problemStatement: `Users need quick access to comprehensive weather information that goes beyond basic temperature readings. Many weather apps lack detailed analytics, historical data, and customizable alerts. There was a need for a comprehensive weather platform that could provide professional-grade weather information in an accessible format.`,
-    solution: `I created a feature-rich weather dashboard that aggregates data from multiple weather APIs to provide comprehensive weather information. The solution includes current weather conditions, extended forecasts, weather maps, historical data analysis, and customizable alert systems. The dashboard is designed to be both informative and visually appealing.`,
+    role: "team",
+    year: 2024,
+    status: "live",
+    longDescription: `Holistart is a workforce management platform that digitizes the entire employee lifecycle from manpower requisition to new hire onboarding. The application orchestrates approvals, candidate data collection, document generation, and IT provisioning to deliver a transparent, auditable hiring process for large enterprises.`,
+    problemStatement: `Large organizations struggle with manual manpower requisition and onboarding workflows that rely on emails and spreadsheets. This creates approval bottlenecks, weak visibility, inconsistent candidate experiences, and compliance risks as hiring volumes increase.`,
+    solution: `I contributed to Holistart as a centralized Laravel-based platform with configurable approval rules, candidate self-service forms, HR dashboards, automated document generation, and integrations with ticketing systems for asset provisioning. The solution delivers end-to-end visibility, faster hiring cycles, and audit-ready reporting.`,
     techStack: [
       {
-        name: "Vue.js",
-        rationale: "Chosen for its reactive data binding and component-based architecture. Vue.js provided excellent performance for real-time weather data updates and smooth user interactions."
+        name: "Laravel",
+        rationale: "Provided a mature MVC framework with built-in queueing, notifications, and policy-driven authorization to orchestrate the multi-stage workflow."
       },
       {
-        name: "Express.js",
-        rationale: "Selected for API development and weather data aggregation. Express.js provided a lightweight yet powerful backend for handling multiple weather API integrations."
+        name: "PHP",
+        rationale: "Offered robust support within the Laravel ecosystem and enabled rapid iteration on complex business rules."
       },
       {
-        name: "OpenWeather API",
-        rationale: "Integrated for comprehensive weather data including current conditions, forecasts, and historical data. OpenWeather API provided reliable and accurate weather information."
+        name: "MySQL",
+        rationale: "Supplied reliable relational storage for approval states, candidate data, and audit logs while supporting transactional integrity."
       },
       {
-        name: "Chart.js",
-        rationale: "Implemented for weather data visualization and analytics. Chart.js enabled interactive charts and graphs for weather trends and historical data analysis."
+        name: "Bootstrap",
+        rationale: "Accelerated delivery of responsive internal dashboards with consistent UI patterns for business stakeholders."
+      },
+      {
+        name: "jQuery",
+        rationale: "Simplified progressive enhancement of form interactions and inline validations within the existing Laravel views."
       }
     ],
     challenges: [
       {
-        challenge: "API Rate Limiting",
-        solution: "Implemented intelligent caching and data aggregation strategies to minimize API calls while maintaining real-time weather updates."
+        challenge: "Complex Approval Logic",
+        solution: "Modeled configurable routing rules that escalate requisitions based on attributes like salary slabs and department, ensuring the correct stakeholders review every request."
       },
       {
-        challenge: "Data Visualization",
-        solution: "Created interactive charts and graphs using Chart.js to present complex weather data in an easily understandable format."
+        challenge: "External System Integration",
+        solution: "Implemented an adapter layer for the Dopex ticketing system to sync requisition and asset provisioning tickets, handling API reliability and status reconciliation."
       },
       {
-        challenge: "Location Services",
-        solution: "Integrated geolocation services with fallback options to provide accurate location-based weather information regardless of user permissions."
+        challenge: "Data Security and Privacy",
+        solution: "Enforced role-based access control, single-use candidate tokens, and encrypted data storage to safeguard sensitive onboarding information."
       }
     ]
   },
