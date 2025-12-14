@@ -31,24 +31,93 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: 1,
+    slug: "facility-management-system",
+    title: "Facility Management System (FMS)",
+    shortDescription: "A multi-tenant web application for residential housing complexes that digitizes amenity reservations, service request tracking, resident registration, and communication workflows with a device-restricted kiosk interface.",
+    image: "/assets/images/projects/fms/hero.png",
+    images: {
+      hero: "/assets/images/projects/fms/hero.png",
+      gallery: [
+        "/assets/images/projects/fms/admin-panel.png",
+        "/assets/images/projects/fms/kiosk-interface.png",
+        "/assets/images/projects/fms/reservations.png",
+        "/assets/images/projects/fms/bookings.png"
+      ]
+    },
+    tags: ["Laravel 11", "FilamentPHP", "Livewire", "PostgreSQL", "Redis", "Stripe"],
+    liveDemoUrl: null,
+    sourceCodeUrl: null,
+    category: "full-stack",
+    role: "solo",
+    year: 2024,
+    status: "live",
+    longDescription: `The Facility Management System (FMS) is a web-based, multi-tenant application designed for residential housing complexes and property management companies. It digitizes and automates common facility management tasks including amenity reservations, service request tracking, resident registration, and communication workflows. The system serves three primary user groups: residents/tenants (via kiosk interface), property managers/admins (via admin panel), and super admins (for multi-client oversight). Built as a "Majestic Monolith" - a single, unified Laravel application that handles all three layers within one codebase.`,
+    problemStatement: `Traditional facility management relies on manual processes, email-based communication, and paper-based documentation. This approach leads to inefficient booking and reservation management, lack of traceability for service requests and issues, manual SLA tracking and escalation processes, fragmented communication channels, time-consuming document verification workflows, and difficulty in managing multiple properties and clients.`,
+    solution: `I architected a "Majestic Monolith" - a single, unified Laravel application that handles all three layers (backend API, admin panel, and kiosk interface) within one codebase. This approach eliminates microservices complexity while leveraging powerful Laravel packages to reduce custom development by 60-70%. The solution includes multi-tenant architecture with schema-per-tenant isolation, device-restricted kiosk interface with cookie-based authentication, QR code-based media upload system for secure document handling, automated SLA tracking and escalation with scheduled job monitoring, integrated Stripe payment processing for reservations and refunds, OTP-based verification for secure user authentication, and real-time updates using WebSocket technology.`,
+    techStack: [
+      {
+        name: "Laravel 11",
+        rationale: "Core framework providing robust foundation for the multi-tenant architecture, queue processing, and WebSocket integration with Laravel Reverb."
+      },
+      {
+        name: "FilamentPHP v3",
+        rationale: "Auto-generated admin interface that accelerated development significantly, providing a polished admin panel with minimal custom code."
+      },
+      {
+        name: "Livewire v3",
+        rationale: "Enabled dynamic UI without separate API development, perfect for the kiosk interface where real-time updates are essential."
+      },
+      {
+        name: "PostgreSQL",
+        rationale: "Supports JSONB and schema-per-tenant isolation, providing better data management and tenant separation for the multi-tenancy architecture."
+      },
+      {
+        name: "Redis",
+        rationale: "Handles caching and queue management, essential for the SLA tracking jobs and real-time notification system."
+      },
+      {
+        name: "Stripe",
+        rationale: "Integrated via Laravel Cashier for secure payment processing, handling reservation payments and automated refunds."
+      }
+    ],
+    challenges: [
+      {
+        challenge: "Multi-Tenant Architecture",
+        solution: "Implemented schema-per-tenant isolation using Spatie Laravel Multitenancy, providing complete data separation while maintaining a single codebase. This approach simplified management for solo development."
+      },
+      {
+        challenge: "Device-Restricted Kiosk Interface",
+        solution: "Built cookie-based authentication for kiosk devices that eliminates traditional login requirements while maintaining security through device binding and session management."
+      },
+      {
+        challenge: "QR Code Media Upload System",
+        solution: "Developed a secure document handling flow where users scan QR codes to upload documents from their phones, with uploads syncing to the kiosk session in real-time via WebSockets."
+      },
+      {
+        challenge: "Automated SLA Tracking",
+        solution: "Built scheduled job monitoring that tracks service request deadlines, automatically escalates overdue tickets, and sends notifications at configurable thresholds."
+      }
+    ]
+  },
+  {
+    id: 2,
     slug: "project-management-system",
     title: "Project/Employee Management System",
     shortDescription: "A comprehensive management system for tracking project growth, tasks, and team members with employee management features.",
     image: "/assets/images/projects/project-management-system/hero.png",
     images: {
       hero: "/assets/images/projects/project-management-system/hero.png",
-      gallery: [
-        "/assets/images/projects/project-management-system/dashboard.png",
-        "/assets/images/projects/project-management-system/tasks-view.png",
-        "/assets/images/projects/project-management-system/analytics.png"
-      ],
-      mobile: "/assets/images/projects/project-management-system/mobile-view.png",
-      videoThumbnail: "/assets/images/projects/project-management-system/video-thumbnail.png"
+      // gallery: [
+      //   "/assets/images/projects/project-management-system/dashboard.png",
+      //   "/assets/images/projects/project-management-system/tasks-view.png",
+      //   "/assets/images/projects/project-management-system/analytics.png"
+      // ],
+      // videoThumbnail: "/assets/images/projects/project-management-system/video-thumbnail.png"
     },
-    video: {
-      loomUrl: "https://www.loom.com/share/your-video-id-here", // TODO: Add your actual Loom URL
-      duration: "3:20" // TODO: Update with actual video duration
-    },
+    // video: {
+    //   loomUrl: "https://www.loom.com/share/your-video-id-here", // TODO: Add your actual Loom URL
+    //   duration: "3:20" // TODO: Update with actual video duration
+    // },
     tags: ["Laravel", "PHP", "Javascript", "Bootstrap"],
     liveDemoUrl: "https://vms.tech.rangrik.com/home",
     sourceCodeUrl: "https://vms.tech.rangrik.com/home",
@@ -93,7 +162,7 @@ export const projects: Project[] = [
     ]
   },
   {
-    id: 2,
+    id: 3,
     slug: "git-commit-dating-app",
     title: "Git Commit - Dating App for Programmers",
     shortDescription: "An experimental dating application designed specifically for programmers with swiping functionality and messaging features.",
@@ -142,7 +211,7 @@ export const projects: Project[] = [
     ]
   },
   {
-    id: 3,
+    id: 4,
     slug: "ecommerce-website",
     title: "Ecommerce Website",
     shortDescription: "A full-featured ecommerce platform with product catalog, shopping cart, and secure payment processing functionality.",
@@ -191,7 +260,7 @@ export const projects: Project[] = [
     ]
   },
   {
-    id: 4,
+    id: 5,
     slug: "hp-bar-council",
     title: "HP Bar Council Digital Enrollment System",
     shortDescription: "A comprehensive web platform that digitizes the entire lawyer enrollment process for Himachal Pradesh Bar Council, from student registration to official lawyer certification.",
@@ -203,6 +272,10 @@ export const projects: Project[] = [
         "/assets/images/projects/hp-bar-council/approval-workflow.png",
         "/assets/images/projects/hp-bar-council/admin-dashboard.png"
       ]
+    },
+    video: {
+      loomUrl: "https://www.loom.com/embed/e2f6e4cfe0104e1b8240b3a209cdef9a",
+      duration: "4:18"
     },
     tags: ["Laravel", "PHP", "MySQL", "AWS S3", "Billdesk"],
     liveDemoUrl: null,
@@ -252,7 +325,7 @@ export const projects: Project[] = [
     ]
   },
   {
-    id: 5,
+    id: 6,
     slug: "holistart",
     title: "Holistart Workforce Onboarding Platform",
     shortDescription: "An enterprise workforce platform that automates manpower requisitions, onboarding workflows, and asset provisioning with rule-based approvals.",
@@ -318,51 +391,67 @@ export const projects: Project[] = [
     ]
   },
   {
-    id: 6,
-    slug: "portfolio-cms",
-    title: "Portfolio Content Management System",
-    shortDescription: "A headless CMS specifically designed for portfolio websites with dynamic content management and API-first architecture.",
-    image: "/assets/images/cineImg.png",
-    tags: ["Next.js", "Strapi", "GraphQL", "PostgreSQL"],
+    id: 7,
+    slug: "leadcheck",
+    title: "LeadCheck - Multi-Tenant Lead Management System",
+    shortDescription: "A comprehensive multi-tenant lead management application with database-per-tenant architecture, enabling organizations to efficiently manage leads with complete data isolation and client-specific customization.",
+    image: "/assets/images/projects/leadcheck/hero.png",
+    images: {
+      hero: "/assets/images/projects/leadcheck/hero.png",
+      gallery: [
+        "/assets/images/projects/leadcheck/dashboard.png",
+        "/assets/images/projects/leadcheck/leads-view.png",
+        "/assets/images/projects/leadcheck/workflow.png"
+      ]
+    },
+    tags: ["Laravel", "PHP", "MySQL", "Alpine.js", "Multi-Tenancy"],
     liveDemoUrl: null,
-    sourceCodeUrl: "https://github.com/itsAnkitpy/portfolio-cms",
+    sourceCodeUrl: null,
     category: "full-stack",
     role: "solo",
-    year: 2023,
-    status: "open-source",
-    longDescription: `A headless Content Management System specifically designed for portfolio websites and personal brands. The system provides dynamic content management, API-first architecture, and seamless integration with modern frontend frameworks. Built with Strapi and Next.js, it offers both content creators and developers a powerful platform for managing portfolio content.`,
-    problemStatement: `Portfolio websites often require frequent content updates, but traditional CMS solutions are either too complex or not suited for portfolio-specific needs. Developers and content creators need a flexible system that can handle portfolio content while providing modern development workflows and API access.`,
-    solution: `I developed a headless CMS solution using Strapi and Next.js that's specifically tailored for portfolio websites. The system provides intuitive content management, API-first architecture, dynamic content rendering, and seamless integration capabilities. It's designed to be both developer-friendly and accessible to non-technical content creators.`,
+    year: 2024,
+    status: "live",
+    longDescription: `LeadCheck is a comprehensive multi-tenant lead management application designed to serve multiple clients (tenants) from a single application instance while maintaining complete data isolation and security. The system enables organizations to efficiently manage leads, track status workflows, and customize form configurations per client. It implements a database-per-tenant architecture with dynamic connection switching, explicit menu-based access control, and client-specific customization capabilities.`,
+    problemStatement: `Modern businesses require a scalable solution to manage leads across multiple client organizations. The challenge lies in providing complete data isolation between different clients, ensuring scalability as the number of clients grows, allowing customization (forms, workflows) per client without code duplication, maintaining security and access control across tenants, and simplifying deployment and maintenance overhead.`,
+    solution: `I implemented a database-per-tenant multi-tenancy architecture with a hybrid database model: a central main database manages global configuration, clients, users, roles, and menus, while each client has a dedicated, isolated database for operational data. The NewDbConnection middleware automatically switches database connections based on the logged-in user's client_id. Permission system uses direct user_menu_mappings with RouteGard middleware enforcement. Form configurations are assigned per client via client_configs, and each client maintains their own status definitions and workflow transitions.`,
     techStack: [
       {
-        name: "Next.js",
-        rationale: "Chosen for its excellent SSG/SSR capabilities and API routes. Next.js provided optimal performance for portfolio websites while enabling seamless CMS integration."
+        name: "Laravel",
+        rationale: "Provided robust framework with excellent support for multi-database connections, middleware architecture, and queue-based background processing essential for tenant database provisioning."
       },
       {
-        name: "Strapi",
-        rationale: "Selected for its flexibility and developer-friendly headless CMS features. Strapi provided powerful content management capabilities with excellent API generation."
+        name: "PHP",
+        rationale: "Enabled rapid development of the complex multi-tenancy logic with excellent Laravel integration and mature ecosystem support for enterprise applications."
       },
       {
-        name: "GraphQL",
-        rationale: "Implemented for efficient data fetching and API optimization. GraphQL enabled precise data queries and reduced over-fetching, improving performance."
+        name: "MySQL",
+        rationale: "Supported the multi-database architecture with database-per-tenant isolation, allowing independent scaling and management of client databases."
       },
       {
-        name: "PostgreSQL",
-        rationale: "Used for robust data storage and complex relational queries. PostgreSQL provided excellent performance and data integrity for content management."
+        name: "Alpine.js",
+        rationale: "Provided lightweight reactive JavaScript for dynamic UI interactions without the overhead of a full SPA framework, perfect for Blade template enhancement."
+      },
+      {
+        name: "DataTables",
+        rationale: "Enabled server-side processing for lead management tables with efficient pagination, sorting, and filtering across large datasets."
       }
     ],
     challenges: [
       {
-        challenge: "Content Modeling",
-        solution: "Designed flexible content types and relationships that could accommodate various portfolio content structures while maintaining ease of use."
+        challenge: "Data Isolation",
+        solution: "Implementing strict tenant isolation while maintaining code simplicity required careful middleware design with the NewDbConnection middleware that automatically switches database connections based on user context."
       },
       {
-        challenge: "Performance Optimization",
-        solution: "Implemented static generation with incremental regeneration to ensure fast loading times while maintaining dynamic content capabilities."
+        challenge: "Scalability",
+        solution: "Database-per-tenant architecture allows independent scaling and management of client databases, with job-based database provisioning for new tenants and custom migration commands across multiple databases."
       },
       {
-        challenge: "API Security",
-        solution: "Developed comprehensive authentication and authorization systems to protect content while providing appropriate access levels for different user roles."
+        challenge: "Access Control Complexity",
+        solution: "Designed explicit menu-based permissions using user_menu_mappings relationships, providing fine-grained control enforced by the RouteGard middleware at every route."
+      },
+      {
+        challenge: "Configuration Management",
+        solution: "Balanced flexibility with maintainability through a hybrid approach: per-client form customization via client_configs while keeping forms as static, maintainable Blade templates."
       }
     ]
   }
