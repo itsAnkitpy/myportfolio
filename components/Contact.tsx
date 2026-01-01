@@ -117,7 +117,7 @@ const Contact = () => {
           </a>
 
           {/* Resume Button */}
-          <a href='/resume.pdf' download>
+          <a href='/assets/ankit-sharma-latest.pdf' download>
             <button className='group flex items-center gap-2 px-8 py-4 bg-textGreen/10 border-2 border-textGreen/30 text-textLight rounded-lg hover:border-textGreen hover:bg-textGreen/20 transition-all duration-300 font-medium'>
               <HiDownload className='text-xl group-hover:translate-y-1 transition-transform duration-300' />
               <span>Download Resume</span>
