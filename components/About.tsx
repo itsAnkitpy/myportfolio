@@ -112,7 +112,7 @@ const About = () => {
           <div className='absolute w-full h-full lgl:h-80 -left-6 -top-6 rounded-lg'>
             <div className='w-full h-full relative z-20 flex pl-6 lgl:pl-0'>
               <Image
-                className='rounded-lg h-full w-full object-cover'
+                className='rounded-lg h-full w-full object-cover object-top'
                 src={profileImg}
                 alt='Ankit Sharma profile'
               />
