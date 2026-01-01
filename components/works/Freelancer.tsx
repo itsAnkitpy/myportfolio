@@ -1,14 +1,7 @@
 import { motion } from 'framer-motion';
 import { TiArrowForward } from 'react-icons/ti';
-import { FiBriefcase, FiTrendingUp, FiAward } from 'react-icons/fi';
 
 const Freelancer = () => {
-  const highlights = [
-    { icon: <FiBriefcase />, label: 'Projects Delivered', value: '15+' },
-    { icon: <FiTrendingUp />, label: 'Avg. Productivity Gain', value: '20-30%' },
-    { icon: <FiAward />, label: 'Client Satisfaction', value: '100%' }
-  ];
-
   const projects = [
     {
       name: 'Cinesamugam',
@@ -39,27 +32,12 @@ const Freelancer = () => {
     >
       <div className='flex flex-col gap-2 mb-6'>
         <h3 className='flex flex-wrap items-center gap-2 font-semibold text-2xl font-titleFont text-textLight'>
-          Web Developer
-          <span className='text-textGreen tracking-wide'>@Freelancer</span>
+          Freelance Projects
+          <span className='text-textGreen tracking-wide'>@Independent</span>
         </h3>
-        <div className='flex items-center gap-2'>
-          <p className='text-sm font-medium text-textDark'>Feb 2021 - Aug 2024</p>
-          <span className='text-xs text-textDark'>• 3.5 years</span>
-        </div>
-      </div>
-
-      {/* Quick Impact Highlights */}
-      <div className='grid grid-cols-3 gap-3 mb-6'>
-        {highlights.map(({ icon, label, value }) => (
-          <div
-            key={label}
-            className='bg-[#0a192f] border border-[#233554] rounded-lg px-3 py-3 flex flex-col gap-1'
-          >
-            <span className='text-textGreen text-lg'>{icon}</span>
-            <span className='text-xs text-textDark uppercase tracking-wide'>{label}</span>
-            <span className='text-sm font-medium text-textLight'>{value}</span>
-          </div>
-        ))}
+        <p className='text-sm font-medium text-textDark'>
+          Project-based client work
+        </p>
       </div>
 
       <ul className='mt-6 flex flex-col gap-6'>

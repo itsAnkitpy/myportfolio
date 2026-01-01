@@ -45,7 +45,7 @@ export const projects: Project[] = [
       ]
     },
     tags: ["Laravel 11", "FilamentPHP", "Livewire", "PostgreSQL", "Redis", "Stripe"],
-    liveDemoUrl: null,
+    liveDemoUrl: "https://fms.coderootz.com",
     sourceCodeUrl: null,
     category: "full-stack",
     role: "solo",
@@ -118,7 +118,7 @@ export const projects: Project[] = [
       duration: "4:18"
     },
     tags: ["Laravel", "PHP", "MySQL", "AWS S3", "Billdesk"],
-    liveDemoUrl: null,
+    liveDemoUrl: "https://hbc.coderootz.com",
     sourceCodeUrl: null,
     category: "full-stack",
     role: "solo",
@@ -184,7 +184,7 @@ export const projects: Project[] = [
       duration: "3:45"
     },
     tags: ["Laravel", "PHP", "MySQL", "Bootstrap", "jQuery"],
-    liveDemoUrl: null,
+    liveDemoUrl: "https://holistart.holisollogistics.com/",
     sourceCodeUrl: null,
     category: "full-stack",
     role: "team",
@@ -232,6 +232,80 @@ export const projects: Project[] = [
   },
   {
     id: 4,
+    slug: "amt-saas",
+    title: "Asset Management Tool",
+    shortDescription: "A multi-tenant SaaS application for organizations to track, manage, and audit physical assets with QR codes, CSV import/export, custom field schemas, and complete audit trails.",
+    image: "/assets/images/projects/amt/hero.png",
+    images: {
+      hero: "/assets/images/projects/amt/hero.png",
+      gallery: [
+        "/assets/images/projects/amt/assets-list.png",
+        "/assets/images/projects/amt/asset-detail.png",
+        "/assets/images/projects/amt/scan.png",
+        "/assets/images/projects/amt/superadmin.png"
+      ]
+    },
+    tags: ["Next.js 16", "React 19", "TypeScript", "PostgreSQL", "Prisma", "TailwindCSS 4"],
+    liveDemoUrl: "https://amt-saas.vercel.app/",
+    sourceCodeUrl: null,
+    category: "full-stack",
+    role: "solo",
+    year: 2025,
+    status: "live",
+    longDescription: `AMT SaaS (Asset Management Tool) is a multi-tenant SaaS application designed to help organizations track, manage, and audit their physical assets—from laptops and monitors to office equipment and machinery. The application enables companies to maintain a centralized inventory, track asset assignments to employees, define custom asset categories with flexible field schemas, generate QR codes for quick lookup, and import/export data via CSV.`,
+    problemStatement: `Organizations of all sizes struggle with asset management. Many companies track assets in Excel files that become outdated and impossible to audit. Without proper assignment tracking, assets get lost and no one knows who had them last. Generic tools don't accommodate different asset types, and there's no audit trail when something goes wrong.`,
+    solution: `I built a flexible, multi-tenant asset management system with row-level tenant isolation, a dynamic field schema system where each category defines its own custom fields, a complete audit trail that survives user deletion, bulk operations for CSV import/export, and QR code integration for quick asset lookup. The storage layer uses a provider pattern supporting both local filesystem and Vercel Blob.`,
+    techStack: [
+      {
+        name: "Next.js 16",
+        rationale: "Full-stack React framework with App Router, Server Components, and Server Actions for simpler data fetching and reduced client bundle size."
+      },
+      {
+        name: "React 19",
+        rationale: "Latest React with Server Components paradigm for rendering data-fetching components on the server."
+      },
+      {
+        name: "TypeScript",
+        rationale: "Type-safe development from database to UI, ensuring reliability across the full stack."
+      },
+      {
+        name: "PostgreSQL",
+        rationale: "Relational database with JSON column support for flexible custom field schemas while maintaining query performance."
+      },
+      {
+        name: "Prisma",
+        rationale: "Type-safe ORM with excellent migrations and Prisma Studio for database management."
+      },
+      {
+        name: "Clerk",
+        rationale: "Managed authentication service with webhook support for user syncing."
+      },
+      {
+        name: "TailwindCSS 4",
+        rationale: "Utility-first CSS framework with shadcn/ui components for rapid, accessible UI development."
+      }
+    ],
+    challenges: [
+      {
+        challenge: "Next.js 16 App Router Patterns",
+        solution: "Established clear patterns: Server Components for data fetching, Client Components only for interactivity, Server Actions for mutations. RSC dramatically simplifies data fetching and reduces client bundle size."
+      },
+      {
+        challenge: "Multi-Tenancy Without Leaks",
+        solution: "Every database query includes tenantId filter with authorization check before every operation. Defense in depth at middleware, page, and query level."
+      },
+      {
+        challenge: "Dynamic Custom Fields",
+        solution: "Store field schema as JSON in AssetCategory, field values as JSON in Asset, with dynamic form components that render based on schema and validate on import."
+      },
+      {
+        challenge: "Audit Trail That Survives",
+        solution: "Store userId as plain string (no FK) and performedBy name in JSON details field, so history remains readable even after user deletion."
+      }
+    ]
+  },
+  {
+    id: 5,
     slug: "leadcheck",
     title: "LeadCheck - Multi-Tenant Lead Management System",
     shortDescription: "A comprehensive multi-tenant lead management application with database-per-tenant architecture, enabling organizations to efficiently manage leads with complete data isolation and client-specific customization.",
@@ -245,7 +319,7 @@ export const projects: Project[] = [
       ]
     },
     tags: ["Laravel", "PHP", "MySQL", "Alpine.js", "Multi-Tenancy"],
-    liveDemoUrl: null,
+    liveDemoUrl: "https://leadscheck.coderootz.com/",
     sourceCodeUrl: null,
     category: "full-stack",
     role: "solo",
@@ -296,7 +370,7 @@ export const projects: Project[] = [
     ]
   },
   {
-    id: 5,
+    id: 6,
     slug: "project-management-system",
     title: "Project/Employee Management System",
     shortDescription: "A comprehensive management system for tracking project growth, tasks, and team members with employee management features.",
@@ -358,7 +432,7 @@ export const projects: Project[] = [
     ]
   },
   {
-    id: 6,
+    id: 7,
     slug: "git-commit-dating-app",
     title: "Git Commit - Dating App for Programmers",
     shortDescription: "An experimental dating application designed specifically for programmers with swiping functionality and messaging features.",
@@ -407,7 +481,7 @@ export const projects: Project[] = [
     ]
   },
   {
-    id: 7,
+    id: 8,
     slug: "ecommerce-website",
     title: "Ecommerce Website",
     shortDescription: "A full-featured ecommerce platform with product catalog, shopping cart, and secure payment processing functionality.",
@@ -455,13 +529,13 @@ export const projects: Project[] = [
       }
     ]
   }
-  
+
 ];
 
 // Archive projects (smaller projects for the archive section)
 export const archiveProjects: Project[] = [
   {
-    id: 7,
+    id: 9,
     slug: "instello",
     title: "Instello",
     shortDescription: "A social media platform where you can share your photos and connect with friends and family. Just like Instagram, you can share your life with others through pictures and short captions.",
@@ -487,7 +561,7 @@ export const archiveProjects: Project[] = [
     ]
   },
   {
-    id: 8,
+    id: 10,
     slug: "boighor",
     title: "Boighor",
     shortDescription: "A place for all book worms to jump in and just order their favourite books of their favourite authors.",
@@ -513,7 +587,7 @@ export const archiveProjects: Project[] = [
     ]
   },
   {
-    id: 9,
+    id: 11,
     slug: "streamit",
     title: "Streamit",
     shortDescription: "Streamit is a simple OTT platform project with functionalities of creating multiple accounts and watching your favourite shows and movies.",
@@ -539,7 +613,7 @@ export const archiveProjects: Project[] = [
     ]
   },
   {
-    id: 10,
+    id: 12,
     slug: "clique",
     title: "Clique",
     shortDescription: "Clique is an online platform for coders to learn and discuss different areas of programming in an interactive interface through online chatting.",
@@ -565,7 +639,7 @@ export const archiveProjects: Project[] = [
     ]
   },
   {
-    id: 11,
+    id: 13,
     slug: "laravel-blog",
     title: "Laravel Blog",
     shortDescription: "It is a laravel blog with all CRUD features where one can share their ideas with others.",
@@ -593,7 +667,7 @@ export const archiveProjects: Project[] = [
     ]
   },
   {
-    id: 12,
+    id: 14,
     slug: "infraup",
     title: "Infraup",
     shortDescription: "This is a landing page of InfraUp which is a Civil and Structural Engineering consultancy in Chandigarh.",

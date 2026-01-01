@@ -3,19 +3,12 @@ import { RxOpenInNewWindow } from 'react-icons/rx';
 import { TbBrandGithub } from 'react-icons/tb';
 import { FiCode, FiServer, FiDatabase } from 'react-icons/fi';
 import { Project } from '../lib/data';
-import { useRouter } from 'next/router';
 
 interface Props {
   project: Project;
 }
 
 const ArchiveCard = ({ project }: Props) => {
-  const router = useRouter();
-
-  const handleCardClick = () => {
-    router.push(`/projects/${project.slug}`);
-  };
-
   // Helper function to get tech icon
   const getTechIcon = (tag: string) => {
     const tagLower = tag.toLowerCase();
@@ -79,9 +72,8 @@ const ArchiveCard = ({ project }: Props) => {
 
   return (
     <div
-      onClick={handleCardClick}
       className='w-full h-auto min-h-[320px] rounded-lg bg-[#112240] border border-[#233554] p-6 flex flex-col gap-5
-            hover:-translate-y-2 hover:shadow-lg hover:shadow-textGreen/10 hover:border-textGreen/30 transition-all duration-300 group cursor-pointer'
+            hover:-translate-y-2 hover:shadow-lg hover:shadow-textGreen/10 hover:border-textGreen/30 transition-all duration-300 group'
     >
       {/* Header with icon and links */}
       <div className='flex justify-between items-start'>

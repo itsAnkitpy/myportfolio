@@ -16,6 +16,20 @@ const Banner = () => {
             id='home'
             className='max-w-contentContainer mx-auto py-10 mdl:py-24 flex flex-col gap-4 lgl:gap-8 mdl:px-10 xl:px-4'
         >
+            {/* Availability Badge */}
+            <motion.div
+                initial={{ y: 10, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.5 }}
+                className='flex items-center gap-2'
+            >
+                <span className='relative flex h-3 w-3'>
+                    <span className='animate-ping absolute inline-flex h-full w-full rounded-full bg-textGreen opacity-75'></span>
+                    <span className='relative inline-flex rounded-full h-3 w-3 bg-textGreen'></span>
+                </span>
+                <span className='text-sm text-textGreen font-medium'>Available for projects</span>
+            </motion.div>
+
             <motion.h3
                 initial={{ y: 10, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
@@ -36,7 +50,7 @@ const Banner = () => {
                         <span className='text-textGreen cursor-blink'>{cursor}</span>
                     )}
                 </span>
-                <motion.span 
+                <motion.span
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.5, delay: 2.5 }}
@@ -50,47 +64,32 @@ const Banner = () => {
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.8 }}
                 className="text-base md:max-w-[650px] text-textDark font-medium">
-
-                I am a web developer with experience in front-end and backend
-                development and I am skilled in creating user-friendly and effective web applications as per the requirements
-                of the client.{" "}
-                <br />
-                {/* Adding digital resume here */}
-                <a href="https://github.com/itsAnkitpy" target='_blank'>
-                    <span className='text-textGreen inline-flex relative cursor-pointer h-7
-                    overflow-x-hidden group'>
-                        Learn More
-                        <span className='absolute w-full h-[1px] bg-textGreen left-0 bottom-1
-                        -translate-x-[110%] group-hover:translate-x-0 transition-transform duration-500'></span>
-                    </span>
-                </a>
-
+                I build multi-tenant SaaS platforms and enterprise applications. Currently focused on{' '}
+                <span className='text-textLight'>Laravel</span> and{' '}
+                <span className='text-textLight'>Next.js</span> ecosystems, delivering production-ready
+                systems from concept to deployment.
             </motion.p>
 
-            {/* <motion.button 
-                initial={{y: 10, opacity:0}}
-                animate={{y: 0, opacity:1}}
-                transition={{ duration:0.5, delay: 0.9}}
-                className='w-52 h-14 text-sm font-titleFont border border-textGreen rounded-md text-textGreen
-                    tracking-wide hover:bg-hoverColor duration-300'>
-                Check out my Projects!!
-            </motion.button> */}
-
-            <motion.a
-                href="https://github.com/itsAnkitpy" // Replace with your actual URL
-                target="_blank"
-                rel="noopener noreferrer"
+            {/* CTA Buttons */}
+            <motion.div
+                initial={{ y: 10, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.9 }}
+                className='flex flex-wrap gap-4 mt-2'
             >
-                <motion.button
-                    initial={{ y: 10, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ duration: 0.5, delay: 0.9 }}
-                    className='w-52 h-14 text-sm font-titleFont border border-textGreen rounded-md text-textGreen
-            tracking-wide hover:bg-hoverColor duration-300'>
-                    Check out my Projects!!
-                </motion.button>
-            </motion.a>
-
+                <a href='#project'>
+                    <button className='w-44 h-12 text-sm font-titleFont bg-textGreen text-bodyColor rounded-md
+                        tracking-wide hover:bg-textGreen/90 duration-300 font-semibold'>
+                        View My Work
+                    </button>
+                </a>
+                <a href='#contact'>
+                    <button className='w-44 h-12 text-sm font-titleFont border border-textGreen rounded-md text-textGreen
+                        tracking-wide hover:bg-hoverColor duration-300'>
+                        Get in Touch
+                    </button>
+                </a>
+            </motion.div>
 
         </section >
     );

@@ -12,7 +12,7 @@ const Experience = () => {
   const experiences = [
     {
       id: 'holisol',
-      company: 'Holisol',
+      company: 'SummerHill Technologies',
       icon: <HiOfficeBuilding />,
       component: <Holisol />
     },
@@ -39,29 +39,27 @@ const Experience = () => {
 
       <div className='w-full mt-10 flex flex-col md:flex-row gap-8 md:gap-16'>
         {/* Tab Navigation */}
-        <div className='md:w-40 flex md:flex-col gap-2 overflow-x-auto md:overflow-x-visible pb-2 md:pb-0'>
+        <div className='md:w-65 flex md:flex-col gap-2 overflow-x-auto md:overflow-x-visible pb-2 md:pb-0'>
           {experiences.map(({ id, company, icon }) => (
             <button
               key={id}
               onClick={() => setActiveTab(id)}
-              className={`${
-                activeTab === id
-                  ? 'bg-[#112240] border-l-textGreen text-textGreen shadow-md shadow-textGreen/10'
-                  : 'border-l-[#233554] text-textDark hover:bg-[#112240] hover:text-textLight'
-              } 
+              className={`${activeTab === id
+                ? 'bg-[#112240] border-l-textGreen text-textGreen shadow-md shadow-textGreen/10'
+                : 'border-l-[#233554] text-textDark hover:bg-[#112240] hover:text-textLight'
+                } 
               flex items-center gap-3 border-l-2 md:border-l-4 py-3 px-6 md:px-4 text-sm font-medium
               cursor-pointer transition-all duration-300 rounded-r-md whitespace-nowrap
               group relative overflow-hidden`}
             >
               <span
-                className={`${
-                  activeTab === id ? 'text-textGreen' : 'text-textDark group-hover:text-textGreen'
-                } text-lg transition-colors duration-300`}
+                className={`${activeTab === id ? 'text-textGreen' : 'text-textDark group-hover:text-textGreen'
+                  } text-lg transition-colors duration-300`}
               >
                 {icon}
               </span>
               <span className='font-titleFont tracking-wide'>{company}</span>
-              
+
               {/* Active indicator dot */}
               {activeTab === id && (
                 <span className='absolute right-2 w-2 h-2 bg-textGreen rounded-full animate-pulse' />

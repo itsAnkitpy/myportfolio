@@ -1,12 +1,12 @@
 import { motion } from 'framer-motion';
 import { TiArrowForward } from 'react-icons/ti';
-import { FiTrendingUp, FiUsers, FiZap } from 'react-icons/fi';
+import { FiPackage, FiLayers, FiZap } from 'react-icons/fi';
 
 const Holisol = () => {
   const highlights = [
-    { icon: <FiTrendingUp />, label: 'Digital Transformation', value: 'Supply Chain' },
-    { icon: <FiZap />, label: 'Tech Stack', value: 'Full-Stack Web' },
-    { icon: <FiUsers />, label: 'Focus', value: 'SaaS Logistics' }
+    { icon: <FiPackage />, label: 'Projects', value: '7 Applications' },
+    { icon: <FiLayers />, label: 'Focus', value: 'Multi-Tenant SaaS' },
+    { icon: <FiZap />, label: 'Stack', value: 'Laravel & Next.js' }
   ];
 
   return (
@@ -19,7 +19,7 @@ const Holisol = () => {
       <div className='flex flex-col gap-2 mb-6'>
         <h3 className='flex flex-wrap items-center gap-2 font-semibold text-2xl font-titleFont text-textLight'>
           Software Engineer
-          <span className='text-textGreen tracking-wide'>@Holisol Logistics</span>
+          <span className='text-textGreen tracking-wide'>@SummerHill Technologies</span>
         </h3>
         <div className='flex items-center gap-2'>
           <p className='text-sm font-medium text-textDark'>Oct 2024 - Present</p>
@@ -49,8 +49,10 @@ const Holisol = () => {
             <TiArrowForward />
           </span>
           <span>
-            Developing and maintaining tech-enabled end-to-end supply chain logistics solutions,
-            contributing to the company&apos;s digital transformation initiatives.
+            Building production multi-tenant systems including{' '}
+            <span className='text-textLight'>FMS</span> (schema-per-tenant),{' '}
+            <span className='text-textLight'>LeadCheck</span> (database-per-tenant), and{' '}
+            <span className='text-textLight'>AMT</span> (row-level isolation) using Laravel and Next.js ecosystems.
           </span>
         </li>
 
@@ -59,8 +61,8 @@ const Holisol = () => {
             <TiArrowForward />
           </span>
           <span>
-            Building scalable web applications and APIs to optimize logistics operations, warehouse
-            management, and supply chain visibility.
+            Delivered <span className='text-textLight'>HP Bar Council</span> digital enrollment platform, integrating
+            Billdesk payment gateway and AWS S3 for document management.
           </span>
         </li>
 
@@ -69,8 +71,18 @@ const Holisol = () => {
             <TiArrowForward />
           </span>
           <span>
-            Collaborating with cross-functional teams to design and implement features that enhance
-            operational efficiency and improve customer experience.
+            Contributed to <span className='text-textLight'>Holistart</span> workforce onboarding platform with
+            automated approval workflows and employee provisioning integrations.
+          </span>
+        </li>
+
+        <li className='text-base flex gap-3 text-textDark leading-relaxed'>
+          <span className='text-textGreen mt-1 flex-shrink-0'>
+            <TiArrowForward />
+          </span>
+          <span>
+            Maintaining legacy CakePHP ticketing system (<span className='text-textLight'>Dopex</span>) and
+            Laravel-based internal operations tool (<span className='text-textLight'>Insite</span>) for company-wide operations.
           </span>
         </li>
       </ul>

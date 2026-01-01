@@ -1,21 +1,21 @@
-import {profileImg} from '@/public/assets';
+import { profileImg } from '@/public/assets';
 import Image from 'next/image';
 import SectionTitle from './SectionTitle';
 import { AiFillThunderbolt } from 'react-icons/ai';
 
 const About = () => {
   const achievements = [
-    'Delivered 15+ full-stack projects across SaaS, ecommerce, and logistics domains.',
-    'Scaled applications to support 10,000+ active users with sub-second response times.',
-    'Reduced average page load times by up to 50% through targeted performance optimisation.',
-    'Maintained a 100% on-time delivery rate with transparent communication and roadmap visibility.'
+    'Built 3 production multi-tenant systems with different isolation strategies—schema-per-tenant, database-per-tenant, and row-level isolation.',
+    'Delivered a government digital enrollment platform for HP Bar Council, transforming their paper-based lawyer registration into a streamlined digital workflow.',
+    'Contributed to enterprise workforce onboarding at Holistart, automating requisition approvals and employee provisioning for large organizations.',
+    'Currently building with cutting-edge stack—Next.js 16 App Router, React Server Components, and TypeScript for type-safe full-stack development.'
   ];
 
   const metrics = [
-    { value: '4+', label: 'Years Experience' },
-    { value: '15+', label: 'Client Projects Delivered' },
-    { value: '50%', label: 'Average Faster Load Times' },
-    { value: '100%', label: 'On-Time Delivery' }
+    { value: '2+', label: 'Years Experience' },
+    { value: '8+', label: 'Production Apps Shipped' },
+    { value: '3', label: 'Multi-Tenant Architectures' },
+    { value: '2', label: 'Tech Stacks (Laravel & Next.js)' }
   ];
 
   const techStack = [
@@ -46,8 +46,9 @@ const About = () => {
       <div className='flex flex-col lgl:flex-row gap-16'>
         <div className='w-full lgl:w-2/3 text-base text-textDark font-medium flex flex-col gap-6'>
           <p className='text-lg leading-relaxed text-textLight'>
-            I help product teams ship fast, scalable web applications that drive measurable business outcomes. My work blends product thinking with engineering rigour so every release feels purposeful and production-ready.
+            I build full-stack web applications that solve real business problems. From multi-tenant SaaS platforms to government digital transformation projects, I focus on shipping production-ready systems that scale. Currently working with Next.js 16 and Laravel ecosystems.
           </p>
+
 
           <div className='flex flex-col gap-4'>
             <h3 className='text-lg font-semibold text-textGreen tracking-wide uppercase'>Impact At A Glance</h3>
