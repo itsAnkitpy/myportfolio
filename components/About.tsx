@@ -12,10 +12,10 @@ const About = () => {
   ];
 
   const metrics = [
-    { value: '2+', label: 'Years Experience' },
-    { value: '8+', label: 'Production Apps Shipped' },
-    { value: '3', label: 'Multi-Tenant Architectures' },
-    { value: '2', label: 'Tech Stacks (Laravel & Next.js)' }
+    { value: '2+', shortLabel: 'Years Exp', fullLabel: 'Years Experience' },
+    { value: '8+', shortLabel: 'Apps Shipped', fullLabel: 'Production Apps' },
+    { value: '3', shortLabel: 'Multi-Tenant', fullLabel: 'Multi-Tenant Architectures' },
+    { value: '2', shortLabel: 'Tech Stacks', fullLabel: 'Tech Stacks (Laravel & Next.js)' }
   ];
 
   const techStack = [
@@ -53,13 +53,14 @@ const About = () => {
           <div className='flex flex-col gap-4'>
             <h3 className='text-lg font-semibold text-textGreen tracking-wide uppercase'>Impact At A Glance</h3>
             <div className='grid grid-cols-2 sm:grid-cols-4 gap-4'>
-              {metrics.map(({ value, label }) => (
+              {metrics.map(({ value, shortLabel, fullLabel }) => (
                 <div
-                  key={label}
+                  key={shortLabel}
                   className='bg-[#112240] border border-[#233554] rounded-lg px-4 py-4 flex flex-col gap-1 shadow-md shadow-[#0a192f]/20'
                 >
                   <span className='text-2xl font-semibold text-textGreen'>{value}</span>
-                  <span className='text-xs uppercase tracking-wide text-textLight/80'>{label}</span>
+                  <span className='text-xs uppercase tracking-wide text-textLight/80 sm:hidden'>{shortLabel}</span>
+                  <span className='text-xs uppercase tracking-wide text-textLight/80 hidden sm:block'>{fullLabel}</span>
                 </div>
               ))}
             </div>

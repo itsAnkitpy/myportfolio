@@ -13,18 +13,21 @@ const Experience = () => {
     {
       id: 'holisol',
       company: 'SummerHill Technologies',
+      shortName: 'SummerHill',
       icon: <HiOfficeBuilding />,
       component: <Holisol />
     },
     {
       id: 'freelancer',
       company: 'Freelancer',
+      shortName: 'Freelance',
       icon: <MdWork />,
       component: <Freelancer />
     },
     {
       id: 'himtech',
       company: 'Himtech',
+      shortName: 'Himtech',
       icon: <HiOfficeBuilding />,
       component: <Himtech />
     }
@@ -40,7 +43,7 @@ const Experience = () => {
       <div className='w-full mt-10 flex flex-col md:flex-row gap-8 md:gap-16'>
         {/* Tab Navigation */}
         <div className='md:w-65 flex md:flex-col gap-2 overflow-x-auto md:overflow-x-visible pb-2 md:pb-0'>
-          {experiences.map(({ id, company, icon }) => (
+          {experiences.map(({ id, company, shortName, icon }) => (
             <button
               key={id}
               onClick={() => setActiveTab(id)}
@@ -48,7 +51,7 @@ const Experience = () => {
                 ? 'bg-[#112240] border-l-textGreen text-textGreen shadow-md shadow-textGreen/10'
                 : 'border-l-[#233554] text-textDark hover:bg-[#112240] hover:text-textLight'
                 } 
-              flex items-center gap-3 border-l-2 md:border-l-4 py-3 px-6 md:px-4 text-sm font-medium
+              flex items-center gap-3 border-l-2 md:border-l-4 py-3 px-4 md:px-4 text-sm font-medium
               cursor-pointer transition-all duration-300 rounded-r-md whitespace-nowrap
               group relative overflow-hidden`}
             >
@@ -58,7 +61,8 @@ const Experience = () => {
               >
                 {icon}
               </span>
-              <span className='font-titleFont tracking-wide'>{company}</span>
+              <span className='font-titleFont tracking-wide md:hidden'>{shortName}</span>
+              <span className='font-titleFont tracking-wide hidden md:inline'>{company}</span>
 
               {/* Active indicator dot */}
               {activeTab === id && (
