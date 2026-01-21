@@ -44,7 +44,7 @@ export const projects: Project[] = [
         "/assets/images/projects/fms/bookings.png"
       ]
     },
-    tags: ["Laravel 11", "FilamentPHP", "Livewire", "PostgreSQL", "Redis", "Stripe"],
+    tags: ["Laravel 11", "FilamentPHP", "Livewire", "PostgreSQL", "Redis", "Stripe", "Twilio"],
     liveDemoUrl: "https://fms.coderootz.com",
     sourceCodeUrl: null,
     category: "full-stack",
@@ -78,6 +78,10 @@ export const projects: Project[] = [
       {
         name: "Stripe",
         rationale: "Integrated via Laravel Cashier for secure payment processing, handling reservation payments and automated refunds."
+      },
+      {
+        name: "Twilio",
+        rationale: "Integrated for OTP-based verification and notifications."
       }
     ],
     challenges: [
@@ -239,8 +243,8 @@ export const projects: Project[] = [
     images: {
       hero: "/assets/images/projects/amt/hero.png",
       gallery: [
+        "/assets/images/projects/amt/dashboard.png",
         "/assets/images/projects/amt/assets-list.png",
-        "/assets/images/projects/amt/asset-detail.png",
         "/assets/images/projects/amt/scan.png",
         "/assets/images/projects/amt/superadmin.png"
       ]
