@@ -144,26 +144,7 @@ const Contact = () => {
           </div>
         </motion.div>
 
-        {/* Alternative Contact Info */}
-        <motion.div
-          variants={itemVariants}
-          className='mt-8 p-6 bg-[#112240] border border-[#233554] rounded-lg max-w-md'
-        >
-          <p className='text-center text-sm text-textDark'>
-            <span className='text-textGreen font-semibold'>Prefer a call?</span> Let&apos;s schedule a time
-            that works for both of us.
-          </p>
-          <div className='flex justify-center mt-4'>
-            <a
-              href='https://calendly.com/your-calendly-link'
-              target='_blank'
-              rel='noopener noreferrer'
-              className='text-sm text-textGreen hover:text-textLight transition-colors duration-300 underline'
-            >
-              Schedule a meeting →
-            </a>
-          </div>
-        </motion.div>
+
       </motion.div>
     </section>
   );

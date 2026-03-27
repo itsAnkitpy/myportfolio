@@ -55,7 +55,7 @@ const Banner = () => {
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.5, delay: 2.5 }}
                     className='text-textDark mt-2 lgl:mt-4'>
-                    Full-Stack Developer Building Scalable Web Solutions
+                    Full-Stack Developer specializing in Multi-Tenant SaaS | Laravel & Next.js
                 </motion.span>
             </motion.h1>
 
