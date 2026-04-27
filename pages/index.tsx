@@ -18,7 +18,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>its_ankit</title>
+        <title>Ankit Sharma</title>
         <meta name='viewport' content='width=device-width, initial-scale=1' />
       </Head>
       <main className='w-full h-screen font-bodyFont bg-bodyColor text-textLight overflow-x-hidden overflow-y-scroll
