@@ -25,7 +25,7 @@ const About = () => {
     },
     {
       category: 'Backend',
-      tools: ['Django', 'Laravel', 'Node.js', 'REST APIs', 'GraphQL']
+      tools: ['Laravel','Node.js','Django', 'REST APIs', 'GraphQL']
     },
     {
       category: 'Databases',
