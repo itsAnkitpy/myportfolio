@@ -1,10 +1,12 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { projects, Project } from '../../lib/data';
+import { SITE_URL } from '../../lib/site';
 import Image from 'next/image';
 import Link from 'next/link';
 import { TbBrandGithub } from 'react-icons/tb';
 import { RxOpenInNewWindow } from 'react-icons/rx';
-import { FiArrowLeft, FiCode, FiServer, FiDatabase, FiCalendar, FiUser, FiFolder, FiX, FiChevronLeft, FiChevronRight, FiMaximize2 } from 'react-icons/fi';
+import { FiArrowLeft, FiCalendar, FiUser, FiFolder, FiX, FiChevronLeft, FiChevronRight, FiMaximize2 } from 'react-icons/fi';
+import { getTechIcon } from '../../lib/getTechIcon';
 import { motion, AnimatePresence } from 'framer-motion';
 import Head from 'next/head';
 import { useState, useEffect } from 'react';
@@ -58,26 +60,6 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [lightboxOpen, lightboxIndex]);
 
-  // Helper function to get tech icon
-  const getTechIcon = (tag: string) => {
-    const tagLower = tag.toLowerCase();
-    if (tagLower.includes('react') || tagLower.includes('vue') || tagLower.includes('next')) {
-      return <FiCode />;
-    }
-    if (
-      tagLower.includes('node') ||
-      tagLower.includes('django') ||
-      tagLower.includes('laravel') ||
-      tagLower.includes('express')
-    ) {
-      return <FiServer />;
-    }
-    if (tagLower.includes('mongo') || tagLower.includes('sql') || tagLower.includes('postgres')) {
-      return <FiDatabase />;
-    }
-    return <FiCode />;
-  };
-
   // Get role label
   const getRoleLabel = () => {
     if (!project.role) return null;
@@ -128,6 +110,15 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
         <title>{project.title} - Ankit Sharma</title>
         <meta name='description' content={project.shortDescription} />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
+        <meta property='og:type' content='article' />
+        <meta property='og:url' content={`${SITE_URL}/projects/${project.slug}`} />
+        <meta property='og:title' content={`${project.title} - Ankit Sharma`} />
+        <meta property='og:description' content={project.shortDescription} />
+        <meta property='og:image' content={`${SITE_URL}${project.image}`} />
+        <meta name='twitter:card' content='summary_large_image' />
+        <meta name='twitter:title' content={`${project.title} - Ankit Sharma`} />
+        <meta name='twitter:description' content={project.shortDescription} />
+        <meta name='twitter:image' content={`${SITE_URL}${project.image}`} />
       </Head>
 
       <main className='w-full min-h-screen font-bodyFont bg-bodyColor text-textLight'>

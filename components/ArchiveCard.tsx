@@ -1,34 +1,14 @@
 import { FaRegFolder } from 'react-icons/fa';
 import { RxOpenInNewWindow } from 'react-icons/rx';
 import { TbBrandGithub } from 'react-icons/tb';
-import { FiCode, FiServer, FiDatabase } from 'react-icons/fi';
 import { Project } from '../lib/data';
+import { getTechIcon } from '../lib/getTechIcon';
 
 interface Props {
   project: Project;
 }
 
 const ArchiveCard = ({ project }: Props) => {
-  // Helper function to get tech icon
-  const getTechIcon = (tag: string) => {
-    const tagLower = tag.toLowerCase();
-    if (tagLower.includes('react') || tagLower.includes('vue') || tagLower.includes('next')) {
-      return <FiCode />;
-    }
-    if (
-      tagLower.includes('node') ||
-      tagLower.includes('django') ||
-      tagLower.includes('laravel') ||
-      tagLower.includes('express')
-    ) {
-      return <FiServer />;
-    }
-    if (tagLower.includes('mongo') || tagLower.includes('sql') || tagLower.includes('postgres')) {
-      return <FiDatabase />;
-    }
-    return <FiCode />;
-  };
-
   // Get status badge styling
   const getStatusBadge = () => {
     if (project.liveDemoUrl) {

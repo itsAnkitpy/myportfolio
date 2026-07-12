@@ -1,6 +1,4 @@
-import { logo } from '@/public/assets';
 import { useRef, useState } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { MdOutlineClose } from "react-icons/md"
@@ -42,7 +40,6 @@ const Navbar = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
         >
-          {/* <Image className="w-14" src={logo} alt='logo' /> */}
         </motion.div>
         <div className='hidden mdl:inline-flex items-center gap-7'>
           <ul className='flex text-[13px] gap-7'>
@@ -140,17 +137,17 @@ const Navbar = () => {
         </div>
 
         {/* Small Icon section */}
-        <div onClick={() => setShowMenu(true)}
+        <button type='button' onClick={() => setShowMenu(true)} aria-label='Open menu'
           className='w-6 h-5 flex flex-col justify-between items-center mdl:hidden text-4xl text-textGreen
         cursor-pointer overflow-hidden group'>
           <span className='w-full h-[2px] bg-textGreen inline-flex transform group-hover:translate-x-2 transition-all
             ease-in-out duration-300'></span>
           <span className='w-full h-[2px] bg-textGreen inline-flex transform translate-x-3 group-hover:translate-x-0 transition-all
             ease-in-out duration-300'></span>
-          <span className='w-full h-[2px] bg-textGreen inline-flex transform  translate-x-1 group-hover:translate-x-3 
+          <span className='w-full h-[2px] bg-textGreen inline-flex transform  translate-x-1 group-hover:translate-x-3
             transition-all ease-in-out duration-300'></span>
 
-        </div>
+        </button>
         {
           // onClick={handleClick}
           showMenu && (
@@ -164,9 +161,10 @@ const Navbar = () => {
                 transition={{ duration: 0.1 }}
                 className='w-[80%] h-full overflow-y-scroll scrollbarHide bg-[#112240] flex flex-col items-center px-4
               py-10 relative'>
-                <MdOutlineClose onClick={() => setShowMenu(false)}
-                  className="text-3xl text-textGreen cursor-pointer hover:text-red-500 absolute top-4
-                right-4"/>
+                <button type='button' onClick={() => setShowMenu(false)} aria-label='Close menu'
+                  className='absolute top-4 right-4'>
+                  <MdOutlineClose className="text-3xl text-textGreen cursor-pointer hover:text-red-500"/>
+                </button>
                 {/* Smaller device Navbar */}
                 <div className='flex flex-col items-center gap-7'>
 
@@ -292,7 +290,7 @@ const Navbar = () => {
                       ease: "easeIn",
                     }}
                     href="https://github.com/itsAnkitpy" target="_blank">
-                    <span className="w-10 h-10 text-xl bg-bodyColor border=[1px] border-zinc-700 hover:border-textGreen
+                    <span className="w-10 h-10 text-xl bg-bodyColor border-[1px] border-zinc-700 hover:border-textGreen
                       text-zinc-200 rounded-full inline-flex items-center justify-center
                        hover:text-textGreen cursor-pointer hover:-translate-y-2 transition-all duration-300">
                         <TbBrandGithub />
@@ -306,7 +304,7 @@ const Navbar = () => {
                       delay: 1,
                       ease: "easeIn",
                     }}href="https://www.linkedin.com/in/its-ankit-sharma/" target="_blank">
-                      <span className="w-10 h-10 text-xl bg-bodyColor border=[1px] border-zinc-700 hover:border-textGreen
+                      <span className="w-10 h-10 text-xl bg-bodyColor border-[1px] border-zinc-700 hover:border-textGreen
                       text-zinc-200 rounded-full inline-flex items-center justify-center
                        hover:text-textGreen cursor-pointer hover:-translate-y-2 transition-all duration-300">
                         <SlSocialLinkedin />

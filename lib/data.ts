@@ -34,9 +34,9 @@ export const projects: Project[] = [
     slug: "facility-management-system",
     title: "Facility Management System (FMS)",
     shortDescription: "A multi-tenant web application for residential housing complexes that digitizes amenity reservations, service request tracking, resident registration, and communication workflows with a device-restricted kiosk interface.",
-    image: "/assets/images/projects/fms/hero.png",
+    image: "/assets/images/projects/fms/hero.jpg",
     images: {
-      hero: "/assets/images/projects/fms/hero.png",
+      hero: "/assets/images/projects/fms/hero.jpg",
       gallery: [
         "/assets/images/projects/fms/admin-panel.png",
         "/assets/images/projects/fms/kiosk-interface.png",
@@ -108,9 +108,9 @@ export const projects: Project[] = [
     slug: "hp-bar-council",
     title: "HP Bar Council Digital Enrollment System",
     shortDescription: "A comprehensive web platform that digitizes the entire lawyer enrollment process for Himachal Pradesh Bar Council, from student registration to official lawyer certification.",
-    image: "/assets/images/projects/hp-bar-council/hero.png",
+    image: "/assets/images/projects/hp-bar-council/hero.jpg",
     images: {
-      hero: "/assets/images/projects/hp-bar-council/hero.png",
+      hero: "/assets/images/projects/hp-bar-council/hero.jpg",
       gallery: [
         "/assets/images/projects/hp-bar-council/application-portal.png",
         "/assets/images/projects/hp-bar-council/approval-workflow.png",

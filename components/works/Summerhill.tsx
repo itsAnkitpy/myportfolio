@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { TiArrowForward } from 'react-icons/ti';
 import { FiPackage, FiLayers, FiZap } from 'react-icons/fi';
 
-const Holisol = () => {
+const Summerhill = () => {
   const highlights = [
     { icon: <FiPackage />, label: 'Projects', value: '7 Applications' },
     { icon: <FiLayers />, label: 'Focus', value: 'Multi-Tenant SaaS' },
@@ -90,5 +90,5 @@ const Holisol = () => {
   );
 };
 
-export default Holisol;
+export default Summerhill;
 

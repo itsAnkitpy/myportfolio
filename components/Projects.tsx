@@ -6,29 +6,9 @@ import { TbBrandGithub } from 'react-icons/tb';
 import { RxOpenInNewWindow } from 'react-icons/rx';
 import { HiArrowNarrowRight } from 'react-icons/hi';
 import { motion } from 'framer-motion';
-import { FiCode, FiServer, FiDatabase } from 'react-icons/fi';
+import { getTechIcon } from '../lib/getTechIcon';
 
 const Projects = () => {
-  // Helper function to get tech icon
-  const getTechIcon = (tag: string) => {
-    const tagLower = tag.toLowerCase();
-    if (tagLower.includes('react') || tagLower.includes('vue') || tagLower.includes('next')) {
-      return <FiCode />;
-    }
-    if (
-      tagLower.includes('node') ||
-      tagLower.includes('django') ||
-      tagLower.includes('laravel') ||
-      tagLower.includes('express')
-    ) {
-      return <FiServer />;
-    }
-    if (tagLower.includes('mongo') || tagLower.includes('sql') || tagLower.includes('postgres')) {
-      return <FiDatabase />;
-    }
-    return <FiCode />;
-  };
-
   // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },

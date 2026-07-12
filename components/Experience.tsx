@@ -1,21 +1,21 @@
 import React, { useState } from 'react';
 import SectionTitle from './SectionTitle';
-import Holisol from './works/Holisol';
+import Summerhill from './works/Summerhill';
 import Himtech from './works/Himtech';
 import Freelancer from './works/Freelancer';
 import { HiOfficeBuilding } from 'react-icons/hi';
 import { MdWork } from 'react-icons/md';
 
 const Experience = () => {
-  const [activeTab, setActiveTab] = useState('holisol');
+  const [activeTab, setActiveTab] = useState('summerhill');
 
   const experiences = [
     {
-      id: 'holisol',
+      id: 'summerhill',
       company: 'SummerHill Technologies',
       shortName: 'SummerHill',
       icon: <HiOfficeBuilding />,
-      component: <Holisol />
+      component: <Summerhill />
     },
     {
       id: 'freelancer',
