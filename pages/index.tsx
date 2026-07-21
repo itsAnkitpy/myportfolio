@@ -23,6 +23,7 @@ export default function Home() {
         <title>{pageTitle}</title>
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <meta name='description' content={pageDescription} />
+        <link rel='canonical' href={SITE_URL} />
         <meta property='og:type' content='website' />
         <meta property='og:url' content={SITE_URL} />
         <meta property='og:title' content={pageTitle} />

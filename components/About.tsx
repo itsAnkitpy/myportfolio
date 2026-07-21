@@ -12,7 +12,7 @@ const About = () => {
   ];
 
   const metrics = [
-    { value: '2+', shortLabel: 'Years Exp', fullLabel: 'Years Experience' },
+    { value: '4+', shortLabel: 'Years Exp', fullLabel: 'Years Experience' },
     { value: '8+', shortLabel: 'Apps Shipped', fullLabel: 'Production Apps' },
     { value: '3', shortLabel: 'Multi-Tenant', fullLabel: 'Multi-Tenant Architectures' },
     { value: '2', shortLabel: 'Tech Stacks', fullLabel: 'Tech Stacks (Laravel & Next.js)' }

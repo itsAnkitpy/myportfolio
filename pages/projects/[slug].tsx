@@ -110,6 +110,7 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
         <title>{project.title} - Ankit Sharma</title>
         <meta name='description' content={project.shortDescription} />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
+        <link rel='canonical' href={`${SITE_URL}/projects/${project.slug}`} />
         <meta property='og:type' content='article' />
         <meta property='og:url' content={`${SITE_URL}/projects/${project.slug}`} />
         <meta property='og:title' content={`${project.title} - Ankit Sharma`} />

@@ -31,8 +31,8 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: 1,
-    slug: "facility-management-system",
-    title: "Facility Management System (FMS)",
+    slug: "linkabode",
+    title: "LinkAbode",
     shortDescription: "A multi-tenant web application for residential housing complexes that digitizes amenity reservations, service request tracking, resident registration, and communication workflows with a device-restricted kiosk interface.",
     image: "/assets/images/projects/fms/hero.jpg",
     images: {
@@ -51,7 +51,7 @@ export const projects: Project[] = [
     role: "solo",
     year: 2024,
     status: "live",
-    longDescription: `The Facility Management System (FMS) is a web-based, multi-tenant application designed for residential housing complexes and property management companies. It digitizes and automates common facility management tasks including amenity reservations, service request tracking, resident registration, and communication workflows. The system serves three primary user groups: residents/tenants (via kiosk interface), property managers/admins (via admin panel), and super admins (for multi-client oversight). Built as a "Majestic Monolith" - a single, unified Laravel application that handles all three layers within one codebase.`,
+    longDescription: `LinkAbode is a web-based, multi-tenant application designed for residential housing complexes and property management companies. It digitizes and automates common facility management tasks including amenity reservations, service request tracking, resident registration, and communication workflows. The system serves three primary user groups: residents/tenants (via kiosk interface), property managers/admins (via admin panel), and super admins (for multi-client oversight). Built as a "Majestic Monolith" - a single, unified Laravel application that handles all three layers within one codebase.`,
     problemStatement: `Traditional facility management relies on manual processes, email-based communication, and paper-based documentation. This approach leads to inefficient booking and reservation management, lack of traceability for service requests and issues, manual SLA tracking and escalation processes, fragmented communication channels, time-consuming document verification workflows, and difficulty in managing multiple properties and clients.`,
     solution: `I architected a "Majestic Monolith" - a single, unified Laravel application that handles all three layers (backend API, admin panel, and kiosk interface) within one codebase. This approach eliminates microservices complexity while leveraging powerful Laravel packages to reduce custom development by 60-70%. The solution includes multi-tenant architecture with schema-per-tenant isolation, device-restricted kiosk interface with cookie-based authentication, QR code-based media upload system for secure document handling, automated SLA tracking and escalation with scheduled job monitoring, integrated Stripe payment processing for reservations and refunds, OTP-based verification for secure user authentication, and real-time updates using WebSocket technology.`,
     techStack: [

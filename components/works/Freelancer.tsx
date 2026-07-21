@@ -35,9 +35,10 @@ const Freelancer = () => {
           Freelance Projects
           <span className='text-textGreen tracking-wide'>@Independent</span>
         </h3>
-        <p className='text-sm font-medium text-textDark'>
-          Project-based client work
-        </p>
+        <div className='flex items-center gap-2'>
+          <p className='text-sm font-medium text-textDark'>2021 - 2024</p>
+          <span className='text-xs text-textDark'>• Shimla • Project-based client work</span>
+        </div>
       </div>
 
       <ul className='mt-6 flex flex-col gap-6'>
