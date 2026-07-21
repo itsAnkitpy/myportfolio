@@ -34,12 +34,14 @@ const ArchiveCard = ({ project }: Props) => {
     const roleColors = {
       solo: 'bg-purple-500/10 text-purple-400 border-purple-500/30',
       team: 'bg-blue-500/10 text-blue-400 border-blue-500/30',
-      freelance: 'bg-yellow-500/10 text-yellow-400 border-yellow-500/30'
+      freelance: 'bg-yellow-500/10 text-yellow-400 border-yellow-500/30',
+      product: 'bg-textGreen/10 text-textGreen border-textGreen/30'
     };
     const roleLabels = {
       solo: 'Solo',
       team: 'Team',
-      freelance: 'Freelance'
+      freelance: 'Freelance',
+      product: 'Product'
     };
     return (
       <span

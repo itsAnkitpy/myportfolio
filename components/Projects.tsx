@@ -9,6 +9,9 @@ import { motion } from 'framer-motion';
 import { getTechIcon } from '../lib/getTechIcon';
 
 const Projects = () => {
+  const featuredProjects = projects.filter((project) => project.featured);
+  const otherProjects = projects.filter((project) => !project.featured);
+
   // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -43,7 +46,7 @@ const Projects = () => {
         whileInView='visible'
         viewport={{ once: true, margin: '-100px' }}
       >
-        {projects.map((project, index) => (
+        {featuredProjects.map((project, index) => (
           <motion.div
             key={project.id}
             variants={itemVariants}
@@ -172,6 +175,50 @@ const Projects = () => {
           </motion.div>
         ))}
       </motion.div>
+
+      {/* Other Projects — compact list */}
+      {otherProjects.length > 0 && (
+        <motion.div
+          className='w-full mt-24'
+          variants={containerVariants}
+          initial='hidden'
+          whileInView='visible'
+          viewport={{ once: true, margin: '-100px' }}
+        >
+          <h3 className='font-titleFont text-xl md:text-2xl font-bold text-textLight text-center'>
+            Other things I have built
+          </h3>
+
+          <div className='grid grid-cols-1 md:grid-cols-2 lgl:grid-cols-3 gap-6 mt-10'>
+            {otherProjects.map((project) => (
+              <motion.div key={project.id} variants={itemVariants}>
+                <Link href={`/projects/${project.slug}`}>
+                  <div className='h-full flex flex-col gap-4 p-6 bg-[#112240] border border-[#233554] rounded-lg shadow-lg shadow-[#0a192f]/30 hover:border-textGreen/50 hover:-translate-y-1 transition-all duration-300 cursor-pointer'>
+                    <h4 className='text-lg font-bold text-textLight hover:text-textGreen transition-colors duration-300'>
+                      {project.title}
+                    </h4>
+
+                    <p className='text-sm text-textDark leading-relaxed line-clamp-3'>
+                      {project.shortDescription}
+                    </p>
+
+                    <div className='flex flex-wrap gap-2 mt-auto pt-2'>
+                      {project.tags.slice(0, 4).map((tag, tagIndex) => (
+                        <span
+                          key={tagIndex}
+                          className='text-xs font-medium text-textGreen/80'
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      )}
     </section>
   );
 };

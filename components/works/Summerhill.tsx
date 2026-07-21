@@ -50,9 +50,8 @@ const Summerhill = () => {
           </span>
           <span>
             Building production multi-tenant systems including{' '}
-            <span className='text-textLight'>LinkAbode</span> (schema-per-tenant),{' '}
-            <span className='text-textLight'>LeadCheck</span> (database-per-tenant), and{' '}
-            <span className='text-textLight'>AMT</span> (row-level isolation) using Laravel and Next.js ecosystems.
+            <span className='text-textLight'>LinkAbode</span> (schema-per-tenant) and{' '}
+            <span className='text-textLight'>LeadCheck</span> (database-per-tenant) using Laravel and Next.js ecosystems.
           </span>
         </li>
 

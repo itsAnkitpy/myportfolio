@@ -22,17 +22,102 @@ export interface Project {
   solution: string;
   techStack: { name: string; rationale: string; }[];
   challenges: { challenge: string; solution: string; }[];
+  featured?: boolean; // Full-width slot on the homepage; the rest render as a compact list
   category?: 'full-stack' | 'frontend' | 'backend' | 'learning';
-  role?: 'solo' | 'team' | 'freelance';
+  role?: 'solo' | 'team' | 'freelance' | 'product';
   year?: number;
   status?: 'live' | 'archived' | 'open-source';
 }
 
 export const projects: Project[] = [
   {
+    id: 4,
+    slug: "assetlane",
+    title: "AssetLane",
+    featured: true,
+    shortDescription: "My own SaaS product, live at assetlanehq.com — multi-tenant asset tracking with QR code lookup, recurring maintenance scheduling, warranty alerts, role-based team access, CSV import, and a complete audit trail, on web and Android. Designed, built, deployed, and taken to market solo.",
+    image: "/assets/images/projects/amt/hero.png",
+    images: {
+      hero: "/assets/images/projects/amt/hero.png",
+      gallery: [
+        "/assets/images/projects/amt/dashboard.png",
+        "/assets/images/projects/amt/assets-list.png",
+        "/assets/images/projects/amt/scan.png",
+        "/assets/images/projects/amt/superadmin.png"
+      ]
+    },
+    tags: ["Next.js 16", "React 19", "TypeScript", "PostgreSQL", "Prisma", "TailwindCSS 4", "React Native", "Expo"],
+    liveDemoUrl: "https://assetlanehq.com/",
+    sourceCodeUrl: null,
+    category: "full-stack",
+    role: "product",
+    year: 2025,
+    status: "live",
+    longDescription: `AssetLane is my own SaaS product, launched independently at assetlanehq.com and currently open for early access. It helps organizations track, manage, and audit their physical assets—from laptops and monitors to office equipment and machinery. Companies maintain a centralized inventory, assign assets to employees with a full activity history, define custom asset categories with flexible field schemas, schedule recurring maintenance with due-soon and overdue alerts, track warranty expiry, control access by role, and migrate off spreadsheets through CSV import. Assets carry printable QR labels that resolve in any phone browser, with no app required. A companion Android app, built with React Native and Expo against that same hosted API, adds camera-based scanning and a fuller asset detail view on the phone—condition, location, warranty dates, custom fields, and maintenance summary. It is built and not yet published to the Play Store. I own every layer of it: product design, backend, frontend, mobile, infrastructure, and the go-to-market work now underway.`,
+    problemStatement: `Organizations of all sizes struggle with asset management. Many companies track assets in Excel files that become outdated and impossible to audit. Without proper assignment tracking, assets get lost and no one knows who had them last. Generic tools don't accommodate different asset types, and there's no audit trail when something goes wrong.`,
+    solution: `I built a flexible, multi-tenant asset management system with row-level tenant isolation, a dynamic field schema system where each category defines its own custom fields, a complete audit trail that survives user deletion, bulk operations for CSV import/export, recurring maintenance schedules that surface due-soon and overdue work, warranty expiry alerts, role-based access for admins, managers, and users, and QR code integration for quick asset lookup. The storage layer uses a provider pattern supporting both local filesystem and Vercel Blob. Choosing row-level isolation here was deliberate: it is the simplest model that meets the requirement, and for a product I intend to sell to small and mid-sized teams it keeps operational overhead low without giving up separation between tenants.`,
+    techStack: [
+      {
+        name: "Next.js 16",
+        rationale: "Full-stack React framework with App Router, Server Components, and Server Actions for simpler data fetching and reduced client bundle size."
+      },
+      {
+        name: "React 19",
+        rationale: "Latest React with Server Components paradigm for rendering data-fetching components on the server."
+      },
+      {
+        name: "TypeScript",
+        rationale: "Type-safe development from database to UI, ensuring reliability across the full stack."
+      },
+      {
+        name: "PostgreSQL",
+        rationale: "Relational database with JSON column support for flexible custom field schemas while maintaining query performance."
+      },
+      {
+        name: "Prisma",
+        rationale: "Type-safe ORM with excellent migrations and Prisma Studio for database management."
+      },
+      {
+        name: "Clerk",
+        rationale: "Managed authentication service with webhook support for user syncing."
+      },
+      {
+        name: "TailwindCSS 4",
+        rationale: "Utility-first CSS framework with shadcn/ui components for rapid, accessible UI development."
+      },
+      {
+        name: "React Native + Expo",
+        rationale: "Companion Android app built as a thin client against the same hosted API, so web and mobile share one backend and one source of truth. Expo's build service produces an installable Android package without maintaining a native toolchain."
+      },
+      {
+        name: "Expo Camera + TanStack Query",
+        rationale: "Camera-based QR scanning on the phone, with cached, request-deduplicated data fetching so scan results stay fast and consistent with the web app."
+      }
+    ],
+    challenges: [
+      {
+        challenge: "Next.js 16 App Router Patterns",
+        solution: "Established clear patterns: Server Components for data fetching, Client Components only for interactivity, Server Actions for mutations. RSC dramatically simplifies data fetching and reduces client bundle size."
+      },
+      {
+        challenge: "Multi-Tenancy Without Leaks",
+        solution: "Every database query includes tenantId filter with authorization check before every operation. Defense in depth at middleware, page, and query level."
+      },
+      {
+        challenge: "Dynamic Custom Fields",
+        solution: "Store field schema as JSON in AssetCategory, field values as JSON in Asset, with dynamic form components that render based on schema and validate on import."
+      },
+      {
+        challenge: "Audit Trail That Survives",
+        solution: "Store userId as plain string (no FK) and performedBy name in JSON details field, so history remains readable even after user deletion."
+      }
+    ]
+  },
+  {
     id: 1,
     slug: "linkabode",
     title: "LinkAbode",
+    featured: true,
     shortDescription: "A multi-tenant web application for residential housing complexes that digitizes amenity reservations, service request tracking, resident registration, and communication workflows with a device-restricted kiosk interface.",
     image: "/assets/images/projects/fms/hero.jpg",
     images: {
@@ -107,6 +192,7 @@ export const projects: Project[] = [
     id: 2,
     slug: "hp-bar-council",
     title: "HP Bar Council Digital Enrollment System",
+    featured: true,
     shortDescription: "A comprehensive web platform that digitizes the entire lawyer enrollment process for Himachal Pradesh Bar Council, from student registration to official lawyer certification.",
     image: "/assets/images/projects/hp-bar-council/hero.jpg",
     images: {
@@ -172,6 +258,7 @@ export const projects: Project[] = [
     id: 3,
     slug: "holistart",
     title: "Holistart Workforce Onboarding Platform",
+    featured: true,
     shortDescription: "An enterprise workforce platform that automates manpower requisitions, onboarding workflows, and asset provisioning with rule-based approvals.",
     image: "/assets/images/projects/holistart/hero.png",
     images: {
@@ -235,83 +322,10 @@ export const projects: Project[] = [
     ]
   },
   {
-    id: 4,
-    slug: "amt-saas",
-    title: "Asset Management Tool",
-    shortDescription: "A multi-tenant SaaS application for organizations to track, manage, and audit physical assets with QR codes, CSV import/export, custom field schemas, and complete audit trails.",
-    image: "/assets/images/projects/amt/hero.png",
-    images: {
-      hero: "/assets/images/projects/amt/hero.png",
-      gallery: [
-        "/assets/images/projects/amt/dashboard.png",
-        "/assets/images/projects/amt/assets-list.png",
-        "/assets/images/projects/amt/scan.png",
-        "/assets/images/projects/amt/superadmin.png"
-      ]
-    },
-    tags: ["Next.js 16", "React 19", "TypeScript", "PostgreSQL", "Prisma", "TailwindCSS 4"],
-    liveDemoUrl: "https://amt-saas.vercel.app/",
-    sourceCodeUrl: null,
-    category: "full-stack",
-    role: "solo",
-    year: 2025,
-    status: "live",
-    longDescription: `AMT SaaS (Asset Management Tool) is a multi-tenant SaaS application designed to help organizations track, manage, and audit their physical assets—from laptops and monitors to office equipment and machinery. The application enables companies to maintain a centralized inventory, track asset assignments to employees, define custom asset categories with flexible field schemas, generate QR codes for quick lookup, and import/export data via CSV.`,
-    problemStatement: `Organizations of all sizes struggle with asset management. Many companies track assets in Excel files that become outdated and impossible to audit. Without proper assignment tracking, assets get lost and no one knows who had them last. Generic tools don't accommodate different asset types, and there's no audit trail when something goes wrong.`,
-    solution: `I built a flexible, multi-tenant asset management system with row-level tenant isolation, a dynamic field schema system where each category defines its own custom fields, a complete audit trail that survives user deletion, bulk operations for CSV import/export, and QR code integration for quick asset lookup. The storage layer uses a provider pattern supporting both local filesystem and Vercel Blob.`,
-    techStack: [
-      {
-        name: "Next.js 16",
-        rationale: "Full-stack React framework with App Router, Server Components, and Server Actions for simpler data fetching and reduced client bundle size."
-      },
-      {
-        name: "React 19",
-        rationale: "Latest React with Server Components paradigm for rendering data-fetching components on the server."
-      },
-      {
-        name: "TypeScript",
-        rationale: "Type-safe development from database to UI, ensuring reliability across the full stack."
-      },
-      {
-        name: "PostgreSQL",
-        rationale: "Relational database with JSON column support for flexible custom field schemas while maintaining query performance."
-      },
-      {
-        name: "Prisma",
-        rationale: "Type-safe ORM with excellent migrations and Prisma Studio for database management."
-      },
-      {
-        name: "Clerk",
-        rationale: "Managed authentication service with webhook support for user syncing."
-      },
-      {
-        name: "TailwindCSS 4",
-        rationale: "Utility-first CSS framework with shadcn/ui components for rapid, accessible UI development."
-      }
-    ],
-    challenges: [
-      {
-        challenge: "Next.js 16 App Router Patterns",
-        solution: "Established clear patterns: Server Components for data fetching, Client Components only for interactivity, Server Actions for mutations. RSC dramatically simplifies data fetching and reduces client bundle size."
-      },
-      {
-        challenge: "Multi-Tenancy Without Leaks",
-        solution: "Every database query includes tenantId filter with authorization check before every operation. Defense in depth at middleware, page, and query level."
-      },
-      {
-        challenge: "Dynamic Custom Fields",
-        solution: "Store field schema as JSON in AssetCategory, field values as JSON in Asset, with dynamic form components that render based on schema and validate on import."
-      },
-      {
-        challenge: "Audit Trail That Survives",
-        solution: "Store userId as plain string (no FK) and performedBy name in JSON details field, so history remains readable even after user deletion."
-      }
-    ]
-  },
-  {
     id: 5,
     slug: "leadcheck",
     title: "LeadCheck - Multi-Tenant Lead Management System",
+    featured: true,
     shortDescription: "A comprehensive multi-tenant lead management application with database-per-tenant architecture, enabling organizations to efficiently manage leads with complete data isolation and client-specific customization.",
     image: "/assets/images/projects/leadcheck/hero.png",
     images: {
@@ -377,6 +391,7 @@ export const projects: Project[] = [
     id: 6,
     slug: "project-management-system",
     title: "Project/Employee Management System",
+    featured: false,
     shortDescription: "A comprehensive management system for tracking project growth, tasks, and team members with employee management features.",
     image: "/assets/images/projects/project-management-system/hero.png",
     images: {
@@ -439,6 +454,7 @@ export const projects: Project[] = [
     id: 7,
     slug: "git-commit-dating-app",
     title: "Git Commit - Dating App for Programmers",
+    featured: false,
     shortDescription: "An experimental dating application designed specifically for programmers with swiping functionality and messaging features.",
     image: "/assets/images/gitcommitImg.png",
     tags: ["Django", "Python", "Javascript", "Bootstrap"],
@@ -488,6 +504,7 @@ export const projects: Project[] = [
     id: 8,
     slug: "ecommerce-website",
     title: "Ecommerce Website",
+    featured: false,
     shortDescription: "A full-featured ecommerce platform with product catalog, shopping cart, and secure payment processing functionality.",
     image: "/assets/images/ecommImg.png",
     tags: ["Django", "Python", "Javascript", "Bootstrap"],
@@ -538,6 +555,32 @@ export const projects: Project[] = [
 
 // Archive projects (smaller projects for the archive section)
 export const archiveProjects: Project[] = [
+  {
+    id: 15,
+    slug: "ben10-omnitrix",
+    title: "Ben 10 — Omnitrix Tribute",
+    shortDescription: "An interactive tribute to the show I grew up on: a working Omnitrix interface that cycles through all ten alien forms, with narration, sound design, and a transmission-styled UI. Built for the fun of it over a few evenings.",
+    image: "/assets/images/profileImg.png", // placeholder
+    tags: ["Next.js", "React", "TypeScript", "TailwindCSS"],
+    sourceCodeUrl: null,
+    liveDemoUrl: "https://ben10-ashen.vercel.app/",
+    category: "frontend",
+    role: "solo",
+    year: 2026,
+    status: "live",
+    longDescription: "An interactive Ben 10 tribute built around the Omnitrix. Visitors cycle through ten alien forms, each with its powers and debut details, inside an interface styled as an incoming transmission — with toggleable narration and sound.",
+    problemStatement: "A deliberate break from client work: something with no requirements document, no stakeholders, and no deadline, purely to play with motion, sound, and interface feel.",
+    solution: "Built a rotating carousel driven by component state, layered in toggleable audio narration and effects, and pushed on atmosphere — timed reveals, transmission framing, and optimised WebP artwork to keep it fast.",
+    techStack: [
+      { name: "Next.js", rationale: "Familiar framework with image optimisation built in, so the artwork stays sharp without hurting load time" },
+      { name: "TypeScript", rationale: "Kept the alien data and carousel state honest as the number of forms grew" },
+      { name: "TailwindCSS", rationale: "Fast iteration on an interface that was designed by feel rather than to a spec" }
+    ],
+    challenges: [
+      { challenge: "Atmosphere without weight", solution: "Optimised every alien image to WebP and lazy-loaded the gallery so the mood pieces did not cost load time" },
+      { challenge: "Sound that does not annoy", solution: "Made narration and effects independently toggleable, defaulting to off so nobody gets ambushed by audio" }
+    ]
+  },
   {
     id: 9,
     slug: "instello",

@@ -66,7 +66,8 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
     const roleLabels = {
       solo: 'Solo Project',
       team: 'Team Project',
-      freelance: 'Freelance Work'
+      freelance: 'Freelance Work',
+      product: 'Independent Product'
     };
     return roleLabels[project.role];
   };
