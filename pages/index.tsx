@@ -16,6 +16,36 @@ const pageTitle = 'Ankit Sharma — Full-Stack Developer';
 const pageDescription =
   'Full-stack developer building multi-tenant SaaS platforms and enterprise applications with Laravel and Next.js — production systems from concept to deployment.';
 
+// Machine-readable identity block. Invisible to visitors; lets search engines
+// show name, role and links properly when someone searches for Ankit by name.
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Ankit Sharma',
+  url: SITE_URL,
+  jobTitle: 'Full-Stack Developer',
+  description: pageDescription,
+  worksFor: {
+    '@type': 'Organization',
+    name: 'SummerHill Technologies',
+  },
+  sameAs: [
+    'https://github.com/itsAnkitpy',
+    'https://www.linkedin.com/in/its-ankit-sharma/',
+    'https://x.com/hi_itsAnkit',
+  ],
+  knowsAbout: [
+    'Laravel',
+    'Next.js',
+    'TypeScript',
+    'PHP',
+    'React',
+    'PostgreSQL',
+    'MySQL',
+    'Multi-tenant SaaS architecture',
+  ],
+};
+
 export default function Home() {
   return (
     <>
@@ -35,6 +65,10 @@ export default function Home() {
         <meta name='twitter:title' content={pageTitle} />
         <meta name='twitter:description' content={pageDescription} />
         <meta name='twitter:image' content={`${SITE_URL}/og-image.png`} />
+        <script
+          type='application/ld+json'
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+        />
       </Head>
       <main className='w-full h-screen font-bodyFont bg-bodyColor text-textLight overflow-x-hidden overflow-y-scroll
       scrollbar scrollbar-track-textDark/20 scrollbar-thumb-textDark/60'>

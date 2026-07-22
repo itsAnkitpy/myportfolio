@@ -1,0 +1,5 @@
+# Keep the sitemap address in sync with SITE_URL in lib/site.ts
+User-agent: *
+Allow: /
+
+Sitemap: https://itsankit.dev/sitemap.xml

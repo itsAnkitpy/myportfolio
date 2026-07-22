@@ -193,7 +193,7 @@ export const projects: Project[] = [
     slug: "hp-bar-council",
     title: "HP Bar Council Digital Enrollment System",
     featured: true,
-    shortDescription: "A comprehensive web platform that digitizes the entire lawyer enrollment process for Himachal Pradesh Bar Council, from student registration to official lawyer certification.",
+    shortDescription: "Digitized statutory advocate enrollment for a state Bar Council — multi-stage committee approvals, document verification, and online fee payment. I owned it end to end: built it solo, presented on-site to the council, wrote the user documentation, and recorded onboarding videos for non-technical staff and applicants. In production since 2024.",
     image: "/assets/images/projects/hp-bar-council/hero.jpg",
     images: {
       hero: "/assets/images/projects/hp-bar-council/hero.jpg",
@@ -214,9 +214,15 @@ export const projects: Project[] = [
     role: "solo",
     year: 2024,
     status: "live",
-    longDescription: `A modern, end-to-end digital enrollment system that transforms the traditionally manual, paper-based lawyer registration process into a streamlined digital workflow. The platform manages everything from student registration and document submission to multi-stage approvals, HIM number assignment, and seamless role transitions, significantly improving transparency, speed, and reliability for the HP Bar Council.`,
+    longDescription: `A digital enrollment system for the Himachal Pradesh Bar Council that replaced a paper-based statutory process — the route every advocate in the state takes to become licensed to practise. Applicants register, complete the official enrollment forms, upload their education and practice documents, and pay their fees online. Inside the council, applications move through a real institutional review chain — Superintendent, then Secretary, then committee members — with recorded decisions and written reasons for rejection. On approval the system issues a HIM number and moves the applicant through their actual legal statuses, from Student to Provisional Lawyer to Official Lawyer.
+
+What made this engagement different from a normal build is how much of it was not code. This is a government body whose staff and applicants were not going to adopt a system because it was well engineered. I presented it on-site to the council, wrote the user documentation for non-technical readers, and recorded onboarding videos covering each step of the process. The engagement closed successfully and the system has been in production since 2024, in maintenance rather than rescue.`,
     problemStatement: `The existing manual, paper-based enrollment process at HP Bar Council resulted in lengthy processing times, lack of transparency for applicants, risk of document loss, heavy administrative burden, inconsistent communication, and manual fee reconciliation. Applicants had no way to track their applications, and the manual workflow was labor-intensive and error-prone.`,
-    solution: `I developed a comprehensive digital platform with a user-friendly application portal, automated multi-stage approval workflow with role-based routing, automatic HIM number generation system, dynamic role management transitioning users from Student to Provisional Lawyer to Official Lawyer, integrated Billdesk payment gateway, automated email notifications at every stage, centralized S3-based document management with previewer, and a powerful admin dashboard for application tracking and management.`,
+    solution: `I built the platform solo: an application portal for advocates, an automated multi-stage approval workflow that routes each application through Superintendent, Secretary, and committee review with recorded decisions and written rejection reasons, automatic HIM number assignment, role transitions from Student to Provisional Lawyer to Official Lawyer, integrated Billdesk payment for enrollment fees, automated email at every status change, document storage on S3 with an in-browser previewer for reviewers, server-side PDF generation of official forms for the council's records, and an admin dashboard for tracking and search.
+
+The data model deliberately mirrors the council's real paperwork. Rather than a generic document store, each statutory form and credential has its own model and table, matching the physical forms one-to-one. That made verification against the actual legal requirements straightforward, and it meant the council's staff recognised what they were looking at instead of having to learn a new abstraction.
+
+I then owned the delivery: on-site presentations to the council, user documentation written for non-technical readers, and recorded onboarding videos for both applicants and council staff.`,
     techStack: [
       {
         name: "Laravel",
@@ -237,9 +243,17 @@ export const projects: Project[] = [
       {
         name: "Billdesk",
         rationale: "Enabled secure online payment processing with webhook support for real-time payment status updates and automated reconciliation."
+      },
+      {
+        name: "DomPDF",
+        rationale: "Generated the council's official forms and certificates server-side from submitted data, so the digital process still produced the paper records a statutory body has to keep."
       }
     ],
     challenges: [
+      {
+        challenge: "Digitizing a Statutory Process Without Breaking It",
+        solution: "Advocate enrollment is governed by legal requirements, so the system could not simply impose a cleaner process. I modelled each statutory form and credential as its own entity matching the council's physical paperwork one-to-one, rather than flattening everything into a generic document store. Verification against the legal requirements stayed direct, and reviewers recognised the forms on screen as the ones they already knew."
+      },
       {
         challenge: "Complex Multi-Stage Workflow",
         solution: "Broke the project into three distinct phases (Legal Document Handling, Approval Workflow, HIM Assignment) for iterative development. Implemented a robust role-based routing system that automatically progresses applications through Superintendent, Secretary, and Committee member reviews."
@@ -251,6 +265,10 @@ export const projects: Project[] = [
       {
         challenge: "Payment Gateway Integration",
         solution: "Developed a robust system to handle Billdesk payment callbacks (webhooks) and edge cases including failed and pending transactions. Ensured payment statuses are accurately reflected in applications for seamless user experience and financial reconciliation."
+      },
+      {
+        challenge: "Adoption by a Non-Technical Institution",
+        solution: "A government office that will not use the system makes the code quality irrelevant, and this one was replacing a process its staff had run on paper for decades. I treated adoption as part of the engineering work: presented the system on-site to the council, wrote user documentation aimed at readers with no technical background, and recorded onboarding videos walking applicants and staff through each step. The engagement closed successfully and the system has been running since 2024, receiving maintenance rather than rescue work."
       }
     ]
   },
