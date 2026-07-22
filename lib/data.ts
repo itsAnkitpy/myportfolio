@@ -114,6 +114,91 @@ export const projects: Project[] = [
     ]
   },
   {
+    id: 16,
+    slug: "call-center-platform",
+    title: "Real-Time Call Center Platform for BPO Operations",
+    featured: true,
+    shortDescription: "A multi-tenant contact-center platform with browser-based calling on a self-hosted Asterisk engine — click-to-dial, inbound routing, transfers, three-way conferencing, call recording with audited playback, agent presence and break tracking, live floor boards, and reporting. Built solo for a BPO, backed by 560+ automated tests.",
+    image: "/assets/images/projects/call-center/hero.png",
+    images: {
+      hero: "/assets/images/projects/call-center/hero.png",
+      // TODO: uncomment each line as the screenshot lands in public/assets/images/projects/call-center/
+      // gallery: [
+      //   "/assets/images/projects/call-center/agent-console.png",
+      //   "/assets/images/projects/call-center/live-board.png",
+      //   "/assets/images/projects/call-center/dashboard.png",
+      //   "/assets/images/projects/call-center/call-review.png"
+      // ]
+    },
+    // video: {
+    //   loomUrl: "https://www.loom.com/embed/VIDEO_ID_HERE", // TODO: record — outbound call, inbound call, three-way conference, Asterisk container underneath
+    //   duration: "1:30"
+    // },
+    tags: ["Laravel", "FilamentPHP", "Livewire", "PostgreSQL", "Asterisk 20", "WebRTC", "Docker"],
+    liveDemoUrl: null,
+    sourceCodeUrl: null,
+    category: "full-stack",
+    role: "solo",
+    year: 2026,
+    longDescription: `A contact-center platform built for a BPO that runs calling operations for multiple client businesses at once. Each client is a tenant with its own campaigns, leads, dispositions, scripts, do-not-call list, and call history — isolated from every other client at the database level. Agents work entirely in the browser: a built-in WebRTC softphone registers against a self-hosted Asterisk switch, so an agent clicks a lead to dial, takes inbound calls routed to the first free agent, hands a caller to a colleague, or pulls a third person into a live three-way conference — with the whole call captured as one stereo recording no matter how many hands it passes through. Around the calls sits the operations layer: agent presence with break types and limits, a live floor board for team leaders, a per-agent day drill-down for coaching, reporting dashboards with CSV export, queued CSV/XLSX lead import, and an append-only audit log that records every playback of a call recording.
+
+The voice engine is not a rented calling API: it is Asterisk 20 running in Docker, driven by the Laravel application over ARI (Asterisk's control interface) through a telephony layer I designed and built. The platform is pre-launch — the carrier phone line (SIP trunk) takes weeks to provision, so I built a complete local phone network in Docker and proved every call flow end-to-end against it: real audio, real recordings, real transfers between browser tabs and softphones. The codebase is held to 560+ automated tests with over 2,000 assertions, and every feature is verified live before it counts as done.`,
+    problemStatement: `BPO call centers typically rent their dialer — hosted per-seat suites where the lead data, the recordings, and the monthly bill all sit with a vendor. This BPO wanted its own platform: multiple client businesses' calling operations on one system, hard guarantees that one client's leads and recordings can never appear in another's view, agents working in the browser with no desk phones, team leaders seeing the floor in real time, and the compliance surface — do-not-call lists, audit trails, recording review — built in rather than bolted on.`,
+    solution: `I architected and built the platform solo: a multi-tenant Laravel application with row-level isolation enforced twice — application context that refuses to run tenant queries without a client set, and PostgreSQL row-level security policies forced at the database, so even raw queries return nothing without tenant context. On top of that foundation sits the telephony layer: a provider interface wrapping Asterisk 20 over ARI, a long-running listener process that reacts to call events, and a WebRTC softphone living in the agent's browser screen. Call flows were built and lab-verified one at a time: outbound click-to-call that rings the logged-in agent's own browser, inbound calls routed to the first free agent with reserve-at-ring so two calls never grab the same person, transfers, and three-way conferencing — with one merged stereo recording per call surviving every handoff. The operations surfaces followed the same pattern: an agent console with presence and break tracking, a live floor board, per-agent drill-downs, and reporting with CSV export — each verified live before moving on.`,
+    techStack: [
+      {
+        name: "Laravel",
+        rationale: "The application core: tenancy, RBAC, queued lead imports, audit logging, and the long-running listener process that drives the phone switch."
+      },
+      {
+        name: "FilamentPHP + Livewire",
+        rationale: "Admin panel and the real-time operational screens — agent console, live floor board, dashboards — without building and maintaining a separate frontend app."
+      },
+      {
+        name: "PostgreSQL",
+        rationale: "Row-level security forced on every tenant-owned table with default-deny policies, so client isolation is enforced by the database itself, not just the application."
+      },
+      {
+        name: "Asterisk 20 + ARI",
+        rationale: "Self-hosted open-source phone switch instead of a per-minute calling API — the app controls dialing, bridging, recording, and transfers over ARI, keeping call data and cost in-house."
+      },
+      {
+        name: "WebRTC (JsSIP)",
+        rationale: "Agents call from the browser tab itself — no desk phones, no installed softphones, nothing to provision on the agent's machine beyond a login."
+      },
+      {
+        name: "Docker",
+        rationale: "Asterisk runs containerized, and the same containerization powered a full local phone lab that let the voice path be built and proven before the carrier line existed."
+      },
+      {
+        name: "Pest",
+        rationale: "560+ automated tests and over 2,000 assertions across tenancy isolation, call flows, presence arithmetic, and access gates — the safety net that lets a solo developer move fast on telephony."
+      }
+    ],
+    challenges: [
+      {
+        challenge: "Driving a Phone Switch from a Web App",
+        solution: "There is no SDK that turns Laravel into a call-center engine. I designed a telephony layer around Asterisk's ARI control interface: a provider interface the app talks to ('dial this lead', 'record', 'add to bridge') and a long-running listener that reacts to Asterisk's events and tracks every active call's state. The browser registers as a softphone over WebRTC, so the agent's tab is the phone."
+      },
+      {
+        challenge: "One Recording Per Call, However Many Hands It Passes Through",
+        solution: "A call that starts with one agent, gets transferred to another, or grows into a three-way conference must still end as a single recording. Recording attaches to the call, not the agent, and rides through every bridge change — a race between call teardown and the recording merge was caught in testing and fixed. Playback is as controlled as capture: every listen writes one audit row, and agents can play only their own calls."
+      },
+      {
+        challenge: "Client Isolation a Client Could Audit",
+        solution: "Each BPO client's data is walled off twice. The application refuses to touch tenant-owned tables without an explicit client context — it throws an exception rather than quietly returning everything. Beneath that, PostgreSQL row-level security is forced on every tenant table with default-deny policies, so even a raw database query outside the application returns zero rows. Cross-client access exists only through one named, audited path."
+      },
+      {
+        challenge: "Building Voice Months Before the Phone Line",
+        solution: "A real carrier line (SIP trunk) takes 4–8 weeks to provision. Instead of waiting, I built a complete phone network on a laptop: Asterisk 20 in Docker, softphones and browser tabs as the callers, the Laravel app driving it over ARI. Every call flow — outbound, inbound routing, transfer, conference, recording — was proven end-to-end with real audio before the line existed, so the line's arrival becomes configuration, not construction."
+      },
+      {
+        challenge: "Agent State That Tells the Truth",
+        solution: "Floor management lives or dies on whether 'available' actually means available. Presence runs on a heartbeat from the agent console; dead sessions are closed lazily at read time rather than by a background job, so the live board and the reports can never disagree with each other. Break handling was researched against Amazon Connect and Genesys and matched: a returning agent resumes a still-fresh break in place, while a stale session stays dead."
+      }
+    ]
+  },
+  {
     id: 1,
     slug: "linkabode",
     title: "LinkAbode",
