@@ -106,7 +106,7 @@ const Contact = () => {
         {/* Primary CTAs */}
         <motion.div
           variants={itemVariants}
-          className='flex flex-col sm:flex-row items-center gap-4 mt-4'
+          className='flex flex-col sml:flex-row items-center gap-4 mt-4'
         >
           {/* Email Button */}
           <a href='mailto:ankit3585@gmail.com'>

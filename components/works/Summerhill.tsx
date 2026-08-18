@@ -4,7 +4,7 @@ import { FiPackage, FiLayers, FiZap } from 'react-icons/fi';
 
 const Summerhill = () => {
   const highlights = [
-    { icon: <FiPackage />, label: 'Projects', value: '7 Applications' },
+    { icon: <FiPackage />, label: 'Projects', value: '7 Apps' },
     { icon: <FiLayers />, label: 'Focus', value: 'Multi-Tenant SaaS' },
     { icon: <FiZap />, label: 'Stack', value: 'Laravel & Next.js' }
   ];

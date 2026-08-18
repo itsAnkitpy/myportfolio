@@ -515,12 +515,13 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
             transition={{ duration: 0.5 }}
             className='mt-20 pt-12 border-t border-[#233554]'
           >
-            <div className='flex flex-col sm:flex-row items-center justify-between gap-6'>
+            {/* Side by side only once the three long project titles fit. */}
+            <div className='flex flex-col lg:flex-row items-center justify-between gap-6'>
               {/* Previous Project */}
               {projects[projects.findIndex((p) => p.id === project.id) - 1] && (
                 <Link
                   href={`/projects/${projects[projects.findIndex((p) => p.id === project.id) - 1].slug}`}
-                  className='group flex items-center gap-3 px-6 py-4 bg-[#112240] border border-[#233554] rounded-lg hover:border-textGreen/50 transition-all duration-300 w-full sm:w-auto'
+                  className='group flex items-center gap-3 px-6 py-4 bg-[#112240] border border-[#233554] rounded-lg hover:border-textGreen/50 transition-all duration-300 w-full lg:w-auto lg:max-w-xs'
                 >
                   <FiArrowLeft className='text-textGreen group-hover:-translate-x-1 transition-transform duration-300' />
                   <div>
@@ -544,7 +545,7 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
               {projects[projects.findIndex((p) => p.id === project.id) + 1] && (
                 <Link
                   href={`/projects/${projects[projects.findIndex((p) => p.id === project.id) + 1].slug}`}
-                  className='group flex items-center gap-3 px-6 py-4 bg-[#112240] border border-[#233554] rounded-lg hover:border-textGreen/50 transition-all duration-300 w-full sm:w-auto'
+                  className='group flex items-center gap-3 px-6 py-4 bg-[#112240] border border-[#233554] rounded-lg hover:border-textGreen/50 transition-all duration-300 w-full lg:w-auto lg:max-w-xs'
                 >
                   <div className='text-right'>
                     <p className='text-xs text-textDark uppercase tracking-wide mb-1'>Next Project</p>

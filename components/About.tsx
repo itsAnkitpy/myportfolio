@@ -12,10 +12,10 @@ const About = () => {
   ];
 
   const metrics = [
-    { value: '4+', shortLabel: 'Years Exp', fullLabel: 'Years Experience' },
-    { value: '8+', shortLabel: 'Apps Shipped', fullLabel: 'Production Apps' },
-    { value: '3', shortLabel: 'Multi-Tenant', fullLabel: 'Multi-Tenant Architectures' },
-    { value: '2', shortLabel: 'Tech Stacks', fullLabel: 'Tech Stacks (Laravel & Next.js)' }
+    { value: '4+', label: 'Years Experience' },
+    { value: '8+', label: 'Production Apps' },
+    { value: '3', label: 'Multi-Tenant Architectures' },
+    { value: '2', label: 'Tech Stacks (Laravel & Next.js)' }
   ];
 
   const techStack = [
@@ -52,15 +52,17 @@ const About = () => {
 
           <div className='flex flex-col gap-4'>
             <h3 className='text-lg font-semibold text-textGreen tracking-wide uppercase'>Impact At A Glance</h3>
-            <div className='grid grid-cols-2 sm:grid-cols-4 gap-4'>
-              {metrics.map(({ value, shortLabel, fullLabel }) => (
+            {/* Four across only on a desktop. The `sm` breakpoint is 375px here,
+                so four cards used to land on a phone and every long word spilled. */}
+            <div className='grid grid-cols-2 lgl:grid-cols-4 gap-4'>
+              {metrics.map(({ value, label }) => (
                 <div
-                  key={shortLabel}
-                  className='bg-[#112240] border border-[#233554] rounded-lg px-4 py-4 flex flex-col gap-1 shadow-md shadow-[#0a192f]/20'
+                  key={label}
+                  className='bg-[#112240] border border-[#233554] rounded-lg px-4 py-4 flex flex-col gap-1 shadow-md shadow-[#0a192f]/20 min-w-0'
                 >
                   <span className='text-2xl font-semibold text-textGreen'>{value}</span>
-                  <span className='text-xs uppercase tracking-wide text-textLight/80 sm:hidden'>{shortLabel}</span>
-                  <span className='text-xs uppercase tracking-wide text-textLight/80 hidden sm:block'>{fullLabel}</span>
+                  {/* A word longer than the card wraps instead of escaping it. */}
+                  <span className='text-xs uppercase tracking-wide text-textLight/80 break-words hyphens-auto'>{label}</span>
                 </div>
               ))}
             </div>
@@ -79,7 +81,7 @@ const About = () => {
 
           <div className='flex flex-col gap-4'>
             <h3 className='text-lg font-semibold text-textGreen tracking-wide uppercase'>Tech Stack</h3>
-            <div className='grid sm:grid-cols-2 gap-6'>
+            <div className='grid sml:grid-cols-2 gap-6'>
               {techStack.map(({ category, tools }) => (
                 <div
                   key={category}
