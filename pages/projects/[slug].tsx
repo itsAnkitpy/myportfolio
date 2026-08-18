@@ -20,11 +20,16 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
   
-  // All images for lightbox (hero + gallery)
+  // Mobile screenshots — one image or several, always handled as a list
+  const mobileImages = project.images?.mobile
+    ? [project.images.mobile].flat()
+    : [];
+
+  // All images for lightbox (hero + gallery + mobile)
   const allImages = [
     project.images?.hero || project.image,
     ...(project.images?.gallery || []),
-    ...(project.images?.mobile ? [project.images.mobile] : [])
+    ...mobileImages
   ];
 
   const openLightbox = (index: number) => {
@@ -300,7 +305,7 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
           )}
 
           {/* Mobile View Section */}
-          {project.images?.mobile && (
+          {mobileImages.length > 0 && (
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -312,29 +317,35 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
                 <h2 className='text-2xl font-titleFont font-semibold text-textGreen'>Mobile Experience</h2>
               </div>
 
-              <div className='flex justify-center'>
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5 }}
-                  className='relative w-full max-w-md h-[32rem] rounded-lg overflow-hidden border border-[#233554] shadow-lg shadow-[#0a192f]/50 group cursor-pointer'
-                  onClick={() => openLightbox(allImages.indexOf(project.images!.mobile!))}
-                >
-                  {/* Gradient Overlay */}
-                  <div className='absolute inset-0 bg-gradient-to-br from-textGreen/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10' />
-                  
-                  {/* Zoom Icon */}
-                  <div className='absolute top-4 right-4 z-20 p-2 bg-[#0a192f]/80 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
-                    <FiMaximize2 className='text-textGreen' />
-                  </div>
+              {/* Each frame is sized to a phone screen, so the border hugs the
+                  screenshot instead of leaving empty gutters around it. */}
+              <div className='flex flex-wrap justify-center gap-6'>
+                {mobileImages.map((img, idx) => (
+                  <motion.div
+                    key={img}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5, delay: idx * 0.1 }}
+                    className='relative w-44 sm:w-56 aspect-[9/20] rounded-lg overflow-hidden border border-[#233554] shadow-lg shadow-[#0a192f]/50 group cursor-pointer'
+                    onClick={() => openLightbox(allImages.indexOf(img))}
+                  >
+                    {/* Gradient Overlay */}
+                    <div className='absolute inset-0 bg-gradient-to-br from-textGreen/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10' />
 
-                  <Image
-                    src={project.images.mobile}
-                    alt={`${project.title} mobile view`}
-                    fill
-                    className='object-contain group-hover:scale-105 transition-transform duration-500'
-                  />
-                </motion.div>
+                    {/* Zoom Icon */}
+                    <div className='absolute top-3 right-3 z-20 p-2 bg-[#0a192f]/80 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
+                      <FiMaximize2 className='text-textGreen' />
+                    </div>
+
+                    <Image
+                      src={img}
+                      alt={`${project.title} mobile view ${idx + 1}`}
+                      fill
+                      sizes='(min-width: 640px) 14rem, 11rem'
+                      className='object-cover group-hover:scale-105 transition-transform duration-500'
+                    />
+                  </motion.div>
+                ))}
               </div>
             </motion.div>
           )}
@@ -389,7 +400,7 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
                   <h2 className='text-2xl font-titleFont font-semibold text-textGreen'>About the Project</h2>
                 </div>
                 <div className='bg-[#112240] border border-[#233554] p-6 rounded-lg'>
-                  <p className='text-textDark leading-relaxed'>{project.longDescription}</p>
+                  <p className='text-textDark leading-relaxed whitespace-pre-line'>{project.longDescription}</p>
                 </div>
               </motion.section>
 
@@ -400,7 +411,7 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
                   <h2 className='text-2xl font-titleFont font-semibold text-textGreen'>Problem Statement</h2>
                 </div>
                 <div className='bg-[#112240] border border-[#233554] p-6 rounded-lg border-l-4 border-l-red-500/30'>
-                  <p className='text-textDark leading-relaxed'>{project.problemStatement}</p>
+                  <p className='text-textDark leading-relaxed whitespace-pre-line'>{project.problemStatement}</p>
                 </div>
               </motion.section>
 
@@ -411,7 +422,7 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
                   <h2 className='text-2xl font-titleFont font-semibold text-textGreen'>My Solution</h2>
                 </div>
                 <div className='bg-[#112240] border border-[#233554] p-6 rounded-lg border-l-4 border-l-textGreen/50'>
-                  <p className='text-textDark leading-relaxed'>{project.solution}</p>
+                  <p className='text-textDark leading-relaxed whitespace-pre-line'>{project.solution}</p>
                 </div>
               </motion.section>
 

@@ -7,7 +7,7 @@ export interface Project {
   images?: {
     hero: string;           // Main project image
     gallery?: string[];     // Additional screenshots (2-4 images)
-    mobile?: string;        // Mobile view (optional)
+    mobile?: string | string[]; // Mobile view — one screenshot or several (optional)
     videoThumbnail?: string; // Video preview image (optional)
   };
   video?: {
@@ -35,7 +35,7 @@ export const projects: Project[] = [
     slug: "assetlane",
     title: "AssetLane",
     featured: true,
-    shortDescription: "My own SaaS product, live at assetlanehq.com — multi-tenant asset tracking with QR code lookup, recurring maintenance scheduling, warranty alerts, role-based team access, CSV import, and a complete audit trail, on web and Android. Designed, built, deployed, and taken to market solo.",
+    shortDescription: "My own SaaS product, live at assetlanehq.com — multi-tenant asset tracking with QR code lookup, recurring maintenance scheduling, warranty alerts, role-based team access, CSV import, and a complete audit trail. A companion Android app is now in pilot distribution, backed by separate staging and production environments. Designed, built, deployed, and taken to market solo.",
     image: "/assets/images/projects/amt/hero.png",
     images: {
       hero: "/assets/images/projects/amt/hero.png",
@@ -44,18 +44,33 @@ export const projects: Project[] = [
         "/assets/images/projects/amt/assets-list.png",
         "/assets/images/projects/amt/scan.png",
         "/assets/images/projects/amt/superadmin.png"
+      ],
+      mobile: [
+        "/assets/images/projects/amt/mobile.jpeg",
+        "/assets/images/projects/amt/mobile2.jpeg"
       ]
     },
-    tags: ["Next.js 16", "React 19", "TypeScript", "PostgreSQL", "Prisma", "TailwindCSS 4", "React Native", "Expo"],
+    video: {
+      loomUrl: "https://www.loom.com/embed/cf5233bfb58545e682850534e71fff78"
+    },
+    tags: ["Next.js 16", "React 19", "TypeScript", "PostgreSQL", "Prisma", "TailwindCSS 4", "React Native", "Expo", "EAS Build"],
     liveDemoUrl: "https://assetlanehq.com/",
     sourceCodeUrl: null,
     category: "full-stack",
     role: "product",
     year: 2025,
     status: "live",
-    longDescription: `AssetLane is my own SaaS product, launched independently at assetlanehq.com and currently open for early access. It helps organizations track, manage, and audit their physical assets—from laptops and monitors to office equipment and machinery. Companies maintain a centralized inventory, assign assets to employees with a full activity history, define custom asset categories with flexible field schemas, schedule recurring maintenance with due-soon and overdue alerts, track warranty expiry, control access by role, and migrate off spreadsheets through CSV import. Assets carry printable QR labels that resolve in any phone browser, with no app required. A companion Android app, built with React Native and Expo against that same hosted API, adds camera-based scanning and a fuller asset detail view on the phone—condition, location, warranty dates, custom fields, and maintenance summary. It is built and not yet published to the Play Store. I own every layer of it: product design, backend, frontend, mobile, infrastructure, and the go-to-market work now underway.`,
+    longDescription: `AssetLane is my own SaaS product, launched independently at assetlanehq.com and currently open for early access. It helps organizations track, manage, and audit their physical assets—from laptops and monitors to office equipment and machinery. Companies maintain a centralized inventory, assign assets to employees with a full activity history, define custom asset categories with flexible field schemas, schedule recurring maintenance with due-soon and overdue alerts, track warranty expiry, control access by role, and migrate off spreadsheets through CSV import. Assets carry printable QR labels that resolve in any phone browser, with no app required.
+
+A companion Android app, built with React Native and Expo against that same hosted API, is now in pilot distribution. It covers camera-based QR scanning, a searchable asset list, a workspace dashboard with live counts and recent activity, and a full asset detail view—photo, condition, location, warranty dates, custom fields, and maintenance history. A manager can change an asset's status from the floor without opening a laptop, and the workspace switcher lets one account move between organizations. It ships as a direct-download APK rather than through the Play Store, which puts a pilot one link away from any Android phone. iOS is a deliberate hold until a pilot converts, because it costs an annual developer fee to publish at all.
+
+Behind both clients run two matched environments. Staging carries its own database, its own authentication instance, and its own installable build; production carries a separate set. Pilot testers get the staging build and real customers get production, so test records and customer records can never meet. That separation exists because the first pilot build did not have it: it paired the test sign-in key with the production server, and every tester reached a spinner that never resolved.
+
+I own every layer of it: product design, backend, frontend, mobile, infrastructure, release engineering, and the go-to-market work now underway.`,
     problemStatement: `Organizations of all sizes struggle with asset management. Many companies track assets in Excel files that become outdated and impossible to audit. Without proper assignment tracking, assets get lost and no one knows who had them last. Generic tools don't accommodate different asset types, and there's no audit trail when something goes wrong.`,
-    solution: `I built a flexible, multi-tenant asset management system with row-level tenant isolation, a dynamic field schema system where each category defines its own custom fields, a complete audit trail that survives user deletion, bulk operations for CSV import/export, recurring maintenance schedules that surface due-soon and overdue work, warranty expiry alerts, role-based access for admins, managers, and users, and QR code integration for quick asset lookup. The storage layer uses a provider pattern supporting both local filesystem and Vercel Blob. Choosing row-level isolation here was deliberate: it is the simplest model that meets the requirement, and for a product I intend to sell to small and mid-sized teams it keeps operational overhead low without giving up separation between tenants.`,
+    solution: `I built a flexible, multi-tenant asset management system with row-level tenant isolation, a dynamic field schema system where each category defines its own custom fields, a complete audit trail that survives user deletion, bulk operations for CSV import/export, recurring maintenance schedules that surface due-soon and overdue work, warranty expiry alerts, role-based access for admins, managers, and users, and QR code integration for quick asset lookup. The storage layer uses a provider pattern supporting both local filesystem and Vercel Blob. Choosing row-level isolation here was deliberate: it is the simplest model that meets the requirement, and for a product I intend to sell to small and mid-sized teams it keeps operational overhead low without giving up separation between tenants.
+
+The Android app is a thin client on the same hosted API, not a second backend. Every rule that governs the web app—tenant scoping, role checks, audit writes—already lives on the server, so the phone inherits them instead of re-implementing them. Releases run on two build profiles, staging and production, each pinned to its own server, its own sign-in key, and its own Android package name, so both builds install side by side on one phone and a tester never signs in against customer data.`,
     techStack: [
       {
         name: "Next.js 16",
@@ -92,6 +107,10 @@ export const projects: Project[] = [
       {
         name: "Expo Camera + TanStack Query",
         rationale: "Camera-based QR scanning on the phone, with cached, request-deduplicated data fetching so scan results stay fast and consistent with the web app."
+      },
+      {
+        name: "EAS Build",
+        rationale: "Cloud build service that signs and packages the Android app per environment profile. Each profile carries its own server address, sign-in key, and package name, and produces a download link a pilot user can install from directly—no Play Store review cycle between a fix and the tester's phone."
       }
     ],
     challenges: [
@@ -110,6 +129,14 @@ export const projects: Project[] = [
       {
         challenge: "Audit Trail That Survives",
         solution: "Store userId as plain string (no FK) and performedBy name in JSON details field, so history remains readable even after user deletion."
+      },
+      {
+        challenge: "The First Pilot Build Signed In, Then Hung Forever",
+        solution: "Testers reached the login screen, entered valid credentials, and landed on a spinner that never resolved. The build paired the test sign-in key with the production server. Those keys belong to different authentication instances, so the login succeeded against one and the server rejected the session from the other—and the app had no branch for a rejected session, so it waited. The fix was structural, not a patch: two build profiles that each bind one server to its matching sign-in key, separate Android package names so staging and production install side by side instead of overwriting each other, and a real error screen that names the server it is talking to. A configuration mismatch is now visible on the phone instead of silent."
+      },
+      {
+        challenge: "The App Was Slow Because of Geography, Not Code",
+        solution: "Pages took several seconds to paint, and the easy story was to blame free-tier hosting. One response header disproved it: requests entered the network in Mumbai and executed in Washington DC, while the database sat in Singapore. Every query crossed the Pacific twice, and each page ran several of them in sequence. Three fixes followed—pin the serverless functions to the database's region, deduplicate the repeated authorization lookups that every page was running twice per request, and add loading skeletons so the browser paints structure instead of white while data arrives. The lesson I keep: put the function next to the database when a page makes several sequential queries, and read the evidence before theorizing about the cause."
       }
     ]
   },
@@ -118,7 +145,7 @@ export const projects: Project[] = [
     slug: "call-center-platform",
     title: "Real-Time Call Center Platform for BPO Operations",
     featured: true,
-    shortDescription: "A multi-tenant contact-center platform with browser-based calling on a self-hosted Asterisk engine — click-to-dial, inbound routing, transfers, three-way conferencing, call recording with audited playback, agent presence and break tracking, live floor boards, and reporting. Built solo for a BPO, backed by 560+ automated tests.",
+    shortDescription: "A multi-tenant contact-center platform with browser-based calling on a self-hosted Asterisk engine — click-to-dial, inbound routing with a hold-music waiting room, transfers, three-way conferencing, hold, call recording with audited playback, agent presence and break tracking, live floor boards, call export, and an agent productivity report. Now deployed on its own server and carrying real calls over a carrier line. Built solo for a BPO, backed by 831 automated tests.",
     image: "/assets/images/projects/call-center/hero.png",
     images: {
       hero: "/assets/images/projects/call-center/hero.png",
@@ -134,17 +161,20 @@ export const projects: Project[] = [
     //   loomUrl: "https://www.loom.com/embed/VIDEO_ID_HERE", // TODO: record — outbound call, inbound call, three-way conference, Asterisk container underneath
     //   duration: "1:30"
     // },
-    tags: ["Laravel", "FilamentPHP", "Livewire", "PostgreSQL", "Asterisk 20", "WebRTC", "Docker"],
-    liveDemoUrl: null,
+    tags: ["Laravel", "FilamentPHP", "Livewire", "PostgreSQL", "Asterisk 20", "ARI", "WebRTC", "SIP Trunking", "Docker"],
+    liveDemoUrl: "https://hcmis.coderootz.in",
     sourceCodeUrl: null,
     category: "full-stack",
     role: "solo",
     year: 2026,
-    longDescription: `A contact-center platform built for a BPO that runs calling operations for multiple client businesses at once. Each client is a tenant with its own campaigns, leads, dispositions, scripts, do-not-call list, and call history — isolated from every other client at the database level. Agents work entirely in the browser: a built-in WebRTC softphone registers against a self-hosted Asterisk switch, so an agent clicks a lead to dial, takes inbound calls routed to the first free agent, hands a caller to a colleague, or pulls a third person into a live three-way conference — with the whole call captured as one stereo recording no matter how many hands it passes through. Around the calls sits the operations layer: agent presence with break types and limits, a live floor board for team leaders, a per-agent day drill-down for coaching, reporting dashboards with CSV export, queued CSV/XLSX lead import, and an append-only audit log that records every playback of a call recording.
+    status: "live",
+    longDescription: `A contact-center platform built for a BPO that runs calling operations for multiple client businesses at once. Each client is a tenant with its own campaigns, leads, dispositions, scripts, do-not-call list, phone number, and call history — isolated from every other client at the database level. Agents work entirely in the browser: a built-in WebRTC softphone registers against a self-hosted Asterisk switch, so an agent clicks a lead to dial, takes inbound calls routed to the first free agent, parks a caller on hold with music, hands a caller to a colleague, or pulls a third person into a live three-way conference — with the whole call captured as one stereo recording no matter how many hands it passes through. A caller who arrives when every agent is busy waits in a music-filled queue instead of being hung up on, and their record opens on the agent's screen as the phone starts ringing.
 
-The voice engine is not a rented calling API: it is Asterisk 20 running in Docker, driven by the Laravel application over ARI (Asterisk's control interface) through a telephony layer I designed and built. The platform is pre-launch — the carrier phone line (SIP trunk) takes weeks to provision, so I built a complete local phone network in Docker and proved every call flow end-to-end against it: real audio, real recordings, real transfers between browser tabs and softphones. The codebase is held to 560+ automated tests with over 2,000 assertions, and every feature is verified live before it counts as done.`,
+Around the calls sits the operations layer: agent presence with break types and limits, a live floor board carrying the longest current wait, a per-agent day drill-down for coaching, a twenty-column agent productivity report with occupancy and average handle time, reporting dashboards, a full call export that survives a spreadsheet's habit of mangling phone numbers, queued CSV/XLSX lead import, and an append-only audit log that records every playback of a call recording. Every screen cuts its day and prints its times on the client's own clock, while the database keeps one universal time underneath.
+
+The voice engine is not a rented calling API: it is Asterisk 20, self-hosted and driven by the Laravel application over ARI (Asterisk's control interface) through a telephony layer I designed and built. The platform now runs on its own server at hcmis.coderootz.in with a carrier line attached — outbound calls reach real mobiles, inbound calls arrive from the carrier, route to a free agent, connect, and record. Before that line existed I built the entire phone network in Docker on a laptop and proved every call flow against it, so the carrier's arrival was configuration rather than construction. The codebase is held to 831 automated tests with over 3,100 assertions, and nothing counts as done until it has been seen and heard working on the real system.`,
     problemStatement: `BPO call centers typically rent their dialer — hosted per-seat suites where the lead data, the recordings, and the monthly bill all sit with a vendor. This BPO wanted its own platform: multiple client businesses' calling operations on one system, hard guarantees that one client's leads and recordings can never appear in another's view, agents working in the browser with no desk phones, team leaders seeing the floor in real time, and the compliance surface — do-not-call lists, audit trails, recording review — built in rather than bolted on.`,
-    solution: `I architected and built the platform solo: a multi-tenant Laravel application with row-level isolation enforced twice — application context that refuses to run tenant queries without a client set, and PostgreSQL row-level security policies forced at the database, so even raw queries return nothing without tenant context. On top of that foundation sits the telephony layer: a provider interface wrapping Asterisk 20 over ARI, a long-running listener process that reacts to call events, and a WebRTC softphone living in the agent's browser screen. Call flows were built and lab-verified one at a time: outbound click-to-call that rings the logged-in agent's own browser, inbound calls routed to the first free agent with reserve-at-ring so two calls never grab the same person, transfers, and three-way conferencing — with one merged stereo recording per call surviving every handoff. The operations surfaces followed the same pattern: an agent console with presence and break tracking, a live floor board, per-agent drill-downs, and reporting with CSV export — each verified live before moving on.`,
+    solution: `I architected and built the platform solo: a multi-tenant Laravel application with row-level isolation enforced twice — application context that refuses to run tenant queries without a client set, and PostgreSQL row-level security policies forced at the database, so even raw queries return nothing without tenant context. On top of that foundation sits the telephony layer: a provider interface wrapping Asterisk 20 over ARI, a long-running listener process that reacts to call events, and a WebRTC softphone living in the agent's browser screen. Call flows were built and lab-verified one at a time: outbound click-to-call that rings the logged-in agent's own browser, inbound calls routed to the first free agent with reserve-at-ring so two calls never grab the same person, transfers, and three-way conferencing — with one merged stereo recording per call surviving every handoff. The operations surfaces followed the same pattern: an agent console with presence and break tracking, a live floor board, per-agent drill-downs, a productivity report, and a call export — each verified live before moving on. The platform has since left the laptop: it runs on its own server behind a real carrier line, and every module is re-proven there, because a container quietly does setup work a packaged install does not.`,
     techStack: [
       {
         name: "Laravel",
@@ -172,7 +202,11 @@ The voice engine is not a rented calling API: it is Asterisk 20 running in Docke
       },
       {
         name: "Pest",
-        rationale: "560+ automated tests and over 2,000 assertions across tenancy isolation, call flows, presence arithmetic, and access gates — the safety net that lets a solo developer move fast on telephony."
+        rationale: "831 automated tests and over 3,100 assertions across tenancy isolation, call flows, presence arithmetic, timezone boundaries, and access gates — the safety net that lets a solo developer move fast on telephony."
+      },
+      {
+        name: "SIP trunking",
+        rationale: "The seam between the platform and the outside phone network. The switch talks to a carrier trunk rather than to any one vendor's API, so the carrier is a configuration choice the platform can change without touching call logic."
       }
     ],
     challenges: [
@@ -190,11 +224,19 @@ The voice engine is not a rented calling API: it is Asterisk 20 running in Docke
       },
       {
         challenge: "Building Voice Months Before the Phone Line",
-        solution: "A real carrier line (SIP trunk) takes 4–8 weeks to provision. Instead of waiting, I built a complete phone network on a laptop: Asterisk 20 in Docker, softphones and browser tabs as the callers, the Laravel app driving it over ARI. Every call flow — outbound, inbound routing, transfer, conference, recording — was proven end-to-end with real audio before the line existed, so the line's arrival becomes configuration, not construction."
+        solution: "A real carrier line (SIP trunk) takes 4–8 weeks to provision. Instead of waiting, I built a complete phone network on a laptop: Asterisk 20 in Docker, softphones and browser tabs as the callers, the Laravel app driving it over ARI. Every call flow — outbound, inbound routing, transfer, conference, recording — was proven end-to-end with real audio before the line existed. The bet paid off when the line landed: the first real outbound call rang a mobile, recorded both halves, and played back in the browser on the day the trunk was configured, and inbound followed the next day."
       },
       {
         challenge: "Agent State That Tells the Truth",
         solution: "Floor management lives or dies on whether 'available' actually means available. Presence runs on a heartbeat from the agent console; dead sessions are closed lazily at read time rather than by a background job, so the live board and the reports can never disagree with each other. Break handling was researched against Amazon Connect and Genesys and matched: a returning agent resumes a still-fresh break in place, while a stale session stays dead."
+      },
+      {
+        challenge: "The Lab Was Not the Server",
+        solution: "Every call flow worked in the Docker lab and then broke on the real machine — three times, for three unrelated reasons. Ubuntu's Asterisk package loads a phone module deprecated years ago that claims the same WebSocket name as the current one, so agent logins were rejected as 'wrong password' while the password was correct. The package creates seven spool folders and not the one recording writes into, so calls connected and dropped the instant recording started. And the packaged build is an older release than the container's, missing a channel field the inbound path read — which surfaced as 'no free agent available' rather than as a missing field. The rule I keep: a container quietly does setup work a packaged install does not, so 'it worked in the lab' is evidence about the lab and nothing else."
+      },
+      {
+        challenge: "One Day, Two Different Answers",
+        solution: "The database stores every moment in universal time, which is correct, and the screens printed them that way, which was not. On an Indian floor that moves the start of the day by five and a half hours, so one chosen date named one set of calls in the exported file and a different set on screen. The fix put the client's own timezone behind a single method everything reads, and converted the day's boundaries once inside the shared filter rather than at each call site, where one caller can forget. Tracing found three screens the obvious fix never reached because they each built their own 'today'. It also found the mirror-image error: applying the panel-wide setting to the business-hours pickers shifted 'opens at 09:30' to 04:00, because an opening time is a wall-clock time already written on the client's clock, not a moment in time. The existing tenant tests caught that one before it shipped."
       }
     ]
   },
