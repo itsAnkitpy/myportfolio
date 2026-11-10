@@ -68,7 +68,6 @@ const Navbar = () => {
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.1 }}
               >
-                <span className='text-textGreen'>01.</span>
                 About
               </motion.li>
 
@@ -84,7 +83,6 @@ const Navbar = () => {
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.1 }}
               >
-                <span className='text-textGreen'>02.</span>
                 Experience
               </motion.li>
 
@@ -100,7 +98,6 @@ const Navbar = () => {
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.1 }}
               >
-                <span className='text-textGreen'>03.</span>
                 Projects
               </motion.li>
 
@@ -116,7 +113,6 @@ const Navbar = () => {
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.1 }}
               >
-                <span className='text-textGreen'>04.</span>
                 Contact
               </motion.li>
 
@@ -202,7 +198,6 @@ const Navbar = () => {
                           ease: "easeIn",
                         }}
                       >
-                        <span className='text-textGreen'>01.</span>
                         About
                       </motion.li>
 
@@ -222,7 +217,6 @@ const Navbar = () => {
                           ease: "easeIn",
                         }}
                       >
-                        <span className='text-textGreen'>02.</span>
                         Experience
                       </motion.li>
 
@@ -242,7 +236,6 @@ const Navbar = () => {
                           ease: "easeIn",
                         }}
                       >
-                        <span className='text-textGreen'>03.</span>
                         Projects
                       </motion.li>
 
@@ -262,7 +255,6 @@ const Navbar = () => {
                           ease: "easeIn",
                         }}
                       >
-                        <span className='text-textGreen'>04.</span>
                         Contact
                       </motion.li>
 

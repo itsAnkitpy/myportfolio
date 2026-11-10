@@ -384,17 +384,11 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
           )}
 
           {/* Content Grid */}
-          <motion.div
-            initial='hidden'
-            whileInView='visible'
-            viewport={{ once: true, margin: '-100px' }}
-            variants={staggerContainer}
-            className='grid grid-cols-1 lg:grid-cols-3 gap-12'
-          >
+          <div className='grid grid-cols-1 lg:grid-cols-3 gap-12'>
             {/* Main Content */}
             <div className='lg:col-span-2 space-y-12'>
               {/* About the Project */}
-              <motion.section variants={fadeInUp}>
+              <section>
                 <div className='flex items-center gap-3 mb-6'>
                   <span className='h-px w-12 bg-textGreen/50' />
                   <h2 className='text-2xl font-titleFont font-semibold text-textGreen'>About the Project</h2>
@@ -402,10 +396,10 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
                 <div className='bg-[#112240] border border-[#233554] p-6 rounded-lg'>
                   <p className='text-textDark leading-relaxed whitespace-pre-line'>{project.longDescription}</p>
                 </div>
-              </motion.section>
+              </section>
 
               {/* Problem Statement */}
-              <motion.section variants={fadeInUp}>
+              <section>
                 <div className='flex items-center gap-3 mb-6'>
                   <span className='h-px w-12 bg-textGreen/50' />
                   <h2 className='text-2xl font-titleFont font-semibold text-textGreen'>Problem Statement</h2>
@@ -413,10 +407,10 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
                 <div className='bg-[#112240] border border-[#233554] p-6 rounded-lg border-l-4 border-l-red-500/30'>
                   <p className='text-textDark leading-relaxed whitespace-pre-line'>{project.problemStatement}</p>
                 </div>
-              </motion.section>
+              </section>
 
               {/* My Solution */}
-              <motion.section variants={fadeInUp}>
+              <section>
                 <div className='flex items-center gap-3 mb-6'>
                   <span className='h-px w-12 bg-textGreen/50' />
                   <h2 className='text-2xl font-titleFont font-semibold text-textGreen'>My Solution</h2>
@@ -424,50 +418,42 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
                 <div className='bg-[#112240] border border-[#233554] p-6 rounded-lg border-l-4 border-l-textGreen/50'>
                   <p className='text-textDark leading-relaxed whitespace-pre-line'>{project.solution}</p>
                 </div>
-              </motion.section>
+              </section>
 
               {/* Challenges & Learnings */}
-              <motion.section variants={fadeInUp}>
+              <section>
                 <div className='flex items-center gap-3 mb-6'>
                   <span className='h-px w-12 bg-textGreen/50' />
                   <h2 className='text-2xl font-titleFont font-semibold text-textGreen'>Challenges & Learnings</h2>
                 </div>
                 <div className='space-y-6'>
                   {project.challenges.map((challenge, index) => (
-                    <motion.div
+                    <div
                       key={index}
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: index * 0.1 }}
                       className='bg-[#112240] border border-[#233554] p-6 rounded-lg hover:border-textGreen/30 hover:shadow-md hover:shadow-textGreen/5 transition-all duration-300 group'
                     >
                       <h3 className='text-lg font-medium mb-3 text-textLight group-hover:text-textGreen transition-colors duration-300'>
                         {challenge.challenge}
                       </h3>
                       <p className='text-textDark leading-relaxed'>{challenge.solution}</p>
-                    </motion.div>
+                    </div>
                   ))}
                 </div>
-              </motion.section>
+              </section>
             </div>
 
             {/* Sidebar */}
             <div className='space-y-8'>
               {/* Technology Stack */}
-              <motion.section variants={fadeInUp}>
+              <section>
                 <div className='flex items-center gap-3 mb-6'>
                   <span className='h-px w-8 bg-textGreen/50' />
                   <h2 className='text-xl font-titleFont font-semibold text-textGreen'>Technology Stack</h2>
                 </div>
                 <div className='space-y-4'>
                   {project.techStack.map((tech, index) => (
-                    <motion.div
+                    <div
                       key={index}
-                      initial={{ opacity: 0, y: 10 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: index * 0.1 }}
                       className='bg-[#112240] border border-[#233554] p-4 rounded-lg hover:border-textGreen/30 transition-all duration-300 group'
                     >
                       <div className='flex items-center gap-2 mb-2'>
@@ -477,44 +463,34 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
                         </h3>
                       </div>
                       <p className='text-sm text-textDark leading-relaxed'>{tech.rationale}</p>
-                    </motion.div>
+                    </div>
                   ))}
                 </div>
-              </motion.section>
+              </section>
 
               {/* Tags */}
-              <motion.section variants={fadeInUp}>
+              <section>
                 <div className='flex items-center gap-3 mb-6'>
                   <span className='h-px w-8 bg-textGreen/50' />
                   <h2 className='text-xl font-titleFont font-semibold text-textGreen'>Technologies Used</h2>
                 </div>
                 <div className='flex flex-wrap gap-2'>
                   {project.tags.map((tag, index) => (
-                    <motion.span
+                    <span
                       key={index}
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: index * 0.05 }}
                       className='flex items-center gap-1.5 px-3 py-1.5 bg-[#0a192f] text-textGreen border border-textGreen/20 text-sm rounded-md hover:border-textGreen/50 hover:bg-[#112240] transition-all duration-300'
                     >
                       <span className='text-xs'>{getTechIcon(tag)}</span>
                       {tag}
-                    </motion.span>
+                    </span>
                   ))}
                 </div>
-              </motion.section>
+              </section>
             </div>
-          </motion.div>
+          </div>
 
           {/* Project Navigation */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className='mt-20 pt-12 border-t border-[#233554]'
-          >
+          <div className='mt-20 pt-12 border-t border-[#233554]'>
             {/* Side by side only once the three long project titles fit. */}
             <div className='flex flex-col lg:flex-row items-center justify-between gap-6'>
               {/* Previous Project */}
@@ -557,7 +533,7 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
                 </Link>
               )}
             </div>
-          </motion.div>
+          </div>
         </div>
 
         {/* Lightbox Modal */}

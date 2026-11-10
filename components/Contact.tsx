@@ -1,5 +1,4 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { HiMail, HiDownload } from 'react-icons/hi';
 import { FaLinkedinIn, FaGithub, FaTwitter } from 'react-icons/fa';
 import { BsCalendar3 } from 'react-icons/bs';
@@ -26,28 +25,6 @@ const Contact = () => {
     }
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-        ease: 'easeOut'
-      }
-    }
-  };
 
   return (
     <section
@@ -57,19 +34,13 @@ const Contact = () => {
       {/* Background Gradient */}
       <div className='absolute inset-0 bg-gradient-to-b from-transparent via-textGreen/5 to-transparent pointer-events-none' />
 
-      <motion.div
-        variants={containerVariants}
-        initial='hidden'
-        whileInView='visible'
-        viewport={{ once: true }}
-        className='relative z-10 flex flex-col gap-8 items-center justify-center'
-      >
+      <div className='relative z-10 flex flex-col gap-8 items-center justify-center'>
         {/* Header */}
-        <motion.div variants={itemVariants} className='flex flex-col items-center gap-4'>
+        <div className='flex flex-col items-center gap-4'>
           <div className='flex items-center gap-2'>
             <span className='h-px w-8 bg-textGreen/50' />
             <p className='font-titleFont text-lg text-textGreen font-semibold tracking-wide'>
-              04. What&apos;s Next?
+              What&apos;s Next?
             </p>
             <span className='h-px w-8 bg-textGreen/50' />
           </div>
@@ -83,31 +54,22 @@ const Contact = () => {
             <span className='w-2 h-2 bg-textGreen rounded-full animate-pulse' />
             <span className='text-sm text-textGreen font-medium'>Available for new opportunities</span>
           </div>
-        </motion.div>
+        </div>
 
         {/* Description */}
-        <motion.p
-          variants={itemVariants}
-          className='max-w-[650px] text-center text-base md:text-lg text-textDark leading-relaxed'
-        >
+        <p className='max-w-[650px] text-center text-base md:text-lg text-textDark leading-relaxed'>
           I&apos;m currently looking for new opportunities and my inbox is always open. Whether you have a
           question, a project idea, or just want to say hi, I&apos;ll do my best to get back to you!
-        </motion.p>
+        </p>
 
         {/* Response Time Info */}
-        <motion.div
-          variants={itemVariants}
-          className='flex items-center gap-2 text-sm text-textDark'
-        >
+        <div className='flex items-center gap-2 text-sm text-textDark'>
           <BsCalendar3 className='text-textGreen' />
           <span>Usually responds within 24 hours</span>
-        </motion.div>
+        </div>
 
         {/* Primary CTAs */}
-        <motion.div
-          variants={itemVariants}
-          className='flex flex-col sml:flex-row items-center gap-4 mt-4'
-        >
+        <div className='flex flex-col sml:flex-row items-center gap-4 mt-4'>
           {/* Email Button */}
           <a href='mailto:ankit3585@gmail.com'>
             <button className='group flex items-center gap-2 px-8 py-4 border-2 border-textGreen text-textGreen rounded-lg hover:bg-textGreen/10 transition-all duration-300 shadow-md hover:shadow-textGreen/20 font-medium'>
@@ -123,10 +85,10 @@ const Contact = () => {
               <span>Download Resume</span>
             </button>
           </a>
-        </motion.div>
+        </div>
 
         {/* Social Links */}
-        <motion.div variants={itemVariants} className='flex flex-col items-center gap-4 mt-8'>
+        <div className='flex flex-col items-center gap-4 mt-8'>
           <p className='text-sm text-textDark uppercase tracking-wider'>Connect With Me</p>
           <div className='flex items-center gap-4'>
             {socialLinks.map((social) => (
@@ -142,10 +104,10 @@ const Contact = () => {
               </a>
             ))}
           </div>
-        </motion.div>
+        </div>
 
 
-      </motion.div>
+      </div>
     </section>
   );
 };

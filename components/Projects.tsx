@@ -1,61 +1,38 @@
-import { projects } from '../lib/data';
+import { projects, Project } from '../lib/data';
 import SectionTitle from './SectionTitle';
 import Image from 'next/image';
 import Link from 'next/link';
 import { TbBrandGithub } from 'react-icons/tb';
 import { RxOpenInNewWindow } from 'react-icons/rx';
 import { HiArrowNarrowRight } from 'react-icons/hi';
-import { motion } from 'framer-motion';
 import { getTechIcon } from '../lib/getTechIcon';
+
+const roleLabels: Record<NonNullable<Project['role']>, string> = {
+  product: 'Own product',
+  solo: 'Solo build',
+  team: 'Team project',
+  freelance: 'Freelance',
+};
+
+// e.g. "Own product · 2025"
+const projectLabel = (project: Project) =>
+  [project.role && roleLabels[project.role], project.year].filter(Boolean).join(' · ');
 
 const Projects = () => {
   const featuredProjects = projects.filter((project) => project.featured);
   const otherProjects = projects.filter((project) => !project.featured);
 
-  // Animation variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-        ease: 'easeOut'
-      }
-    }
-  };
-
   return (
     <section id='project' className='max-w-container mx-auto lgl:px-20 py-24 px-4'>
-      <SectionTitle title='Some things I have built' titleNo='03' />
+      <SectionTitle title='Selected work' />
 
-      <motion.div
-        className='w-full flex flex-col items-center gap-20 mt-10'
-        variants={containerVariants}
-        initial='hidden'
-        whileInView='visible'
-        viewport={{ once: true, margin: '-100px' }}
-      >
+      <div className='w-full flex flex-col items-center gap-20 mt-10'>
         {featuredProjects.map((project, index) => (
-          <motion.div
-            key={project.id}
-            variants={itemVariants}
-            className='w-full flex flex-col items-center'
-          >
+          <div key={project.id} className='w-full flex flex-col items-center'>
             <div
               className={`flex flex-col ${
                 index % 2 === 0 ? 'xl:flex-row' : 'xl:flex-row-reverse'
-              } gap-6 w-full`}
+              } xl:items-center gap-6 xl:gap-12 w-full`}
             >
               {/* Project Image */}
               <div className='w-full xl:w-1/2 h-auto relative group'>
@@ -89,18 +66,12 @@ const Projects = () => {
               </div>
 
               {/* Project Content */}
-              <div
-                className={`w-full xl:w-1/2 flex flex-col gap-5 ${
-                  index % 2 === 0
-                    ? 'xl:items-end xl:text-right xl:-ml-16'
-                    : 'xl:items-start xl:text-left xl:-mr-16'
-                } z-10`}
-              >
-                {/* Featured Tag */}
+              <div className='w-full xl:w-1/2 flex flex-col items-start gap-5'>
+                {/* Role and year */}
                 <div className='flex items-center gap-2'>
                   <span className='h-px w-8 bg-textGreen/50' />
                   <p className='font-titleFont text-textGreen text-sm tracking-wider uppercase'>
-                    Featured Project
+                    {projectLabel(project)}
                   </p>
                 </div>
 
@@ -117,11 +88,7 @@ const Projects = () => {
                 </div>
 
                 {/* Tech Stack Tags */}
-                <div
-                  className={`flex flex-wrap gap-2 ${
-                    index % 2 === 0 ? 'xl:justify-end' : 'xl:justify-start'
-                  }`}
-                >
+                <div className='flex flex-wrap gap-2'>
                   {project.tags.map((tag, tagIndex) => (
                     <span
                       key={tagIndex}
@@ -172,26 +139,20 @@ const Projects = () => {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
         ))}
-      </motion.div>
+      </div>
 
       {/* Other Projects — compact list */}
       {otherProjects.length > 0 && (
-        <motion.div
-          className='w-full mt-24'
-          variants={containerVariants}
-          initial='hidden'
-          whileInView='visible'
-          viewport={{ once: true, margin: '-100px' }}
-        >
+        <div className='w-full mt-24'>
           <h3 className='font-titleFont text-xl md:text-2xl font-bold text-textLight text-center'>
             Other things I have built
           </h3>
 
           <div className='grid grid-cols-1 md:grid-cols-2 lgl:grid-cols-3 gap-6 mt-10'>
             {otherProjects.map((project) => (
-              <motion.div key={project.id} variants={itemVariants}>
+              <div key={project.id}>
                 <Link href={`/projects/${project.slug}`}>
                   <div className='h-full flex flex-col gap-4 p-6 bg-[#112240] border border-[#233554] rounded-lg shadow-lg shadow-[#0a192f]/30 hover:border-textGreen/50 hover:-translate-y-1 transition-all duration-300 cursor-pointer'>
                     <h4 className='text-lg font-bold text-textLight hover:text-textGreen transition-colors duration-300'>
@@ -214,10 +175,10 @@ const Projects = () => {
                     </div>
                   </div>
                 </Link>
-              </motion.div>
+              </div>
             ))}
           </div>
-        </motion.div>
+        </div>
       )}
     </section>
   );

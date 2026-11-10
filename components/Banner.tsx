@@ -1,82 +1,87 @@
+import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { useTypewriter } from '@/hooks/useTypewriter';
+
+const isolationModels = [
+    { system: 'AssetLane', slug: 'assetlane', model: 'Row-level', since: 2025 },
+    { system: 'LinkAbode', slug: 'linkabode', model: 'Schema-per-tenant', since: 2024 },
+    { system: 'LeadCheck', slug: 'leadcheck', model: 'Database-per-tenant', since: 2024 },
+];
+
+const fadeUp = (delay: number) => ({
+    initial: { y: 10, opacity: 0 },
+    animate: { y: 0, opacity: 1 },
+    transition: { duration: 0.5, delay },
+});
 
 const Banner = () => {
-    // Typewriter effect for the name
-    const { displayText, cursor } = useTypewriter({
-        text: 'Ankit Sharma.',
-        speed: 100, // Typing speed in milliseconds
-        delay: 800, // Start after the greeting animation
-        showCursor: true,
-        cursorChar: '|',
-    });
-
     return (
         <section
             id='home'
-            className='max-w-contentContainer mx-auto py-10 mdl:py-24 flex flex-col gap-4 lgl:gap-8 mdl:px-10 xl:px-4'
+            className='max-w-contentContainer mx-auto py-10 mdl:py-24 flex flex-col gap-4 lgl:gap-6 mdl:px-10 xl:px-4'
         >
-            {/* Availability Badge */}
-            <motion.div
-                initial={{ y: 10, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.5 }}
-                className='flex items-center gap-2'
-            >
-                <span className='relative flex h-3 w-3'>
-                    <span className='animate-ping absolute inline-flex h-full w-full rounded-full bg-textGreen opacity-75'></span>
-                    <span className='relative inline-flex rounded-full h-3 w-3 bg-textGreen'></span>
-                </span>
-                <span className='text-sm text-textGreen font-medium'>Available for projects</span>
-            </motion.div>
+            <motion.p {...fadeUp(0.3)} className='font-titleFont text-sm tracking-[0.2em] uppercase text-textGreen'>
+                Product engineer
+            </motion.p>
 
-            <motion.h3
-                initial={{ y: 10, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.6 }}
-                className='text-lg font-titleFont tracking-wide text-textGreen'>
-                Hi | नमस्कार , my name is
-            </motion.h3>
-
-            <motion.h1
-                initial={{ y: 10, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.7 }}
-                className='text-4xl lgl:text-6xl font-titleFont font-extrabold flex flex-col'
-            >
-                <span className='inline-block'>
-                    {displayText}
-                    {cursor && (
-                        <span className='text-textGreen cursor-blink'>{cursor}</span>
-                    )}
-                </span>
-                <motion.span
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.5, delay: 2.5 }}
-                    className='text-textDark mt-2 lgl:mt-4'>
-                    Full-Stack Developer specializing in Multi-Tenant SaaS | Laravel & Next.js
-                </motion.span>
+            <motion.h1 {...fadeUp(0.4)} className='text-4xl lgl:text-6xl font-titleFont font-extrabold text-textLight'>
+                Ankit Sharma
             </motion.h1>
 
             <motion.p
-                initial={{ y: 10, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.8 }}
-                className="text-base md:max-w-[650px] text-textDark font-medium">
-                I build multi-tenant SaaS platforms and enterprise applications. Currently focused on{' '}
-                <span className='text-textLight'>Laravel</span> and{' '}
-                <span className='text-textLight'>Next.js</span> ecosystems, delivering production-ready
-                systems from concept to deployment.
+                {...fadeUp(0.5)}
+                className='text-2xl lgl:text-4xl font-titleFont font-bold text-textDark leading-tight max-w-[850px]'
+            >
+                I have shipped all three tenant isolation models to production.
             </motion.p>
 
-            {/* CTA Buttons */}
+            <motion.p {...fadeUp(0.6)} className='text-base md:max-w-[650px] text-textDark font-medium'>
+                Most engineers pick one way of keeping one customer&apos;s data away from another&apos;s and stay
+                there. I have run all three in live systems.
+            </motion.p>
+
             <motion.div
-                initial={{ y: 10, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.9 }}
-                className='flex flex-wrap gap-4 mt-2'
+                {...fadeUp(0.7)}
+                className='w-full md:max-w-[650px] overflow-x-auto rounded-lg border border-[#233554] bg-[#112240]/60'
             >
+                <table className='w-full text-sm text-left'>
+                    <thead className='font-titleFont text-xs uppercase tracking-wider text-textDark'>
+                        <tr className='border-b border-[#233554]'>
+                            <th scope='col' className='px-4 py-3 font-medium'>System</th>
+                            <th scope='col' className='px-4 py-3 font-medium'>Isolation</th>
+                            <th scope='col' className='px-4 py-3 font-medium text-right'>Live since</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {isolationModels.map((row) => (
+                            <tr key={row.slug} className='border-b border-[#233554] last:border-0'>
+                                <td className='px-4 py-3'>
+                                    <Link
+                                        href={`/projects/${row.slug}`}
+                                        className='text-textLight hover:text-textGreen duration-300'
+                                    >
+                                        {row.system}
+                                    </Link>
+                                </td>
+                                <td className='px-4 py-3 text-textGreen whitespace-nowrap'>{row.model}</td>
+                                <td className='px-4 py-3 text-right tabular-nums text-textDark'>{row.since}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </motion.div>
+
+            <motion.p {...fadeUp(0.8)} className='text-base md:max-w-[650px] text-textDark font-medium'>
+                <span className='text-textLight'>Most recent:</span>{' '}
+                <Link
+                    href='/projects/legendaire-dms'
+                    className='underline decoration-textGreen/40 underline-offset-4 hover:text-textGreen duration-300'
+                >
+                    Rebuilt a Logistics Company&apos;s live delivery system
+                </Link>{' '}
+                from .NET and AngularJS to NestJS and React in five weeks.
+            </motion.p>
+
+            <motion.div {...fadeUp(0.9)} className='flex flex-wrap gap-4 mt-2'>
                 <a href='#project'>
                     <button className='w-44 h-12 text-sm font-titleFont bg-textGreen text-bodyColor rounded-md
                         tracking-wide hover:bg-textGreen/90 duration-300 font-semibold'>
@@ -90,10 +95,8 @@ const Banner = () => {
                     </button>
                 </a>
             </motion.div>
-
-        </section >
+        </section>
     );
-
-}
+};
 
 export default Banner;
