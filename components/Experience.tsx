@@ -1,56 +1,60 @@
-import SectionTitle from './SectionTitle';
-import Summerhill from './works/Summerhill';
-import Himtech from './works/Himtech';
-import Freelancer from './works/Freelancer';
-
-// Newest first. Every job stays visible; there are no tabs to click.
+// One sentence per job. The projects section below carries the detail.
 const jobs = [
   {
+    dates: 'Oct 2024 – now',
     title: 'Software Engineer',
     company: 'SummerHill Technologies',
-    dates: 'Oct 2024 – Present',
-    meta: '7 apps · SaaS & legacy rebuilds · Laravel, Next.js & NestJS',
-    body: <Summerhill />
+    summary: "Built and ran client systems, from a state Bar Council's enrolment to a logistics company's live delivery system.",
+    tools: 'Laravel · Next.js · NestJS'
   },
   {
-    title: 'Freelance Projects',
-    company: 'Independent',
     dates: '2021 – 2024',
-    meta: 'Shimla · Project-based client work',
-    body: <Freelancer />
+    title: 'Freelance',
+    company: 'Independent',
+    summary: 'Built a project management system for a 60-person team, plus websites for local businesses.',
+    tools: 'Laravel · PHP'
   },
   {
+    dates: '2020 – 2021',
     title: 'Junior Developer',
     company: 'Himtech',
-    dates: 'Jan 2020 – Feb 2021',
-    meta: 'Django & Python · HTML, CSS, JS',
-    body: <Himtech />
+    summary: 'Built the Django backend for a home-services marketplace.',
+    tools: 'Django · Python'
   }
 ];
 
 const Experience = () => {
   return (
-    <section id='experience' className='max-w-containerxs mx-auto py-10 lgl:py-24 px-4'>
-      <SectionTitle title='Experience' />
+    <section
+      id='experience'
+      className='max-w-containerSmall mx-auto py-10 lgl:py-24 grid lgl:grid-cols-[1fr_2.2fr] gap-8 lgl:gap-12'
+    >
+      <div className='flex flex-col gap-4'>
+        <h2 className='font-titleFont text-2xl font-semibold'>Experience</h2>
+        <a
+          href='/assets/ankit-sharma-latest.pdf'
+          target='_blank'
+          rel='noopener noreferrer'
+          className='text-sm font-medium text-accent hover:underline underline-offset-4 w-fit'
+        >
+          Full resume (PDF) →
+        </a>
+      </div>
 
-      <ol className='mt-10 flex flex-col'>
-        {jobs.map(({ title, company, dates, meta, body }, index) => (
-          <li key={company} className='relative pl-8 pb-12 last:pb-0'>
-            {/* The line runs from this dot down to the next one. */}
-            {index < jobs.length - 1 && (
-              <span className='absolute left-[5px] top-4 bottom-0 w-px bg-[#233554]' />
-            )}
-            <span className='absolute left-0 top-[9px] w-[11px] h-[11px] rounded-full border-2 border-accent bg-bodyColor' />
-
-            <div className='flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1'>
-              <h3 className='font-titleFont font-semibold text-xl text-textLight'>
-                {title} <span className='text-accent'>· {company}</span>
+      <ol className='border-t border-[#233554]'>
+        {jobs.map(({ dates, title, company, summary, tools }) => (
+          <li
+            key={company}
+            className='grid sml:grid-cols-[9rem_1fr] gap-x-6 gap-y-1 py-6 border-b border-[#233554]'
+          >
+            <p className='text-sm text-textDark tabular-nums pt-1'>{dates}</p>
+            <div className='flex flex-col gap-2 min-w-0'>
+              <h3 className='font-titleFont text-lg font-semibold text-textLight'>
+                {title} · {company}
               </h3>
-              <p className='text-sm font-medium text-textDark whitespace-nowrap'>{dates}</p>
+              <p className='text-base text-textDark leading-relaxed'>{summary}</p>
+              <p className='text-sm text-textDark/80'>{tools}</p>
             </div>
-            <p className='mt-1 text-sm text-textDark'>{meta}</p>
-
-            <div className='mt-5'>{body}</div>
           </li>
         ))}
       </ol>

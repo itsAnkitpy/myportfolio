@@ -17,31 +17,56 @@ const Banner = () => {
     return (
         <section
             id='home'
-            className='max-w-contentContainer mx-auto py-10 mdl:py-24 flex flex-col gap-4 lgl:gap-6 mdl:px-10 xl:px-4'
+            className='max-w-contentContainer mx-auto py-10 mdl:py-24 mdl:px-10 xl:px-4 grid lgl:grid-cols-[1.2fr_1fr] gap-10 lgl:gap-12 lgl:items-center'
         >
+            {/* Left: the claim and the actions. Right: the proof. On a phone the proof drops below. */}
+            <div className='flex flex-col gap-4 lgl:gap-6'>
             <motion.p {...fadeUp(0.3)} className='font-titleFont text-sm tracking-[0.2em] uppercase text-accent'>
                 Product engineer
             </motion.p>
 
-            <motion.h1 {...fadeUp(0.4)} className='text-4xl lgl:text-6xl font-titleFont font-extrabold text-textLight'>
-                Ankit Sharma
-            </motion.h1>
-
-            <motion.p
-                {...fadeUp(0.5)}
-                className='text-2xl lgl:text-4xl font-titleFont font-bold text-textDark leading-tight max-w-[850px]'
+            <motion.h1
+                {...fadeUp(0.4)}
+                className='text-4xl lgl:text-5xl font-titleFont font-extrabold text-textLight leading-tight'
             >
                 I have shipped all three tenant isolation models to production.
-            </motion.p>
+            </motion.h1>
 
-            <motion.p {...fadeUp(0.6)} className='text-base md:max-w-[650px] text-textDark font-medium'>
+            <motion.p {...fadeUp(0.5)} className='text-base md:max-w-[650px] text-textDark font-medium'>
                 Most engineers pick one way of keeping one customer&apos;s data away from another&apos;s and stay
                 there. I have run all three in live systems.
             </motion.p>
 
+            <motion.p {...fadeUp(0.6)} className='text-base md:max-w-[650px] text-textDark font-medium'>
+                <span className='text-textLight'>Most recent:</span>{' '}
+                <Link
+                    href='/projects/legendaire-dms'
+                    className='underline decoration-accent/40 underline-offset-4 hover:text-accent duration-300'
+                >
+                    Rebuilt a Logistics Company&apos;s live delivery system
+                </Link>{' '}
+                from .NET and AngularJS to NestJS and React in five weeks.
+            </motion.p>
+
+            <motion.div {...fadeUp(0.7)} className='flex flex-wrap gap-4 mt-2'>
+                <a href='#project'>
+                    <button className='w-44 h-12 text-sm font-titleFont bg-accent text-bodyColor rounded-md
+                        tracking-wide hover:bg-accent/90 duration-300 font-semibold'>
+                        View My Work
+                    </button>
+                </a>
+                <a href='#contact'>
+                    <button className='w-44 h-12 text-sm font-titleFont border border-accent rounded-md text-accent
+                        tracking-wide hover:bg-hoverColor duration-300'>
+                        Get in Touch
+                    </button>
+                </a>
+            </motion.div>
+            </div>
+
             <motion.div
-                {...fadeUp(0.7)}
-                className='w-full md:max-w-[650px] overflow-x-auto rounded-lg border border-[#233554] bg-[#112240]/60'
+                {...fadeUp(0.8)}
+                className='w-full overflow-x-auto rounded-lg border border-[#233554] bg-[#112240]/60'
             >
                 <table className='w-full text-sm text-left'>
                     <thead className='font-titleFont text-xs uppercase tracking-wider text-textDark'>
@@ -68,32 +93,6 @@ const Banner = () => {
                         ))}
                     </tbody>
                 </table>
-            </motion.div>
-
-            <motion.p {...fadeUp(0.8)} className='text-base md:max-w-[650px] text-textDark font-medium'>
-                <span className='text-textLight'>Most recent:</span>{' '}
-                <Link
-                    href='/projects/legendaire-dms'
-                    className='underline decoration-accent/40 underline-offset-4 hover:text-accent duration-300'
-                >
-                    Rebuilt a Logistics Company&apos;s live delivery system
-                </Link>{' '}
-                from .NET and AngularJS to NestJS and React in five weeks.
-            </motion.p>
-
-            <motion.div {...fadeUp(0.9)} className='flex flex-wrap gap-4 mt-2'>
-                <a href='#project'>
-                    <button className='w-44 h-12 text-sm font-titleFont bg-accent text-bodyColor rounded-md
-                        tracking-wide hover:bg-accent/90 duration-300 font-semibold'>
-                        View My Work
-                    </button>
-                </a>
-                <a href='#contact'>
-                    <button className='w-44 h-12 text-sm font-titleFont border border-accent rounded-md text-accent
-                        tracking-wide hover:bg-hoverColor duration-300'>
-                        Get in Touch
-                    </button>
-                </a>
             </motion.div>
         </section>
     );

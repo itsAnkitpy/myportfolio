@@ -1,7 +1,7 @@
 import { profileImg } from '@/public/assets';
 import Image from 'next/image';
 import SectionTitle from './SectionTitle';
-import { AiFillThunderbolt } from 'react-icons/ai';
+import { getTechIcon } from '../lib/getTechIcon';
 
 const About = () => {
   const achievements = [
@@ -30,7 +30,7 @@ const About = () => {
       tools: ['PostgreSQL', 'MySQL', 'SQL Server', 'Redis', 'Prisma']
     },
     {
-      category: 'DevOps & Tooling',
+      category: 'Tooling',
       tools: ['Docker', 'AWS', 'Vercel', 'Git & GitHub', 'Playwright', 'Claude Code & Codex']
     }
   ];
@@ -77,29 +77,27 @@ const About = () => {
 
           <div className='flex flex-col gap-4'>
             <h3 className='text-lg font-semibold text-accent tracking-wide uppercase'>Tech Stack</h3>
-            <div className='grid sml:grid-cols-2 gap-6'>
+            {/* One row of tags per group, styled like the project tags. */}
+            <dl className='flex flex-col gap-3'>
               {techStack.map(({ category, tools }) => (
-                <div
-                  key={category}
-                  className='bg-[#0f1b33] border border-[#1f2a44] rounded-lg p-4 flex flex-col gap-3'
-                >
-                  <div className='flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-textLight/80'>
-                    <span className='text-accent text-lg'>
-                      <AiFillThunderbolt />
-                    </span>
+                <div key={category} className='grid sml:grid-cols-[6.5rem_1fr] gap-2 sml:gap-4 items-start'>
+                  <dt className='text-sm font-semibold uppercase tracking-wide text-textLight/80 pt-1.5'>
                     {category}
-                  </div>
-                  <ul className='space-y-1 text-sm text-textLight/90'>
+                  </dt>
+                  <dd className='flex flex-wrap gap-2'>
                     {tools.map((tool) => (
-                      <li key={tool} className='flex items-center gap-2'>
-                        <span className='text-accent text-xs'>•</span>
+                      <span
+                        key={tool}
+                        className='flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium bg-[#0a192f] text-accent border border-accent/20 rounded-md'
+                      >
+                        <span className='text-sm'>{getTechIcon(tool)}</span>
                         {tool}
-                      </li>
+                      </span>
                     ))}
-                  </ul>
+                  </dd>
                 </div>
               ))}
-            </div>
+            </dl>
           </div>        </div>
         {/* Image */}
         <div className='w-full lgl:w-1/3 h-auto lgl:h-80 relative group'>
