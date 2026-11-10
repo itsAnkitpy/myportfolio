@@ -74,7 +74,7 @@ const Projects = () => {
 
                     {/* Status Badge Overlay */}
                     <div className='absolute top-4 left-4 z-20'>
-                      {project.liveDemoUrl ? (
+                      {project.status === 'live' ? (
                         <span className='px-3 py-1 text-xs font-semibold bg-textGreen text-[#0a192f] rounded-full shadow-md'>
                           Live
                         </span>

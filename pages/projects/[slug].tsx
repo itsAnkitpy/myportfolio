@@ -157,7 +157,7 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
               {/* Status and Metadata Badges */}
               <motion.div variants={fadeInUp} className='flex flex-wrap items-center gap-3 mb-6'>
                 {/* Status Badge */}
-                {project.liveDemoUrl ? (
+                {project.status === 'live' ? (
                   <span className='px-3 py-1.5 text-xs font-semibold bg-textGreen text-[#0a192f] rounded-full shadow-md'>
                     Live Project
                   </span>

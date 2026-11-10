@@ -141,6 +141,105 @@ The Android app is a thin client on the same hosted API, not a second backend. E
     ]
   },
   {
+    id: 17,
+    slug: "legendaire-dms",
+    title: "Legendaire Delivery System",
+    featured: true,
+    shortDescription: "A full rebuild of a logistics company's live delivery management system, from .NET and AngularJS to NestJS and React. It covers booking by API, spreadsheet, and screen, then pickup, branch scanning, bagging, line-haul, driver delivery, and returns. I was the sole developer of the web app and backend at Summerhill Technologies. Real orders began on 14 October 2026, and it handled more than 6,500 parcels in its first 18 days.",
+    image: "/assets/images/projects/legendaire-dms/hero.png",
+    images: {
+      hero: "/assets/images/projects/legendaire-dms/hero.png",
+      // TODO: add app screens from staging with fake data. Production screens show customer names, phones, and addresses.
+    },
+    // video: {
+    //   loomUrl: "https://www.loom.com/embed/VIDEO_ID_HERE", // TODO: record on staging with fake data — booking, pickup, scan, delivery
+    // },
+    tags: ["NestJS", "React 19", "TypeScript", "SQL Server", "MUI", "Vite", "Playwright", "Legacy Modernization"],
+    liveDemoUrl: null, // Internal system behind a login. Do not link production.
+    sourceCodeUrl: null, // Code is owned by Summerhill Technologies.
+    category: "full-stack",
+    role: "solo",
+    year: 2026,
+    status: "live",
+    longDescription: `Legendaire Logistics moves parcels from its business customers to their buyers. Its operation ran on AngularJS 1.x screens, an ASP.NET Web API backend in C#, and SQL Server, with most of the business rules saved inside the database. At Summerhill Technologies I rebuilt it as a NestJS backend and a React frontend, with those rules moved into application code where they can be read and tested.
+
+The system follows a parcel from start to finish. Orders arrive from a customer's system through the API, from a spreadsheet upload, or typed in by a clerk. Drivers collect them on pickup run sheets, branches scan and bag them, vehicles carry the bags between sites, and drivers deliver them with a phone app that records the outcome of each attempt. Around that sit returns, exceptions, public tracking, reports, and scheduled emails.
+
+The old system set the size of the job: 117 screens, 155 pop-ups, 417 database tables, 1,391 database routines, and 112 scheduled jobs. Reading it came first, and that reading cut the rebuild to about 95 screens and about 600 routines to replace.
+
+Work started on 8 September 2026. The production server went up on 10 October, when the first customer's system began calling the API. Real orders began on 14 October, once everyone had agreed to clear the test data, and production held more than 6,500 parcels by 1 November. I supported the first live days directly and logged every problem seen on production, 44 findings in the first six days.
+
+I was the only developer on the web app and backend. A cloud engineer ran the servers, and a separate developer owns the drivers' phone app. AI agents did much of the implementation under a written plan for each module, with Codex as a second reviewer. The decisions, the checks, and the production support were mine.`,
+    problemStatement: `The old system still worked, but it had become hard to change. Most business rules lived in database routines, the largest of them 1,239 lines long. Business values such as code prefixes and size lists were typed directly into the source, so changing one needed a developer.
+
+A replacement could not simply be cleaner. Customer systems, the drivers' installed phone app, and branch staff all depended on exactly how the old system behaved, so the new one had to feel familiar on its first day and still be something the business could keep changing.`,
+    solution: `I treated the old system's behaviour as the specification. Before building a screen, I read its markup, its controller, and the SQL behind each dropdown, then wrote a plan for that module with its findings, decisions, and questions for the client. Each module went through the same steps: plan, build, review, and checks against a running server.
+
+The database stayed shaped like the old one, with the same table and column names and additions only, so master data could be copied straight across. The rules did move: the new backend calls no stored procedure that writes. It answers the installed phone app request for request and keeps the customer API's old addresses and reply shapes. Where the old source had a business value typed in, such as a bag size or a code letter, I asked whether it could safely become a setting on a screen.
+
+A check only counts here once it has been seen to fail: break the rule on purpose, watch the check go red, and put the rule back. The project has 353 backend unit tests, 46 check scripts that run against a running server, and Playwright journeys for forward delivery, reverse pickup, returns, and the driver app.`,
+    techStack: [
+      {
+        name: "NestJS",
+        rationale: "The Node framework closest to Laravel, which I know deeply. It forces several hundred endpoints into one shape: a thin controller that reads the request and calls one service."
+      },
+      {
+        name: "React + Vite",
+        rationale: "The working screens sit behind a login and nothing there needs a search engine, so the server rendering in Next.js would have gone unused."
+      },
+      {
+        name: "MUI",
+        rationale: "Its data table handles paging, sorting, and filtering. With about 95 screens to rebuild, writing tables by hand was not an option."
+      },
+      {
+        name: "TypeScript",
+        rationale: "The rules that used to sit in database routines now live in typed application code that can be read, reviewed, and tested."
+      },
+      {
+        name: "SQL Server + hand-written SQL",
+        rationale: "Prisma and TypeORM both want to own the schema, and this one had to stay shaped like the old database. Hand-written SQL also let me compare old routines and new queries side by side."
+      },
+      {
+        name: "pdfkit + bwip-js",
+        rationale: "Generates the PDF documents and barcodes the operation prints, replacing the libraries the old system used."
+      },
+      {
+        name: "Playwright",
+        rationale: "End-to-end journeys through the real screens, covering forward delivery, reverse pickup, returns, and the driver app."
+      },
+      {
+        name: "Claude Code + Codex",
+        rationale: "AI agents for implementation and an independent second review, working from one written set of project rules. This is how one developer covered a system this size in five weeks."
+      }
+    ],
+    challenges: [
+      {
+        challenge: "Finding the Rules Inside the Database",
+        solution: "The old web layer mostly passed requests straight to database routines, so the routines were the real system. I read the SQL instead of trusting names and menus, which changed the scope. One 919-line routine turned out to be dead code. A whole planned module was dropped because its lists could never show a row. Rates and invoicing were held back because no user could open those eleven screens. The rebuild's size came from what the old system actually did, not from what its menu listed."
+      },
+      {
+        challenge: "When the Old Behaviour Is the Specification",
+        solution: "People and connected systems relied on how the old system behaved, faults included, so a difference counted as a defect even when it looked like an improvement. In one module, fourteen of the checks assert an old fault on purpose. The exception is a fault that would corrupt data. Switching off a seal on the old screen switched off the bag with the same number, and its purchase check tested only the first number in a batch. I did not copy those two, and each has a check written in reverse."
+      },
+      {
+        challenge: "Two Customers, One Waybill Number",
+        solution: "A waybill number was a prefix, a type digit, the customer id, and a bare counter. So customer 2 at counter 10 and customer 21 at counter 0 produced the same number, and the existing data already held such a row. Padding the counter to eight digits makes that collision impossible, and a unique index now enforces it."
+      },
+      {
+        challenge: "The First Customer's Calls Were All Refused",
+        solution: "On the first production day, every API call from the first customer failed, and the refused fetches appeared on no screen, so I found them with a database query. The password box had silently cut their 16-character password to 15, so the saved password never matched. I widened the limit and then fixed the wider problem. 22 risky boxes now keep what is pasted and refuse the excess with a message, and every customer API call is recorded on a screen, pass or fail."
+      },
+      {
+        challenge: "A Name in the Source Was Not the Name on the Wire",
+        solution: "The old C# property was called shipRespose, so I copied that name into the booking reply. An attribute above it renamed the key to shipments in the JSON the old system actually sent, and the customer's integration partner caught the difference in a meeting. I fixed it and swept every other customer-facing reply for the same fault. The rule I keep: when replacing an API, check what it sends, not what its code calls it."
+      },
+      {
+        challenge: "Clearing Production With a Way Back",
+        solution: "Before go-live, test orders sat alongside master data that had to stay, and everyone agreed to clear the orders and restart the numbering. I wrote one script that deletes from 90 tables in a single transaction and rolls back unless every cleared table is empty and every kept table is unchanged. It was rehearsed on a local copy, on staging, and on production, and only then committed. Checking the backup paid off first: restore history showed the first backup was of the old database, so a second one was taken, restored, and matched table by table."
+      }
+    ]
+  },
+  {
     id: 16,
     slug: "call-center-platform",
     title: "Real-Time Call Center Platform for BPO Operations",
