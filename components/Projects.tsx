@@ -37,9 +37,9 @@ const Projects = () => {
               {/* Project Image */}
               <div className='w-full xl:w-1/2 h-auto relative group'>
                 <Link href={`/projects/${project.slug}`}>
-                  <div className='relative overflow-hidden rounded-lg border border-[#233554] bg-[#0a192f] shadow-lg shadow-[#0a192f]/50 group-hover:shadow-textGreen/10 transition-all duration-300'>
+                  <div className='relative overflow-hidden rounded-lg border border-[#233554] bg-[#0a192f] shadow-lg shadow-[#0a192f]/50 group-hover:shadow-accent/10 transition-all duration-300'>
                     {/* Gradient overlay */}
-                    <div className='absolute inset-0 bg-gradient-to-br from-textGreen/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10' />
+                    <div className='absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10' />
                     
                     <Image
                       className='w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 cursor-pointer'
@@ -52,11 +52,11 @@ const Projects = () => {
                     {/* Status Badge Overlay */}
                     <div className='absolute top-4 left-4 z-20'>
                       {project.status === 'live' ? (
-                        <span className='px-3 py-1 text-xs font-semibold bg-textGreen text-[#0a192f] rounded-full shadow-md'>
+                        <span className='px-3 py-1 text-xs font-semibold bg-emerald-400 text-[#0a192f] rounded-full shadow-md'>
                           Live
                         </span>
                       ) : (
-                        <span className='px-3 py-1 text-xs font-semibold bg-[#112240] text-textGreen border border-textGreen/30 rounded-full shadow-md'>
+                        <span className='px-3 py-1 text-xs font-semibold bg-[#112240] text-accent border border-accent/30 rounded-full shadow-md'>
                           Open Source
                         </span>
                       )}
@@ -69,15 +69,15 @@ const Projects = () => {
               <div className='w-full xl:w-1/2 flex flex-col items-start gap-5'>
                 {/* Role and year */}
                 <div className='flex items-center gap-2'>
-                  <span className='h-px w-8 bg-textGreen/50' />
-                  <p className='font-titleFont text-textGreen text-sm tracking-wider uppercase'>
+                  <span className='h-px w-8 bg-accent/50' />
+                  <p className='font-titleFont text-accent text-sm tracking-wider uppercase'>
                     {projectLabel(project)}
                   </p>
                 </div>
 
                 {/* Title */}
                 <Link href={`/projects/${project.slug}`}>
-                  <h3 className='text-2xl md:text-3xl font-bold text-textLight hover:text-textGreen transition-colors duration-300 cursor-pointer'>
+                  <h3 className='text-2xl md:text-3xl font-bold text-textLight hover:text-accent transition-colors duration-300 cursor-pointer'>
                     {project.title}
                   </h3>
                 </Link>
@@ -92,7 +92,7 @@ const Projects = () => {
                   {project.tags.map((tag, tagIndex) => (
                     <span
                       key={tagIndex}
-                      className='flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium bg-[#0a192f] text-textGreen border border-textGreen/20 rounded-md hover:border-textGreen/50 hover:bg-[#112240] transition-all duration-300'
+                      className='flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium bg-[#0a192f] text-accent border border-accent/20 rounded-md hover:border-accent/50 hover:bg-[#112240] transition-all duration-300'
                     >
                       <span className='text-sm'>{getTechIcon(tag)}</span>
                       {tag}
@@ -104,7 +104,7 @@ const Projects = () => {
                 <div className='flex items-center gap-4'>
                   {/* View Case Study Button */}
                   <Link href={`/projects/${project.slug}`}>
-                    <button className='group flex items-center gap-2 px-5 py-2.5 bg-transparent border border-textGreen text-textGreen rounded-md hover:bg-textGreen/10 transition-all duration-300'>
+                    <button className='group flex items-center gap-2 px-5 py-2.5 bg-transparent border border-accent text-accent rounded-md hover:bg-accent/10 transition-all duration-300'>
                       <span className='text-sm font-medium'>View Case Study</span>
                       <HiArrowNarrowRight className='group-hover:translate-x-1 transition-transform duration-300' />
                     </button>
@@ -114,7 +114,7 @@ const Projects = () => {
                   <div className='flex items-center gap-3 text-2xl'>
                     {project.sourceCodeUrl && (
                       <a
-                        className='text-textDark hover:text-textGreen hover:scale-110 transition-all duration-300'
+                        className='text-textDark hover:text-accent hover:scale-110 transition-all duration-300'
                         href={project.sourceCodeUrl}
                         target='_blank'
                         rel='noopener noreferrer'
@@ -126,7 +126,7 @@ const Projects = () => {
 
                     {project.liveDemoUrl && (
                       <a
-                        className='text-textDark hover:text-textGreen hover:scale-110 transition-all duration-300'
+                        className='text-textDark hover:text-accent hover:scale-110 transition-all duration-300'
                         href={project.liveDemoUrl}
                         target='_blank'
                         rel='noopener noreferrer'
@@ -154,8 +154,8 @@ const Projects = () => {
             {otherProjects.map((project) => (
               <div key={project.id}>
                 <Link href={`/projects/${project.slug}`}>
-                  <div className='h-full flex flex-col gap-4 p-6 bg-[#112240] border border-[#233554] rounded-lg shadow-lg shadow-[#0a192f]/30 hover:border-textGreen/50 hover:-translate-y-1 transition-all duration-300 cursor-pointer'>
-                    <h4 className='text-lg font-bold text-textLight hover:text-textGreen transition-colors duration-300'>
+                  <div className='h-full flex flex-col gap-4 p-6 bg-[#112240] border border-[#233554] rounded-lg shadow-lg shadow-[#0a192f]/30 hover:border-accent/50 hover:-translate-y-1 transition-all duration-300 cursor-pointer'>
+                    <h4 className='text-lg font-bold text-textLight hover:text-accent transition-colors duration-300'>
                       {project.title}
                     </h4>
 
@@ -167,7 +167,7 @@ const Projects = () => {
                       {project.tags.slice(0, 4).map((tag, tagIndex) => (
                         <span
                           key={tagIndex}
-                          className='text-xs font-medium text-textGreen/80'
+                          className='text-xs font-medium text-accent/80'
                         >
                           {tag}
                         </span>

@@ -85,7 +85,7 @@ const Archive = () => {
         <h2 className='text-3xl md:text-4xl font-titleFont font-bold text-textLight'>
           More Projects
         </h2>
-        <p className='text-sm font-titleFont text-textGreen tracking-wide'>
+        <p className='text-sm font-titleFont text-accent tracking-wide'>
           Explore additional work and experiments
         </p>
       </div>
@@ -98,8 +98,8 @@ const Archive = () => {
             onClick={() => handleCategoryChange(category.id as CategoryFilter)}
             className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
               activeCategory === category.id
-                ? 'bg-textGreen/10 text-textGreen border-2 border-textGreen shadow-md shadow-textGreen/10'
-                : 'bg-[#112240] text-textDark border-2 border-[#233554] hover:border-textGreen/50 hover:text-textLight'
+                ? 'bg-accent/10 text-accent border-2 border-accent shadow-md shadow-accent/10'
+                : 'bg-[#112240] text-textDark border-2 border-[#233554] hover:border-accent/50 hover:text-textLight'
             }`}
           >
             {category.label}
@@ -143,7 +143,7 @@ const Archive = () => {
         >
           <button
             onClick={() => setShowMore(!showMore)}
-            className='group flex items-center gap-2 px-6 py-3 rounded-lg text-textGreen text-sm font-medium border-2 border-textGreen hover:bg-textGreen/10 transition-all duration-300 shadow-md hover:shadow-textGreen/20'
+            className='group flex items-center gap-2 px-6 py-3 rounded-lg text-accent text-sm font-medium border-2 border-accent hover:bg-accent/10 transition-all duration-300 shadow-md hover:shadow-accent/20'
           >
             <span>
               {showMore

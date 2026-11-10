@@ -32,17 +32,17 @@ const Contact = () => {
       className='max-w-contentContainer mx-auto py-10 xl:py-32 px-4 flex flex-col gap-8 items-center justify-center relative'
     >
       {/* Background Gradient */}
-      <div className='absolute inset-0 bg-gradient-to-b from-transparent via-textGreen/5 to-transparent pointer-events-none' />
+      <div className='absolute inset-0 bg-gradient-to-b from-transparent via-accent/5 to-transparent pointer-events-none' />
 
       <div className='relative z-10 flex flex-col gap-8 items-center justify-center'>
         {/* Header */}
         <div className='flex flex-col items-center gap-4'>
           <div className='flex items-center gap-2'>
-            <span className='h-px w-8 bg-textGreen/50' />
-            <p className='font-titleFont text-lg text-textGreen font-semibold tracking-wide'>
+            <span className='h-px w-8 bg-accent/50' />
+            <p className='font-titleFont text-lg text-accent font-semibold tracking-wide'>
               What&apos;s Next?
             </p>
-            <span className='h-px w-8 bg-textGreen/50' />
+            <span className='h-px w-8 bg-accent/50' />
           </div>
 
           <h2 className='font-titleFont text-4xl md:text-5xl lg:text-6xl font-bold text-textLight'>
@@ -50,9 +50,9 @@ const Contact = () => {
           </h2>
 
           {/* Availability Badge */}
-          <div className='flex items-center gap-2 px-4 py-2 bg-textGreen/10 border border-textGreen/30 rounded-full'>
-            <span className='w-2 h-2 bg-textGreen rounded-full animate-pulse' />
-            <span className='text-sm text-textGreen font-medium'>Available for new opportunities</span>
+          <div className='flex items-center gap-2 px-4 py-2 bg-accent/10 border border-accent/30 rounded-full'>
+            <span className='w-2 h-2 bg-accent rounded-full animate-pulse' />
+            <span className='text-sm text-accent font-medium'>Available for new opportunities</span>
           </div>
         </div>
 
@@ -64,7 +64,7 @@ const Contact = () => {
 
         {/* Response Time Info */}
         <div className='flex items-center gap-2 text-sm text-textDark'>
-          <BsCalendar3 className='text-textGreen' />
+          <BsCalendar3 className='text-accent' />
           <span>Usually responds within 24 hours</span>
         </div>
 
@@ -72,7 +72,7 @@ const Contact = () => {
         <div className='flex flex-col sml:flex-row items-center gap-4 mt-4'>
           {/* Email Button */}
           <a href='mailto:ankit3585@gmail.com'>
-            <button className='group flex items-center gap-2 px-8 py-4 border-2 border-textGreen text-textGreen rounded-lg hover:bg-textGreen/10 transition-all duration-300 shadow-md hover:shadow-textGreen/20 font-medium'>
+            <button className='group flex items-center gap-2 px-8 py-4 border-2 border-accent text-accent rounded-lg hover:bg-accent/10 transition-all duration-300 shadow-md hover:shadow-accent/20 font-medium'>
               <HiMail className='text-xl group-hover:scale-110 transition-transform duration-300' />
               <span>Send Email</span>
             </button>
@@ -80,7 +80,7 @@ const Contact = () => {
 
           {/* Resume Button */}
           <a href='/assets/ankit-sharma-latest.pdf' download>
-            <button className='group flex items-center gap-2 px-8 py-4 bg-textGreen/10 border-2 border-textGreen/30 text-textLight rounded-lg hover:border-textGreen hover:bg-textGreen/20 transition-all duration-300 font-medium'>
+            <button className='group flex items-center gap-2 px-8 py-4 bg-accent/10 border-2 border-accent/30 text-textLight rounded-lg hover:border-accent hover:bg-accent/20 transition-all duration-300 font-medium'>
               <HiDownload className='text-xl group-hover:translate-y-1 transition-transform duration-300' />
               <span>Download Resume</span>
             </button>

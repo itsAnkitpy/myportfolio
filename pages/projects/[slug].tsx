@@ -136,7 +136,7 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.3 }}
-              className='flex items-center gap-2 text-textGreen hover:text-textLight cursor-pointer mb-8 transition-colors duration-300 w-fit'
+              className='flex items-center gap-2 text-accent hover:text-textLight cursor-pointer mb-8 transition-colors duration-300 w-fit'
             >
               <FiArrowLeft />
               <span className='text-sm font-medium'>Back to Projects</span>
@@ -151,18 +151,18 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
             className='mb-16 relative'
           >
             {/* Background Gradient */}
-            <div className='absolute inset-0 bg-gradient-to-r from-textGreen/5 via-transparent to-transparent pointer-events-none rounded-lg' />
+            <div className='absolute inset-0 bg-gradient-to-r from-accent/5 via-transparent to-transparent pointer-events-none rounded-lg' />
 
             <div className='relative z-10'>
               {/* Status and Metadata Badges */}
               <motion.div variants={fadeInUp} className='flex flex-wrap items-center gap-3 mb-6'>
                 {/* Status Badge */}
                 {project.status === 'live' ? (
-                  <span className='px-3 py-1.5 text-xs font-semibold bg-textGreen text-[#0a192f] rounded-full shadow-md'>
+                  <span className='px-3 py-1.5 text-xs font-semibold bg-emerald-400 text-[#0a192f] rounded-full shadow-md'>
                     Live Project
                   </span>
                 ) : (
-                  <span className='px-3 py-1.5 text-xs font-semibold bg-[#112240] text-textGreen border border-textGreen/30 rounded-full shadow-md'>
+                  <span className='px-3 py-1.5 text-xs font-semibold bg-[#112240] text-accent border border-accent/30 rounded-full shadow-md'>
                     Open Source
                   </span>
                 )}
@@ -170,7 +170,7 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
                 {/* Year Badge */}
                 {project.year && (
                   <div className='flex items-center gap-1.5 px-3 py-1.5 bg-[#112240] border border-[#233554] rounded-lg text-xs text-textDark'>
-                    <FiCalendar className='text-textGreen' />
+                    <FiCalendar className='text-accent' />
                     <span>{project.year}</span>
                   </div>
                 )}
@@ -178,7 +178,7 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
                 {/* Role Badge */}
                 {project.role && (
                   <div className='flex items-center gap-1.5 px-3 py-1.5 bg-[#112240] border border-[#233554] rounded-lg text-xs text-textDark'>
-                    <FiUser className='text-textGreen' />
+                    <FiUser className='text-accent' />
                     <span>{getRoleLabel()}</span>
                   </div>
                 )}
@@ -186,7 +186,7 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
                 {/* Category Badge */}
                 {project.category && (
                   <div className='flex items-center gap-1.5 px-3 py-1.5 bg-[#112240] border border-[#233554] rounded-lg text-xs text-textDark'>
-                    <FiFolder className='text-textGreen' />
+                    <FiFolder className='text-accent' />
                     <span>{getCategoryLabel()}</span>
                   </div>
                 )}
@@ -212,7 +212,7 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
                     href={project.liveDemoUrl}
                     target='_blank'
                     rel='noopener noreferrer'
-                    className='group flex items-center gap-2 px-6 py-3 border-2 border-textGreen text-textGreen rounded-lg hover:bg-textGreen/10 transition-all duration-300 shadow-md hover:shadow-textGreen/20 font-medium'
+                    className='group flex items-center gap-2 px-6 py-3 border-2 border-accent text-accent rounded-lg hover:bg-accent/10 transition-all duration-300 shadow-md hover:shadow-accent/20 font-medium'
                   >
                     <RxOpenInNewWindow className='group-hover:scale-110 transition-transform duration-300' />
                     <span>View Live Demo</span>
@@ -223,7 +223,7 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
                     href={project.sourceCodeUrl}
                     target='_blank'
                     rel='noopener noreferrer'
-                    className='group flex items-center gap-2 px-6 py-3 bg-[#112240] border-2 border-[#233554] text-textLight rounded-lg hover:border-textGreen hover:bg-textGreen/10 transition-all duration-300 font-medium'
+                    className='group flex items-center gap-2 px-6 py-3 bg-[#112240] border-2 border-[#233554] text-textLight rounded-lg hover:border-accent hover:bg-accent/10 transition-all duration-300 font-medium'
                   >
                     <TbBrandGithub className='group-hover:scale-110 transition-transform duration-300' />
                     <span>View Source Code</span>
@@ -245,11 +245,11 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
               onClick={() => openLightbox(0)}
             >
               {/* Gradient Overlay */}
-              <div className='absolute inset-0 bg-gradient-to-br from-textGreen/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10' />
+              <div className='absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10' />
               
               {/* Zoom Icon */}
               <div className='absolute top-4 right-4 z-20 p-2 bg-[#0a192f]/80 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
-                <FiMaximize2 className='text-textGreen text-xl' />
+                <FiMaximize2 className='text-accent text-xl' />
               </div>
 
               <Image 
@@ -270,8 +270,8 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
               className='mb-16'
             >
               <div className='flex items-center gap-3 mb-8'>
-                <span className='h-px w-12 bg-textGreen/50' />
-                <h2 className='text-2xl font-titleFont font-semibold text-textGreen'>Project Gallery</h2>
+                <span className='h-px w-12 bg-accent/50' />
+                <h2 className='text-2xl font-titleFont font-semibold text-accent'>Project Gallery</h2>
               </div>
 
               <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
@@ -285,11 +285,11 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
                     onClick={() => openLightbox(idx + 1)}
                   >
                     {/* Gradient Overlay */}
-                    <div className='absolute inset-0 bg-gradient-to-br from-textGreen/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10' />
+                    <div className='absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10' />
                     
                     {/* Zoom Icon */}
                     <div className='absolute top-4 right-4 z-20 p-2 bg-[#0a192f]/80 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
-                      <FiMaximize2 className='text-textGreen' />
+                      <FiMaximize2 className='text-accent' />
                     </div>
 
                     <Image
@@ -313,8 +313,8 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
               className='mb-16'
             >
               <div className='flex items-center gap-3 mb-8'>
-                <span className='h-px w-12 bg-textGreen/50' />
-                <h2 className='text-2xl font-titleFont font-semibold text-textGreen'>Mobile Experience</h2>
+                <span className='h-px w-12 bg-accent/50' />
+                <h2 className='text-2xl font-titleFont font-semibold text-accent'>Mobile Experience</h2>
               </div>
 
               {/* Each frame is sized to a phone screen, so the border hugs the
@@ -330,11 +330,11 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
                     onClick={() => openLightbox(allImages.indexOf(img))}
                   >
                     {/* Gradient Overlay */}
-                    <div className='absolute inset-0 bg-gradient-to-br from-textGreen/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10' />
+                    <div className='absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10' />
 
                     {/* Zoom Icon */}
                     <div className='absolute top-3 right-3 z-20 p-2 bg-[#0a192f]/80 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
-                      <FiMaximize2 className='text-textGreen' />
+                      <FiMaximize2 className='text-accent' />
                     </div>
 
                     <Image
@@ -359,8 +359,8 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
               className='mb-16'
             >
               <div className='flex items-center gap-3 mb-8'>
-                <span className='h-px w-12 bg-textGreen/50' />
-                <h2 className='text-2xl font-titleFont font-semibold text-textGreen'>Video Walkthrough</h2>
+                <span className='h-px w-12 bg-accent/50' />
+                <h2 className='text-2xl font-titleFont font-semibold text-accent'>Video Walkthrough</h2>
               </div>
 
               <div className='bg-[#112240] border border-[#233554] rounded-lg p-6'>
@@ -375,7 +375,7 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
                 </div>
                 {project.video.duration && (
                   <p className='text-textDark text-sm mt-4 flex items-center gap-2'>
-                    <FiCalendar className='text-textGreen' />
+                    <FiCalendar className='text-accent' />
                     Duration: {project.video.duration}
                   </p>
                 )}
@@ -390,8 +390,8 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
               {/* About the Project */}
               <section>
                 <div className='flex items-center gap-3 mb-6'>
-                  <span className='h-px w-12 bg-textGreen/50' />
-                  <h2 className='text-2xl font-titleFont font-semibold text-textGreen'>About the Project</h2>
+                  <span className='h-px w-12 bg-accent/50' />
+                  <h2 className='text-2xl font-titleFont font-semibold text-accent'>About the Project</h2>
                 </div>
                 <div className='bg-[#112240] border border-[#233554] p-6 rounded-lg'>
                   <p className='text-textDark leading-relaxed whitespace-pre-line'>{project.longDescription}</p>
@@ -401,8 +401,8 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
               {/* Problem Statement */}
               <section>
                 <div className='flex items-center gap-3 mb-6'>
-                  <span className='h-px w-12 bg-textGreen/50' />
-                  <h2 className='text-2xl font-titleFont font-semibold text-textGreen'>Problem Statement</h2>
+                  <span className='h-px w-12 bg-accent/50' />
+                  <h2 className='text-2xl font-titleFont font-semibold text-accent'>Problem Statement</h2>
                 </div>
                 <div className='bg-[#112240] border border-[#233554] p-6 rounded-lg border-l-4 border-l-red-500/30'>
                   <p className='text-textDark leading-relaxed whitespace-pre-line'>{project.problemStatement}</p>
@@ -412,10 +412,10 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
               {/* My Solution */}
               <section>
                 <div className='flex items-center gap-3 mb-6'>
-                  <span className='h-px w-12 bg-textGreen/50' />
-                  <h2 className='text-2xl font-titleFont font-semibold text-textGreen'>My Solution</h2>
+                  <span className='h-px w-12 bg-accent/50' />
+                  <h2 className='text-2xl font-titleFont font-semibold text-accent'>My Solution</h2>
                 </div>
-                <div className='bg-[#112240] border border-[#233554] p-6 rounded-lg border-l-4 border-l-textGreen/50'>
+                <div className='bg-[#112240] border border-[#233554] p-6 rounded-lg border-l-4 border-l-accent/50'>
                   <p className='text-textDark leading-relaxed whitespace-pre-line'>{project.solution}</p>
                 </div>
               </section>
@@ -423,16 +423,16 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
               {/* Challenges & Learnings */}
               <section>
                 <div className='flex items-center gap-3 mb-6'>
-                  <span className='h-px w-12 bg-textGreen/50' />
-                  <h2 className='text-2xl font-titleFont font-semibold text-textGreen'>Challenges & Learnings</h2>
+                  <span className='h-px w-12 bg-accent/50' />
+                  <h2 className='text-2xl font-titleFont font-semibold text-accent'>Challenges & Learnings</h2>
                 </div>
                 <div className='space-y-6'>
                   {project.challenges.map((challenge, index) => (
                     <div
                       key={index}
-                      className='bg-[#112240] border border-[#233554] p-6 rounded-lg hover:border-textGreen/30 hover:shadow-md hover:shadow-textGreen/5 transition-all duration-300 group'
+                      className='bg-[#112240] border border-[#233554] p-6 rounded-lg hover:border-accent/30 hover:shadow-md hover:shadow-accent/5 transition-all duration-300 group'
                     >
-                      <h3 className='text-lg font-medium mb-3 text-textLight group-hover:text-textGreen transition-colors duration-300'>
+                      <h3 className='text-lg font-medium mb-3 text-textLight group-hover:text-accent transition-colors duration-300'>
                         {challenge.challenge}
                       </h3>
                       <p className='text-textDark leading-relaxed'>{challenge.solution}</p>
@@ -447,18 +447,18 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
               {/* Technology Stack */}
               <section>
                 <div className='flex items-center gap-3 mb-6'>
-                  <span className='h-px w-8 bg-textGreen/50' />
-                  <h2 className='text-xl font-titleFont font-semibold text-textGreen'>Technology Stack</h2>
+                  <span className='h-px w-8 bg-accent/50' />
+                  <h2 className='text-xl font-titleFont font-semibold text-accent'>Technology Stack</h2>
                 </div>
                 <div className='space-y-4'>
                   {project.techStack.map((tech, index) => (
                     <div
                       key={index}
-                      className='bg-[#112240] border border-[#233554] p-4 rounded-lg hover:border-textGreen/30 transition-all duration-300 group'
+                      className='bg-[#112240] border border-[#233554] p-4 rounded-lg hover:border-accent/30 transition-all duration-300 group'
                     >
                       <div className='flex items-center gap-2 mb-2'>
-                        <span className='text-textGreen text-lg'>{getTechIcon(tech.name)}</span>
-                        <h3 className='text-lg font-medium text-textLight group-hover:text-textGreen transition-colors duration-300'>
+                        <span className='text-accent text-lg'>{getTechIcon(tech.name)}</span>
+                        <h3 className='text-lg font-medium text-textLight group-hover:text-accent transition-colors duration-300'>
                           {tech.name}
                         </h3>
                       </div>
@@ -471,14 +471,14 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
               {/* Tags */}
               <section>
                 <div className='flex items-center gap-3 mb-6'>
-                  <span className='h-px w-8 bg-textGreen/50' />
-                  <h2 className='text-xl font-titleFont font-semibold text-textGreen'>Technologies Used</h2>
+                  <span className='h-px w-8 bg-accent/50' />
+                  <h2 className='text-xl font-titleFont font-semibold text-accent'>Technologies Used</h2>
                 </div>
                 <div className='flex flex-wrap gap-2'>
                   {project.tags.map((tag, index) => (
                     <span
                       key={index}
-                      className='flex items-center gap-1.5 px-3 py-1.5 bg-[#0a192f] text-textGreen border border-textGreen/20 text-sm rounded-md hover:border-textGreen/50 hover:bg-[#112240] transition-all duration-300'
+                      className='flex items-center gap-1.5 px-3 py-1.5 bg-[#0a192f] text-accent border border-accent/20 text-sm rounded-md hover:border-accent/50 hover:bg-[#112240] transition-all duration-300'
                     >
                       <span className='text-xs'>{getTechIcon(tag)}</span>
                       {tag}
@@ -497,12 +497,12 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
               {projects[projects.findIndex((p) => p.id === project.id) - 1] && (
                 <Link
                   href={`/projects/${projects[projects.findIndex((p) => p.id === project.id) - 1].slug}`}
-                  className='group flex items-center gap-3 px-6 py-4 bg-[#112240] border border-[#233554] rounded-lg hover:border-textGreen/50 transition-all duration-300 w-full lg:w-auto lg:max-w-xs'
+                  className='group flex items-center gap-3 px-6 py-4 bg-[#112240] border border-[#233554] rounded-lg hover:border-accent/50 transition-all duration-300 w-full lg:w-auto lg:max-w-xs'
                 >
-                  <FiArrowLeft className='text-textGreen group-hover:-translate-x-1 transition-transform duration-300' />
+                  <FiArrowLeft className='text-accent group-hover:-translate-x-1 transition-transform duration-300' />
                   <div>
                     <p className='text-xs text-textDark uppercase tracking-wide mb-1'>Previous Project</p>
-                    <p className='text-textLight font-medium group-hover:text-textGreen transition-colors duration-300'>
+                    <p className='text-textLight font-medium group-hover:text-accent transition-colors duration-300'>
                       {projects[projects.findIndex((p) => p.id === project.id) - 1].title}
                     </p>
                   </div>
@@ -512,7 +512,7 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
               {/* Back to Projects */}
               <Link
                 href='/#project'
-                className='flex items-center gap-2 px-6 py-3 border-2 border-textGreen text-textGreen rounded-lg hover:bg-textGreen/10 transition-all duration-300 font-medium'
+                className='flex items-center gap-2 px-6 py-3 border-2 border-accent text-accent rounded-lg hover:bg-accent/10 transition-all duration-300 font-medium'
               >
                 <span>All Projects</span>
               </Link>
@@ -521,15 +521,15 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
               {projects[projects.findIndex((p) => p.id === project.id) + 1] && (
                 <Link
                   href={`/projects/${projects[projects.findIndex((p) => p.id === project.id) + 1].slug}`}
-                  className='group flex items-center gap-3 px-6 py-4 bg-[#112240] border border-[#233554] rounded-lg hover:border-textGreen/50 transition-all duration-300 w-full lg:w-auto lg:max-w-xs'
+                  className='group flex items-center gap-3 px-6 py-4 bg-[#112240] border border-[#233554] rounded-lg hover:border-accent/50 transition-all duration-300 w-full lg:w-auto lg:max-w-xs'
                 >
                   <div className='text-right'>
                     <p className='text-xs text-textDark uppercase tracking-wide mb-1'>Next Project</p>
-                    <p className='text-textLight font-medium group-hover:text-textGreen transition-colors duration-300'>
+                    <p className='text-textLight font-medium group-hover:text-accent transition-colors duration-300'>
                       {projects[projects.findIndex((p) => p.id === project.id) + 1].title}
                     </p>
                   </div>
-                  <FiArrowLeft className='text-textGreen rotate-180 group-hover:translate-x-1 transition-transform duration-300' />
+                  <FiArrowLeft className='text-accent rotate-180 group-hover:translate-x-1 transition-transform duration-300' />
                 </Link>
               )}
             </div>
@@ -549,7 +549,7 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
               {/* Close Button */}
               <button
                 onClick={closeLightbox}
-                className='absolute top-4 right-4 z-50 p-3 bg-[#112240] border border-[#233554] rounded-lg text-textLight hover:text-textGreen hover:border-textGreen transition-all duration-300'
+                className='absolute top-4 right-4 z-50 p-3 bg-[#112240] border border-[#233554] rounded-lg text-textLight hover:text-accent hover:border-accent transition-all duration-300'
                 aria-label='Close lightbox'
               >
                 <FiX className='text-2xl' />
@@ -569,7 +569,7 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
                     e.stopPropagation();
                     prevImage();
                   }}
-                  className='absolute left-4 z-50 p-3 bg-[#112240] border border-[#233554] rounded-lg text-textLight hover:text-textGreen hover:border-textGreen transition-all duration-300'
+                  className='absolute left-4 z-50 p-3 bg-[#112240] border border-[#233554] rounded-lg text-textLight hover:text-accent hover:border-accent transition-all duration-300'
                   aria-label='Previous image'
                 >
                   <FiChevronLeft className='text-2xl' />
@@ -583,7 +583,7 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
                     e.stopPropagation();
                     nextImage();
                   }}
-                  className='absolute right-4 z-50 p-3 bg-[#112240] border border-[#233554] rounded-lg text-textLight hover:text-textGreen hover:border-textGreen transition-all duration-300'
+                  className='absolute right-4 z-50 p-3 bg-[#112240] border border-[#233554] rounded-lg text-textLight hover:text-accent hover:border-accent transition-all duration-300'
                   aria-label='Next image'
                 >
                   <FiChevronRight className='text-2xl' />

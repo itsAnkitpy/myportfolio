@@ -13,14 +13,14 @@ const ArchiveCard = ({ project }: Props) => {
   const getStatusBadge = () => {
     if (project.liveDemoUrl) {
       return (
-        <span className='px-2 py-1 text-xs font-semibold bg-textGreen text-[#0a192f] rounded-full'>
+        <span className='px-2 py-1 text-xs font-semibold bg-emerald-400 text-[#0a192f] rounded-full'>
           Live
         </span>
       );
     }
     if (project.status === 'open-source') {
       return (
-        <span className='px-2 py-1 text-xs font-semibold bg-[#112240] text-textGreen border border-textGreen/30 rounded-full'>
+        <span className='px-2 py-1 text-xs font-semibold bg-[#112240] text-accent border border-accent/30 rounded-full'>
           Open Source
         </span>
       );
@@ -35,7 +35,7 @@ const ArchiveCard = ({ project }: Props) => {
       solo: 'bg-purple-500/10 text-purple-400 border-purple-500/30',
       team: 'bg-blue-500/10 text-blue-400 border-blue-500/30',
       freelance: 'bg-yellow-500/10 text-yellow-400 border-yellow-500/30',
-      product: 'bg-textGreen/10 text-textGreen border-textGreen/30'
+      product: 'bg-accent/10 text-accent border-accent/30'
     };
     const roleLabels = {
       solo: 'Solo',
@@ -55,18 +55,18 @@ const ArchiveCard = ({ project }: Props) => {
   return (
     <div
       className='w-full h-auto min-h-[320px] rounded-lg bg-[#112240] border border-[#233554] p-6 flex flex-col gap-5
-            hover:-translate-y-2 hover:shadow-lg hover:shadow-textGreen/10 hover:border-textGreen/30 transition-all duration-300 group'
+            hover:-translate-y-2 hover:shadow-lg hover:shadow-accent/10 hover:border-accent/30 transition-all duration-300 group'
     >
       {/* Header with icon and links */}
       <div className='flex justify-between items-start'>
-        <FaRegFolder className='text-4xl text-textGreen group-hover:scale-110 transition-transform duration-300' />
+        <FaRegFolder className='text-4xl text-accent group-hover:scale-110 transition-transform duration-300' />
         <div className='flex gap-3 text-xl'>
           {project.sourceCodeUrl && (
             <a
               href={project.sourceCodeUrl}
               target='_blank'
               rel='noopener noreferrer'
-              className='text-textDark hover:text-textGreen hover:scale-110 transition-all duration-300'
+              className='text-textDark hover:text-accent hover:scale-110 transition-all duration-300'
               onClick={(e) => e.stopPropagation()}
               aria-label='View Source Code'
             >
@@ -78,7 +78,7 @@ const ArchiveCard = ({ project }: Props) => {
               href={project.liveDemoUrl}
               target='_blank'
               rel='noopener noreferrer'
-              className='text-textDark hover:text-textGreen hover:scale-110 transition-all duration-300'
+              className='text-textDark hover:text-accent hover:scale-110 transition-all duration-300'
               onClick={(e) => e.stopPropagation()}
               aria-label='View Live Demo'
             >
@@ -101,7 +101,7 @@ const ArchiveCard = ({ project }: Props) => {
 
       {/* Title and Description */}
       <div className='flex-grow'>
-        <h2 className='text-xl font-titleFont font-semibold tracking-wide text-textLight group-hover:text-textGreen transition-colors duration-300 mb-3'>
+        <h2 className='text-xl font-titleFont font-semibold tracking-wide text-textLight group-hover:text-accent transition-colors duration-300 mb-3'>
           {project.title}
         </h2>
         <p className='text-sm text-textDark leading-relaxed line-clamp-3'>
@@ -116,7 +116,7 @@ const ArchiveCard = ({ project }: Props) => {
             key={i}
             className='flex items-center gap-1 text-xs text-textDark font-medium'
           >
-            <span className='text-textGreen'>{getTechIcon(tag)}</span>
+            <span className='text-accent'>{getTechIcon(tag)}</span>
             {tag}
           </span>
         ))}

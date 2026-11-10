@@ -19,7 +19,7 @@ const Banner = () => {
             id='home'
             className='max-w-contentContainer mx-auto py-10 mdl:py-24 flex flex-col gap-4 lgl:gap-6 mdl:px-10 xl:px-4'
         >
-            <motion.p {...fadeUp(0.3)} className='font-titleFont text-sm tracking-[0.2em] uppercase text-textGreen'>
+            <motion.p {...fadeUp(0.3)} className='font-titleFont text-sm tracking-[0.2em] uppercase text-accent'>
                 Product engineer
             </motion.p>
 
@@ -57,12 +57,12 @@ const Banner = () => {
                                 <td className='px-4 py-3'>
                                     <Link
                                         href={`/projects/${row.slug}`}
-                                        className='text-textLight hover:text-textGreen duration-300'
+                                        className='text-textLight hover:text-accent duration-300'
                                     >
                                         {row.system}
                                     </Link>
                                 </td>
-                                <td className='px-4 py-3 text-textGreen whitespace-nowrap'>{row.model}</td>
+                                <td className='px-4 py-3 text-accent whitespace-nowrap'>{row.model}</td>
                                 <td className='px-4 py-3 text-right tabular-nums text-textDark'>{row.since}</td>
                             </tr>
                         ))}
@@ -74,7 +74,7 @@ const Banner = () => {
                 <span className='text-textLight'>Most recent:</span>{' '}
                 <Link
                     href='/projects/legendaire-dms'
-                    className='underline decoration-textGreen/40 underline-offset-4 hover:text-textGreen duration-300'
+                    className='underline decoration-accent/40 underline-offset-4 hover:text-accent duration-300'
                 >
                     Rebuilt a Logistics Company&apos;s live delivery system
                 </Link>{' '}
@@ -83,13 +83,13 @@ const Banner = () => {
 
             <motion.div {...fadeUp(0.9)} className='flex flex-wrap gap-4 mt-2'>
                 <a href='#project'>
-                    <button className='w-44 h-12 text-sm font-titleFont bg-textGreen text-bodyColor rounded-md
-                        tracking-wide hover:bg-textGreen/90 duration-300 font-semibold'>
+                    <button className='w-44 h-12 text-sm font-titleFont bg-accent text-bodyColor rounded-md
+                        tracking-wide hover:bg-accent/90 duration-300 font-semibold'>
                         View My Work
                     </button>
                 </a>
                 <a href='#contact'>
-                    <button className='w-44 h-12 text-sm font-titleFont border border-textGreen rounded-md text-textGreen
+                    <button className='w-44 h-12 text-sm font-titleFont border border-accent rounded-md text-accent
                         tracking-wide hover:bg-hoverColor duration-300'>
                         Get in Touch
                     </button>

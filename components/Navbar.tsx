@@ -45,7 +45,7 @@ const Navbar = () => {
           <ul className='flex text-[13px] gap-7'>
             <Link href="#home"
               onClick={handleScroll}
-              className='flex items-center gap-1 font-medium text-textDark hover:text-textGreen 
+              className='flex items-center gap-1 font-medium text-textDark hover:text-accent 
             cursor-pointer duration-300 nav-link'>
 
               <motion.li
@@ -60,7 +60,7 @@ const Navbar = () => {
 
             <Link href="#about"
               onClick={handleScroll}
-              className='flex items-center gap-1 font-medium text-textDark hover:text-textGreen 
+              className='flex items-center gap-1 font-medium text-textDark hover:text-accent 
             cursor-pointer duration-300 nav-link'>
 
               <motion.li
@@ -75,7 +75,7 @@ const Navbar = () => {
 
             <Link href="#experience"
               onClick={handleScroll}
-              className='flex items-center gap-1 font-medium text-textDark hover:text-textGreen 
+              className='flex items-center gap-1 font-medium text-textDark hover:text-accent 
             cursor-pointer duration-300 nav-link'>
 
               <motion.li
@@ -90,7 +90,7 @@ const Navbar = () => {
 
             <Link href="#project"
               onClick={handleScroll}
-              className='flex items-center gap-1 font-medium text-textDark hover:text-textGreen 
+              className='flex items-center gap-1 font-medium text-textDark hover:text-accent 
             cursor-pointer duration-300 nav-link'>
 
               <motion.li
@@ -105,7 +105,7 @@ const Navbar = () => {
 
             <Link href="#contact"
               onClick={handleScroll}
-              className='flex items-center gap-1 font-medium text-textDark hover:text-textGreen 
+              className='flex items-center gap-1 font-medium text-textDark hover:text-accent 
             cursor-pointer duration-300 nav-link'>
 
               <motion.li
@@ -124,7 +124,7 @@ const Navbar = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
-              className='px-4 py-2 rounded-md text-textGreen text-[13px] border border-textGreen
+              className='px-4 py-2 rounded-md text-accent text-[13px] border border-accent
               hover:bg-hoverColor duration-300'
             >
               Resume
@@ -134,13 +134,13 @@ const Navbar = () => {
 
         {/* Small Icon section */}
         <button type='button' onClick={() => setShowMenu(true)} aria-label='Open menu'
-          className='w-6 h-5 flex flex-col justify-between items-center mdl:hidden text-4xl text-textGreen
+          className='w-6 h-5 flex flex-col justify-between items-center mdl:hidden text-4xl text-accent
         cursor-pointer overflow-hidden group'>
-          <span className='w-full h-[2px] bg-textGreen inline-flex transform group-hover:translate-x-2 transition-all
+          <span className='w-full h-[2px] bg-accent inline-flex transform group-hover:translate-x-2 transition-all
             ease-in-out duration-300'></span>
-          <span className='w-full h-[2px] bg-textGreen inline-flex transform translate-x-3 group-hover:translate-x-0 transition-all
+          <span className='w-full h-[2px] bg-accent inline-flex transform translate-x-3 group-hover:translate-x-0 transition-all
             ease-in-out duration-300'></span>
-          <span className='w-full h-[2px] bg-textGreen inline-flex transform  translate-x-1 group-hover:translate-x-3
+          <span className='w-full h-[2px] bg-accent inline-flex transform  translate-x-1 group-hover:translate-x-3
             transition-all ease-in-out duration-300'></span>
 
         </button>
@@ -159,7 +159,7 @@ const Navbar = () => {
               py-10 relative'>
                 <button type='button' onClick={() => setShowMenu(false)} aria-label='Close menu'
                   className='absolute top-4 right-4'>
-                  <MdOutlineClose className="text-3xl text-textGreen cursor-pointer hover:text-red-500"/>
+                  <MdOutlineClose className="text-3xl text-accent cursor-pointer hover:text-red-500"/>
                 </button>
                 {/* Smaller device Navbar */}
                 <div className='flex flex-col items-center gap-7'>
@@ -167,7 +167,7 @@ const Navbar = () => {
                   <ul className='flex flex-col text-base gap-7'>
                     <Link href="#home"
                       onClick={handleScroll}
-                      className='flex items-center gap-1 font-medium text-textDark hover:text-textGreen 
+                      className='flex items-center gap-1 font-medium text-textDark hover:text-accent 
             cursor-pointer duration-300 nav-link'>
 
                       <motion.li
@@ -186,7 +186,7 @@ const Navbar = () => {
 
                     <Link href="#about"
                       onClick={handleScroll}
-                      className='flex items-center gap-1 font-medium text-textDark hover:text-textGreen 
+                      className='flex items-center gap-1 font-medium text-textDark hover:text-accent 
             cursor-pointer duration-300 nav-link'>
 
                       <motion.li
@@ -205,7 +205,7 @@ const Navbar = () => {
 
                     <Link href="#experience"
                       onClick={handleScroll}
-                      className='flex items-center gap-1 font-medium text-textDark hover:text-textGreen 
+                      className='flex items-center gap-1 font-medium text-textDark hover:text-accent 
             cursor-pointer duration-300 nav-link'>
 
                       <motion.li
@@ -224,7 +224,7 @@ const Navbar = () => {
 
                     <Link href="#project"
                       onClick={handleScroll}
-                      className='flex items-center gap-1 font-medium text-textDark hover:text-textGreen 
+                      className='flex items-center gap-1 font-medium text-textDark hover:text-accent 
             cursor-pointer duration-300 nav-link'>
 
                       <motion.li
@@ -243,7 +243,7 @@ const Navbar = () => {
 
                     <Link href="#contact"
                       onClick={handleScroll}
-                      className='flex items-center gap-1 font-medium text-textDark hover:text-textGreen 
+                      className='flex items-center gap-1 font-medium text-textDark hover:text-accent 
             cursor-pointer duration-300 nav-link'>
 
                       <motion.li
@@ -266,7 +266,7 @@ const Navbar = () => {
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ delay: 0.6, ease: "easeIn" }}
-                      className='w-32 h-10 rounded-md text-textGreen text-[13px] border border-textGreen
+                      className='w-32 h-10 rounded-md text-accent text-[13px] border border-accent
               hover:bg-hoverColor duration-300'
                     >
                       Resume
@@ -282,9 +282,9 @@ const Navbar = () => {
                       ease: "easeIn",
                     }}
                     href="https://github.com/itsAnkitpy" target="_blank">
-                    <span className="w-10 h-10 text-xl bg-bodyColor border-[1px] border-zinc-700 hover:border-textGreen
+                    <span className="w-10 h-10 text-xl bg-bodyColor border-[1px] border-zinc-700 hover:border-accent
                       text-zinc-200 rounded-full inline-flex items-center justify-center
-                       hover:text-textGreen cursor-pointer hover:-translate-y-2 transition-all duration-300">
+                       hover:text-accent cursor-pointer hover:-translate-y-2 transition-all duration-300">
                         <TbBrandGithub />
                       </span>
                     </motion.a>
@@ -296,9 +296,9 @@ const Navbar = () => {
                       delay: 1,
                       ease: "easeIn",
                     }}href="https://www.linkedin.com/in/its-ankit-sharma/" target="_blank">
-                      <span className="w-10 h-10 text-xl bg-bodyColor border-[1px] border-zinc-700 hover:border-textGreen
+                      <span className="w-10 h-10 text-xl bg-bodyColor border-[1px] border-zinc-700 hover:border-accent
                       text-zinc-200 rounded-full inline-flex items-center justify-center
-                       hover:text-textGreen cursor-pointer hover:-translate-y-2 transition-all duration-300">
+                       hover:text-accent cursor-pointer hover:-translate-y-2 transition-all duration-300">
                         <SlSocialLinkedin />
                       </span>
                     </motion.a>
@@ -309,7 +309,7 @@ const Navbar = () => {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 1.2, ease: "easeIn" }}
-                  className="text-sm w-72 tracking-widest text-textGreen text-center mt-4"
+                  className="text-sm w-72 tracking-widest text-accent text-center mt-4"
                   href='mailto:ankit3585@gmail.com'>
                     <p>ankit3585@gmail.com</p>
                   </motion.a>

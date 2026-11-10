@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .active{
-  color: #64ffda
+  color: #f5b942
 }
 
 /* Typewriter cursor animation */

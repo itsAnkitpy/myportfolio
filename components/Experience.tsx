@@ -1,86 +1,59 @@
-import React, { useState } from 'react';
 import SectionTitle from './SectionTitle';
 import Summerhill from './works/Summerhill';
 import Himtech from './works/Himtech';
 import Freelancer from './works/Freelancer';
-import { HiOfficeBuilding } from 'react-icons/hi';
-import { MdWork } from 'react-icons/md';
+
+// Newest first. Every job stays visible; there are no tabs to click.
+const jobs = [
+  {
+    title: 'Software Engineer',
+    company: 'SummerHill Technologies',
+    dates: 'Oct 2024 – Present',
+    meta: '7 apps · SaaS & legacy rebuilds · Laravel, Next.js & NestJS',
+    body: <Summerhill />
+  },
+  {
+    title: 'Freelance Projects',
+    company: 'Independent',
+    dates: '2021 – 2024',
+    meta: 'Shimla · Project-based client work',
+    body: <Freelancer />
+  },
+  {
+    title: 'Junior Developer',
+    company: 'Himtech',
+    dates: 'Jan 2020 – Feb 2021',
+    meta: 'Django & Python · HTML, CSS, JS',
+    body: <Himtech />
+  }
+];
 
 const Experience = () => {
-  const [activeTab, setActiveTab] = useState('summerhill');
-
-  const experiences = [
-    {
-      id: 'summerhill',
-      company: 'SummerHill Technologies',
-      icon: <HiOfficeBuilding />,
-      component: <Summerhill />
-    },
-    {
-      id: 'freelancer',
-      company: 'Freelancer',
-      icon: <MdWork />,
-      component: <Freelancer />
-    },
-    {
-      id: 'himtech',
-      company: 'Himtech',
-      icon: <HiOfficeBuilding />,
-      component: <Himtech />
-    }
-  ];
-
   return (
-    <section
-      id='experience'
-      className='max-w-containerxs mx-auto py-10 lgl:py-24 px-4'
-    >
+    <section id='experience' className='max-w-containerxs mx-auto py-10 lgl:py-24 px-4'>
       <SectionTitle title='Experience' />
 
-      <div className='w-full mt-10 flex flex-col md:flex-row gap-8 md:gap-16'>
-        {/* Tab Navigation */}
-        {/* Tabs wrap onto a new line rather than shrinking — a squeezed button
-            clipped its own company name against `overflow-hidden`. */}
-        <div className='md:w-65 flex flex-wrap md:flex-col gap-2'>
-          {experiences.map(({ id, company, icon }) => (
-            <button
-              key={id}
-              onClick={() => setActiveTab(id)}
-              className={`${activeTab === id
-                ? 'bg-[#112240] border-l-textGreen text-textGreen shadow-md shadow-textGreen/10'
-                : 'border-l-[#233554] text-textDark hover:bg-[#112240] hover:text-textLight'
-                } 
-              flex items-center gap-3 border-l-2 md:border-l-4 py-3 px-4 text-sm font-medium
-              cursor-pointer transition-all duration-300 rounded-r-md whitespace-nowrap shrink-0
-              group relative overflow-hidden`}
-            >
-              <span
-                className={`${activeTab === id ? 'text-textGreen' : 'text-textDark group-hover:text-textGreen'
-                  } text-lg transition-colors duration-300`}
-              >
-                {icon}
-              </span>
-              <span className='font-titleFont tracking-wide'>{company}</span>
+      <ol className='mt-10 flex flex-col'>
+        {jobs.map(({ title, company, dates, meta, body }, index) => (
+          <li key={company} className='relative pl-8 pb-12 last:pb-0'>
+            {/* The line runs from this dot down to the next one. */}
+            {index < jobs.length - 1 && (
+              <span className='absolute left-[5px] top-4 bottom-0 w-px bg-[#233554]' />
+            )}
+            <span className='absolute left-0 top-[9px] w-[11px] h-[11px] rounded-full border-2 border-accent bg-bodyColor' />
 
-              {/* Active indicator dot. Held in the flow, not positioned over the
-                  label, and always rendered so switching tabs shifts nothing. */}
-              <span
-                className={`${activeTab === id ? 'opacity-100 animate-pulse' : 'opacity-0'
-                  } ml-auto w-2 h-2 shrink-0 bg-textGreen rounded-full transition-opacity duration-300`}
-              />
-            </button>
-          ))}
-        </div>
-
-        {/* Content Area */}
-        <div className='flex-1 min-h-[400px]'>
-          {experiences.map(({ id, component }) => (
-            <div key={id} className={activeTab === id ? 'block' : 'hidden'}>
-              {component}
+            <div className='flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1'>
+              <h3 className='font-titleFont font-semibold text-xl text-textLight'>
+                {title} <span className='text-accent'>· {company}</span>
+              </h3>
+              <p className='text-sm font-medium text-textDark whitespace-nowrap'>{dates}</p>
             </div>
-          ))}
-        </div>
-      </div>
+            <p className='mt-1 text-sm text-textDark'>{meta}</p>
+
+            <div className='mt-5'>{body}</div>
+          </li>
+        ))}
+      </ol>
     </section>
   );
 };
